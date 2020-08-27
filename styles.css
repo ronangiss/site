@@ -9,7 +9,7 @@ body {
 	font: 100% Tahoma, Geneva, sans-serif; /*100% is basically same as 1em*/
 }
 header {
-	font-family: "Comic Sans MS", cursive, sans-serif; /*following fonts are fallbacks*/
+	font-family: "Comic Sans MS", sans-serif; /*following fonts are fallbacks*/
 	font-size: 1em; /*2 times default size of text on browser*/
 	font-weight: normal; /*unbolds automatically bolded headings*/
 	color: midnightblue;
