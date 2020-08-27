@@ -24,6 +24,42 @@ header h2 {
 	font-size:1.3em;
 	margin: 0;
 }
+nav ul {
+	list-style-type: none; /*removes bullet points*/
+	display: inline-block; /*used to put all list items on the same line*/
+}
+nav li {	/* Used to crop images*/
+	height: 300px;
+	width: 300px;
+	overflow: hidden;
+}
+#Teardowns{
+	position: relative;
+	left: -10%;
+	top: 50%;
+	display: inline-block;
+}
+#Automatons{
+	position: relative;
+	left: 0;
+	top: 50%;
+	display: inline-block;
+}
+#Electronics{
+	position: relative;
+	left: 10%;
+	top: 50%;
+	display: inline-block;
+}
+nav p {
+	position: absolute;
+	top: 40%;
+	left: 30%;
+	font-size: 1.7em;
+	font-weight: bold;
+	background: wheat;
+	border-radius: 10px;
+}
 h2 {
 	font-size: 1.5em;
 	font-weight: bold;
@@ -49,10 +85,14 @@ footer {
 	background: cadetblue;
 }
 a {
-	color: black;
+	color: orangered;
 	text-decoration: none;
 }
 
 a:hover {
-	color: red;
+	color: steelblue;
+}
+
+img:hover {
+	opacity: 0.5;
 }
