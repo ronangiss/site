@@ -16,6 +16,7 @@ header {
 	margin: 1em 0 .4em; /*top left/right bottom*/
 	text-align: center;
 	background: cadetblue;
+	overflow: hidden;
 }
 header h1 {
 	margin: 0;
@@ -26,33 +27,19 @@ header h2 {
 }
 nav ul {
 	list-style-type: none; /*removes bullet points*/
-	display: inline-block; /*used to put all list items on the same line*/
+	margin: 0 0 0 9.5%;
 }
 nav li {	/* Used to crop images*/
-	height: 300px;
-	width: 300px;
-	overflow: hidden;
-	display: inline-block;
+	float: left;
+	width: 25%;
+	height: 25%;
+	margin: 0 1%;
 }
-#Teardowns{
-	position: relative;
-	left: -10%;
-	top: 50%;
+nav li img {
+	width: 100%;
+	height: auto;
 }
-#Automatons{
-	position: relative;
-	left: 0;
-	top: 50%;
-}
-#Electronics{
-	position: relative;
-	left: 10%;
-	top: 50%;
-}
-nav p {
-	position: absolute;
-	top: 40%;
-	left: 30%;
+.imageLabel {
 	font-size: 1.7em;
 	font-weight: bold;
 	background: wheat;
