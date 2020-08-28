@@ -21,14 +21,20 @@ header {
 nav ul {
 	list-style-type: none; /*removes bullet points*/
 	display: inline-block; /*makes sure that future text doesn't wrap onto images*/
+	width: 100%;
+	height: auto;
 }
 nav li {	/* Used to crop images*/
-	width: 25%;
-	height: 25%;
-	margin: 2% 1%;
 	display: inline-block;
 	position: relative;
 	left: 9.5%; /* (100-25-25-25-6)/2 */
+	width: 25%;
+	height: 25%;
+	margin: 2% 1%;
+}
+.imageContainer {
+	max-height: 275px;
+	overflow: hidden;
 }
 nav li img {
 	width: 100%;
