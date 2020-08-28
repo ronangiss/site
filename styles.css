@@ -18,22 +18,17 @@ header {
 	background: cadetblue;
 	overflow: hidden;
 }
-header h1 {
-	margin: 0;
-}
-header h2 {
-	font-size:1.3em;
-	margin: 0;
-}
 nav ul {
 	list-style-type: none; /*removes bullet points*/
-	margin: 0 0 0 9.5%;
+	display: inline-block; /*makes sure that future text doesn't wrap onto images*/
 }
 nav li {	/* Used to crop images*/
-	float: left;
 	width: 25%;
 	height: 25%;
-	margin: 0 1%;
+	margin: 2% 1%;
+	display: inline-block;
+	position: relative;
+	left: 9.5%; /* (100-25-25-25-6)/2 */
 }
 nav li img {
 	width: 100%;
@@ -42,6 +37,7 @@ nav li img {
 .imageLabel {
 	font-size: 1.7em;
 	font-weight: bold;
+	text-align: center;
 	background: wheat;
 	border-radius: 10px;
 }
