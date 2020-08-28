@@ -8,7 +8,7 @@ body {
 	margin: 0 auto; /* top/bottom left/right */
 	font: 100% Tahoma, Geneva, sans-serif; /*100% is basically same as 1em*/
 }
-header {
+#mainTitle {
 	font-family: Palatino, serif; /*following fonts are fallbacks*/
 	font-size: 1em; /*2 times default size of text on browser*/
 	font-weight: normal; /*unbolds automatically bolded headings*/
