@@ -3,7 +3,9 @@
 	padding: 0;
 }
 html {
-		background: aliceblue;
+		background: linear-gradient(-45deg, rgba(0, 130, 230, 0.2), rgba(0, 130, 230, 0)),
+					linear-gradient(45deg, rgba(165, 110, 190, 0.2), rgba(165, 110, 190, 0));
+					
 	}
 body {
 	width: 70%; /* page content fills 70% of page width*/
@@ -82,5 +84,5 @@ a:hover {
 }
 
 img:hover {
-	opacity: 0.5;
+	opacity: 0.7;
 }
