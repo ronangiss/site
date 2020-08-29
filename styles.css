@@ -65,6 +65,7 @@ h2 {
 	font-weight: bold;
 }
 article p {
+	font-size: 1.1em;
 	line-height: 1.4; /*spacing between lines*/
 	text-align: justify;
 	margin: 0.5em 0; /*zero on alls margin but then setting bottom to 1*/
@@ -106,5 +107,13 @@ nav li img:hover {
 .doubleList {
 	display: inline-block;
 	vertical-align: top;
-	width:40%;
+	width: 45%;
+}
+.doubleImage {
+	display: inline-block;
+	position: relative;
+	margin-left: 2%;
+	margin-right: 2%;
+	left: 16%;
+	width: 30%;
 }
