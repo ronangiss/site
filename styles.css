@@ -22,7 +22,6 @@ nav ul {
 	list-style-type: none; /*removes bullet points*/
 	display: inline-block; /*makes sure that future text doesn't wrap onto images*/
 	width: 100%;
-	height: auto;
 }
 nav li {	/* Used to crop images*/
 	display: inline-block;
