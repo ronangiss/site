@@ -112,6 +112,7 @@ nav li img:hover {
 	display: inline-block;
 	vertical-align: top;
 	width: 45%;
+	margin-right: 4%;
 }
 .doubleRowImage {
 	display: inline-block;
