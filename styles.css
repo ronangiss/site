@@ -103,7 +103,7 @@ nav li img:hover {
 	margin-top: 2em;
 	width: 60%;
 }
-.centerLabel {
+.label {
 	text-align: center;
 	margin: 0.1em 0 0.5em;
 	font-weight: bold;
@@ -113,13 +113,20 @@ nav li img:hover {
 	vertical-align: top;
 	width: 45%;
 }
-.doubleImage {
+.doubleRowImage {
 	display: inline-block;
 	position: relative;
-	margin-left: 2%;
-	margin-right: 2%;
+	margin: 0 2%;
 	left: 16%;
+	vertical-align: middle;
 	width: 30%;
+}
+.doubleColImage {
+	display: block;
+}
+.doubleColLabel {
+	display: block;
+	margin-bottom: 35%;
 }
 .home {
 	font-size: 1.5em;
