@@ -43,11 +43,22 @@
 			<video controls="controls" name="Second Prototype" src="images/projects/butterfly/secondTrial.mp4" class="center"></video>
 			<p class="label">Second Prototype Using Gears at Ends</p>
 			<p>&emsp;&emsp;This was what I wanted! Now the challenge just became how to actuate those two gears at either end with a gear train that ensured the two gears would move in opposite directions using one central drive gear connected to a crank that could be rotated by the user.</p>
+			<p>&emsp;&emsp;One solution would have been to use a long shaft with spur gears attached along its length, but instead I opted to use miter gears on the cranks and a complementary set driving those on the cranks. This compressed the design by allowing the cranks to be driven by gears perpendicular to the crank gear. Then by compounding each of the two driving miters gears with meshing spur gears, the cranks could be driven simultaneously and in opposite directions.</p>
 		</section>
 		<hr>
 		<section>
-			<h3>Material Failure</h3>
-			<p>&emsp;&emsp;</p>
+			<h3>Challenges During Prototyping</h3>
+			<p>&emsp;&emsp;Many prototypes were made along the way to improve the design such that it could function basically as I had imagined it too. For each failed prototype, I examined it, took some notes on what features should be improved, ponder its failure for a little bit, and then design a new prototype.</p>
+			<img src="images/projects/butterfly/prototypes.jpg" alt="Four Bar Linkage Calculation" class="center">
+			<p class="label">Prototypes</p>
+			<p>&emsp;&emsp;One of the major issues I encountered was how to ensure the gears maintained good contact when interacting with one another. Unlike the spur gears which experienced no thrust loading during meshing, meshing bevel gears experience thrust loads which can push them out of contact with one another if they are not well secured. During early prototypes I was sliding the bevel gears onto shafts to put them in place which led to them quickly disengaging as the gears interacted. To address this issue on later prototypes, I slid the bevel gears onto shafts and then assembled the base around the bevel gears with screws to secure the bevel gears.</p>
+			<video controls="controls" name="Second Prototype" src="images/projects/butterfly/gearsContact.mov" class="doubleRowImage"></video>
+			<img src="images/projects/butterfly/gearsContactFailure.jpg" alt="Evidence of Ejector Pin on Blue Plastic Piece" class="doubleRowImage">
+			<p class="label">Gear Contact......</p>
+			<p>&emsp;&emsp;Another one of the key issues I dealt with was material failure of the 3D printed parts. All the parts were 3D printed with PLA+ (PLA but with ambiguously better material properties). Unlike other 3D printing materials, like ABS or carbon fiber, PLA seems relatively easy to work with and cheap but lacks in material performance. It is interesting to note that the below captured part failures occurred at locations with a rapid change in diameter where a stress concentration would be expected. Since I was stuck working with PLA, I beefed up locations where failure occurred such that the design could survive most finger-generated loads.</p>
+			<img src="images/projects/butterfly/torsionFail.jpg" alt="Evidence of Ejector Pin on Blue Plastic Piece" class="doubleRowImage">
+			<img src="images/projects/butterfly/bendingFail.jpg" alt="Evidence of Ejector Pin on Blue Plastic Piece" class="doubleRowImage">
+			<p class="label">Failure......</p>
 		</section>
 		<hr>
 		<section>
@@ -57,6 +68,8 @@
 	</article>
 </main>
 <footer role='contentinfo'>
+	<a href="index.html" title="Home" class="home">Home</a><br><br>
+	<h2>Contact Me</h2>
 	<p>Ronan Gissler<br>&lang;ronan.sept@gmail.com&rang;</p>
 </footer>
 <body>
