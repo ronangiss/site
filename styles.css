@@ -40,13 +40,13 @@ nav ul {
 nav li {	/* Used to crop images*/
 	display: inline-block;
 	position: relative;
-	left: 9.5%; /* (100-25-25-25-6)/2 */
-	width: 25%;
+	left: 0%;
+	width: 31%;
 	height: 25%;
-	margin: 2% 1%;
+	margin: 3% 0.5%;
 }
 .imageContainer {
-	max-height: 275px;
+	max-height: 220px;
 	overflow: hidden;
 }
 img {
@@ -59,6 +59,7 @@ img {
 	text-align: center;
 	background: wheat;
 	border-radius: 10px;
+	padding:2.5px;
 }
 h2 {
 	font-size: 1.5em;
@@ -71,7 +72,7 @@ article p {
 	margin: 0.5em 0; /*zero on alls margin but then setting bottom to 1*/
 }
 #intro {
-	width: 50%;
+	width: 80%;
 }
 footer {
 	text-align: center;
@@ -81,14 +82,22 @@ footer {
 	margin-right: auto;
 	padding: 1em 0;
 	color: midnightblue;
-	background: cadetblue;
 }
 a {
+	color: darkblue;
+	text-decoration: underline;
+}
+
+a:hover {
+	cursor: pointer;
+	color: darkslateblue;
+}
+.pageLink {
 	color: orangered;
 	text-decoration: none;
 }
 
-a:hover {
+.pageLink:hover {
 	cursor: pointer;
 	color: steelblue;
 }
@@ -96,12 +105,12 @@ a:hover {
 nav li img:hover {
 	opacity: 0.7;
 }
-#contact {
+.footerLink {
 	color: midnightblue;
 	text-decoration: underline;
 }
 
-#contact:hover {
+.footerLink:hover {
 	cursor: pointer;
 	color: blueviolet;
 }
@@ -141,6 +150,12 @@ nav li img:hover {
 	margin-bottom: 35%;
 }
 .home {
+	color: orangered;
+	font-size: 1.5em;
+	text-decoration: underline;
+}
+.home:hover {
+	color: midnightblue;
 	font-size: 1.5em;
 	text-decoration: underline;
 }
