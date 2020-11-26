@@ -96,6 +96,15 @@ a:hover {
 nav li img:hover {
 	opacity: 0.7;
 }
+#contact {
+	color: midnightblue;
+	text-decoration: underline;
+}
+
+#contact:hover {
+	cursor: pointer;
+	color: blueviolet;
+}
 .center {
 	display: block;
 	margin-left: auto;
@@ -139,4 +148,22 @@ h3 {
 	font-size: 1.3em;
 	font-weight: bold;
 	color: navy;
+}
+#aboutMe {
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+	margin-right: 0%;
+}
+#mePic {
+	display: inline-block;
+	background-color: black;
+	vertical-align: top;
+	width: 45%;
+	margin-right: 4%;
+}
+.centerText {
+	display: block;
+	margin: auto;
+	text-align: center;
 }
