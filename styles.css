@@ -46,7 +46,7 @@ nav li {	/* Used to crop images*/
 	margin: 3% 0.5%;
 }
 .imageContainer {
-	max-height: 220px;
+	max-height: 250px;
 	overflow: hidden;
 }
 img {
