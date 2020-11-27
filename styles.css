@@ -19,11 +19,6 @@ header {
 	margin: 1em 0 .4em; /*top left/right bottom*/
 	padding: 1em 0;
 }
-#mainTitle {
-	text-align: center;
-	color: midnightblue;
-	background: cadetblue;
-}
 section {
 	margin: 2em 0;
 }
@@ -45,21 +40,20 @@ nav li {	/* Used to crop images*/
 	height: 25%;
 	margin: 3% 0.5%;
 }
-.imageContainer {
-	max-height: 250px;
-	overflow: hidden;
+nav li img:hover {
+	opacity: 0.7;
+}
+ul {
+	margin-left: 5%;
 }
 img {
 	width: 100%;
 	height: auto;
 }
-.imageLabel {
-	font-size: 1.7em;
+h3 {
+	font-size: 1.3em;
 	font-weight: bold;
-	text-align: center;
-	background: wheat;
-	border-radius: 10px;
-	padding:2.5px;
+	color: navy;
 }
 h2 {
 	font-size: 1.5em;
@@ -70,9 +64,6 @@ article p {
 	line-height: 1.4; /*spacing between lines*/
 	text-align: justify;
 	margin: 0.5em 0; /*zero on alls margin but then setting bottom to 1*/
-}
-#intro {
-	width: 80%;
 }
 footer {
 	text-align: center;
@@ -92,6 +83,18 @@ a:hover {
 	cursor: pointer;
 	color: darkslateblue;
 }
+.imageContainer {
+	max-height: 250px;
+	overflow: hidden;
+}
+.imageLabel {
+	font-size: 1.7em;
+	font-weight: bold;
+	text-align: center;
+	background: wheat;
+	border-radius: 10px;
+	padding:2.5px;
+}
 .pageLink {
 	color: orangered;
 	text-decoration: none;
@@ -100,10 +103,6 @@ a:hover {
 .pageLink:hover {
 	cursor: pointer;
 	color: steelblue;
-}
-
-nav li img:hover {
-	opacity: 0.7;
 }
 .footerLink {
 	color: midnightblue;
@@ -159,10 +158,10 @@ nav li img:hover {
 	font-size: 1.5em;
 	text-decoration: underline;
 }
-h3 {
-	font-size: 1.3em;
-	font-weight: bold;
-	color: navy;
+.centerText {
+	display: block;
+	margin: auto;
+	text-align: center;
 }
 #aboutMe {
 	display: inline-block;
@@ -177,8 +176,11 @@ h3 {
 	width: 45%;
 	margin-right: 4%;
 }
-.centerText {
-	display: block;
-	margin: auto;
+#mainTitle {
 	text-align: center;
+	color: midnightblue;
+	background: cadetblue;
+}
+#intro {
+	width: 80%;
 }
