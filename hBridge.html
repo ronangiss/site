@@ -18,11 +18,42 @@
 		<hr>
 		<section>
 			<h3>Introduction</h3>
-			<p>&emsp;&emsp;This project was completed as part of my electronics class during the fall semester of my junior year at Tufts. The project requirement was to create an electromechanical game that included some user input using an electronic device and moving mechanical elements controlled electronically. I decided to build a small goalie robot that could rotate his arms to block shots on a soccer goal.</p>
-			<img src="images/projects/goalie/completed.jpg" alt="Completed Goalie Robot" class="center">
-			<p class="label">Howard, the Goalie Robot</p>
+			<p>&emsp;&emsp;This project was completed as part of my electronics class during the fall semester of my junior year at Tufts. The PCB is about 1" x 2" and can be used to control a motor running at higher voltage using lower voltage control signals. This application is useful when high performance (high torque and high speed) is desired from the motor but a lower voltage control device such as an Arduino or Raspberry Pi is desired. Additionally, a red LED lights up when the board is connected to power. The electronic components are mounted using the through-hole method and include the following: </p>
+			<br><ul>
+				<div class="doubleList">
+					<li>1 Barrel Jack Connector</li>
+					<li>1 3.3V Voltage Regulator</li>
+					<li>1 5V Voltage Regulator</li>
+					<li>3 10 uF Capacitors</li>
+				</div>
+				<div class="doubleList">
+					<li>1 Screw Terminal (1x2)</li>
+					<li>4 Pin Headers (1x2)</li>
+					<li>1 1K Resistor</li>
+					<li>1 Red LED</li>
+				</div>
+			</ul>
+			<img src="images/electronics/hBridge/isoView.jpg" alt="Finished Motor Driver PCBs" class="center">
+			<p class="label">Final Motor Driver PCB: one with components mounted (right) and one without components mounted (left)</p>
 		</section>
 		<hr>
+		<section>
+			<h3>Design Process</h3>
+			<p>The electronics of the PCB were first assembled on a breadboard and tested together to ensure everything worked as expected. Then, the breadboard prototype was translated to the design of a PCB using KiCAD, a free schematic and PCB design software. The design of the PCB on KiCAD can be broken down into three steps: drawing a schematic to illustrate the functions of the circuit, assigning footprints to components in the schematic to describe the physical structure (number of pin holes, pin pad size, pin size, pin spacing, and pin arrangement) of the PCB for each component, and then designing the structure of the PCB itself (dimensioning the board, locating components, and drawing traces).</p>
+			<img src="images/electronics/hBridge/schematic.png" alt="Motor Driver Schematic" class="center">
+			<p class="label">KiCAD Schematic of Motor Driver Circuit</p>
+			<img src="images/electronics/hBridge/footprints.png" alt="Motor Driver Footprints" class="center">
+			<p class="label">Footprints Applied to Motor Driver Circuit Components</p>
+			<img src="images/electronics/hBridge/layout.png" alt="Motor Driver PCB Layout" class="center">
+			<p class="label">PCB Layout of Motor Driver</p>
+			<img src="images/electronics/hBridge/viewer.png" alt="3D View of PCB Layout" class="center">
+			<p class="label">3D View of PCB Layout of Motor Driver</p>
+		</section>
+		<hr>
+		<section>
+			<h3>Construction</h3>
+			<p>After completing the PCB design, I sent the design to OSH Park, a PCB fabricator, who then sent me back 3 copies of PCB. Our instructors had bought all the PCB components we would need through Digikey, so the last step was just soldering on components. Being careful to avoid soldering together traces on the board, I soldered on each of the components to the PCB. I trimmed off the excess wire length on the components and the PCB was ready to go.</p>
+		</section>
 	</article>
 </main>
 <footer role='contentinfo'>
