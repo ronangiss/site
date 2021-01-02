@@ -78,29 +78,37 @@
 		<h3>Second System Prototype</h3>
 			<p>&emsp;&emsp;Seeing the idea I thought up come to life, even if it was a little frightening to observe, was reassuring that with just a few more steps I could repackage the robotic flower as a present for my parents just in time for Christmas. The final prototype had no need for the two microcontrollers, so I decided to just use the Arduino. With some advice from more experienced makers at Tufts, I moved to a new slicing software. Additionally, I decided to add a rechargeable LiPo battery to the system allowing it to be enjoyed in places other than next to the wall outlet.</p>
 		<h4>3D Printed Flower Head</h4>
-			<p>&emsp;&emsp;The new slicing software I started using to translate CAD files to 3D-printable files was PrusaSlicer (the official slicing software for the printer), instead of using the OctoPrint software provided on the web interface for the 3D printers. Not only were the default printer settings better when using this new software, but the slicing engine also provided me with more parameters I could change to improve the print quality</p>
-			<img src="images/projects/flower/sanding2nd.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Sanding Second Prototype</p>
-			<img src="images/projects/flower/sanding2nd_2.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Sanding Second Prototype</p>
-			<img src="images/projects/flower/boltsAndSprings.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Assembly of Final Flower Head</p>
-		<h4>Soldering Electronic Components</h4>
-			<p>&emsp;&emsp;Blah blah blah blah blah blah blah blah</p>
-			<img src="images/projects/flower/solderingBattery.jpg" alt="Completed Goose Automaton" class="center">
+			<p>&emsp;&emsp;The new slicing software I started using to translate CAD files to 3D-printable files was PrusaSlicer (the official slicing software for the printer), instead of using the OctoPrint software provided on the web interface for the 3D printers. Not only were the default printer settings better when using this new software, but the slicing engine also provided me with more parameters I could change to improve the print quality. The resulting tenth prototype of the flower head had significantly higher quality. If I had more time to print another flower head, I would have used finer tolerances at the joints as the gaps I had put into the design to accomodate printing error were now glaringly visible. </p>
+			<p>&emsp;&emsp;Another change I made in the tenth prototype of the flower head was to reduce the height of the flower head to make it appear more natural and delicate instead of as a heavy contraption. This aesthetic change also led to the functional benefit of the springs being under higher compression in the flower head, ensuring the flower petals would close fully when the flower was not standing up which had been an issue with the ninth prototype. However, the extent to which I shrunk the flower head from the ninth to tenth prototype was likely too extreme. With the additional compression of the springs, the motor had to work much harder to pull the string through the flower to open the petals and would stall out. As before, simply printing the flower head parts was not the end of the manufacturing process. I trimmed, filed, and sanded until the surfaces of the flower head were smooth and each joint was able to rotate freely. Below are some pictures of this process.</p>
+			<img src="images/projects/flower/sanding2nd.jpg" alt="Completed Goose Automaton" class="doubleRowImageWide">
+			<img src="images/projects/flower/sanding2nd_2.jpg" alt="Completed Goose Automaton" class="doubleRowImageWide">
+			<p class="label">Processing Tenth Flower Head Prototype</p>
+			<p>&emsp;&emsp;As with the ninth prototype of the flower head, I then added in the three pen springs securing them in the flower head by bolting down the star shaped cap piece over the top of the flower head. Due to the increased spring compression and reduced friction in the tenth prototype, the flower head became quite prone to explosion. If touched in a way that misaligned the joints, the springs would rapidly tear the ball and socket joint connections apart. And so this flower truly became a delicate flower, but not quite how I had originally imagined. Below is a picture of the flower head assembly process and a picture of the flower head after explosion. The flower head and stem were spray painted pink and green respectively to look more flower-like than their original filament colors of purple and white respectively. I was also hoping that a coating of spray paint over the 3D printed parts would smooth the surface texture further. This occurred to a small extent, but in retrospect I probably should have used some kind of filler before spray prainting over the part. An unfortunate consequence of the spray painting was that the flower parts would stick to one another instead of separating properly when the string was loose, preventing the flower from falling down fully limp.</p>
+			<img src="images/projects/flower/boltsAndSprings.jpg" alt="Adding Springs and Bolts to Flower Head" class="doubleRowImageWide">
+			<img src="images/projects/flower/explodedFlower.jpg" alt="Exploded Flower" class="doubleRowImageWide">
+			<p class="label">Assembly of Tenth Flower Head Prototype</p>
+		<h4>Box of Electronics</h4>
+			<p>&emsp;&emsp;The first system prototype was dependent upon an external power source such as an outlet or computer. As a result the robotic flower could only be enjoyed a few feet away from such a power source, tethered by an unsightly USB cable. To overcome this issue, I purchased a LiPo battery and power switch off of Amazon. The 2500 mAh LiPo battery I ordered had a JST connector that plugged directly into the Arduino MKR WiFi 1010 (designed for use in projects with LiPo batteries). The wires on the battery were incorrectly installed in the flipped orientation which wouldn't have been an issue if the connector could also be flipped, but the JST connector had only one unique orientation for which it would fit. Since I was already planning to cut one of the wires coming from the battery to solder in two wires leading off to the power switch, it wasn't too much work to also cut, flip, and solder the wires coming from the battery. To reduce the likelihood of overheating the battery and thereby damaging it, I dropped the temperature of the soldering iron from 720 degrees Fahrenheit, the temperature at which I was usually soldering, to 500 degrees Fahrenheit. Below is a picture of the completed soldering job of the battery secured with a nest of clamps. I then wrapped the soldered connections with electrical tape to protect them and medical tape to secure the electrical tape. The result was definitely sketchy, but it worked consistently.</p>
+			<img src="images/projects/flower/solderingBattery.jpg" alt="Clamp Structure Holding Soldered Battery" class="center">
 			<p class="label">Soldering Battery Wires</p>
-			<img src="images/projects/flower/solderingGNDwires.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Soldering Ground Wires</p>
-			<img src="images/projects/flower/batteryAndSwitch.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Battery and Switch</p>
-		<h4>Box Assembly</h4>
-			<p>&emsp;&emsp;Blah blah blah blah blah blah blah blah</p>
-			<img src="images/projects/flower/boxConnectors.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Box Connectors And Flower Stem</p>
+			<p>&emsp;&emsp;To house the LiPo battery along with the other electronics, I designed a small box. As with the first system prototype, the walls of the box were laser cut given their large size and profile-based geometry. Each wall of the box was then connected together with the other walls using small 3D printed brackets bolted to the walls. Below is an image of the printed brackets and flower stem pieces after the support structure was removed from the parts. I also printed a long rectangular piece with a bolted connection to one of the walls to be used as a stop for the Arduino. This way the Arduino would stay in place when a microUSB cable was inserted to power the system and recharge the battery</p>
+			<img src="images/projects/flower/boxConnectors.jpg" alt="Raft and Printed Parts" class="center">
+			<p class="label">Box Brackets And Flower Stem</p>
+			<p>&emsp;&emsp;Using a pair of tweezers and a small Phillips head screwdriver, I bolted the walls of the box together and secured the Arduino stop. I also hot glued the power switch in place on the side of the box. Below is a picture of the assembled box. The top face of the box rests on top of the 4 L-brackets, allowing for easy maintainence of the box components. </p>
 			<img src="images/projects/flower/boxConnected.jpg" alt="Completed Goose Automaton" class="center">
 			<p class="label">Assembled Box</p>
 			<video controls="controls" name="Battery Demonstration" src="images/projects/flower/batteryDemo.mp4" class="center"></video>
 			<p class="label">Demonstration of Battery Power Supply to Arduino</p>
+			<p>&emsp;&emsp;After flipping the battery wires and soldering two new wires to connect the battery circuit to the switch, I then placed the battery in the box and soldered the switch into the battery circuit. Below is a picture of the completed soldering job allowing the switch to be used to control the supply of power from the battery.</p>
+			<img src="images/projects/flower/batteryAndSwitch.jpg" alt="Switch Soldered to Battery Wires" class="center">
+			<p class="label">Battery and Switch</p>
+			<img src="images/projects/flower/humSensPins.jpg" alt="Completed Goose Automaton" class="doubleRowImageWide">
+			<img src="images/projects/flower/humSensSoldered.jpg" alt="Completed Goose Automaton" class="doubleRowImageWide">
+			<p class="label">Soldering Humidity Sensor Pins</p>
+			<p>&emsp;&emsp;I also soldered these wires together</p>
+			<img src="images/projects/flower/solderingGNDwires.jpg" alt="Completed Goose Automaton" class="center">
+			<p class="label">Soldering Ground Wires</p>
+			<p>&emsp;&emsp;Blah blah blah blah blah blah blah blah</p>
 			<img src="images/projects/flower/boxElectronics.jpg" alt="Completed Goose Automaton" class="center">
 			<p class="label">Box with Electronics</p>
 			<img src="images/projects/flower/boxElectronics+tape.jpg" alt="Completed Goose Automaton" class="center">
@@ -112,8 +120,6 @@
 			<p>&emsp;&emsp;Blah blah blah blah blah blah blah blah</p>
 			<img src="images/projects/flower/snowBiking.jpg" alt="Completed Goose Automaton" class="center">
 			<p class="label">Snow Biking</p>
-			<img src="images/projects/flower/explodedFlower.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Exploded Flower Head</p>
 		</section>
 	</article>
 </main>
