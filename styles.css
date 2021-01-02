@@ -50,14 +50,19 @@ img {
 	width: 100%;
 	height: auto;
 }
+h2 {
+	font-size: 1.5em;
+	font-weight: bold;
+}
 h3 {
 	font-size: 1.3em;
 	font-weight: bold;
 	color: navy;
 }
-h2 {
-	font-size: 1.5em;
+h4 {
+	font-size: 1.2em;
 	font-weight: bold;
+	color: mediumblue;
 }
 article p {
 	font-size: 1.1em;
@@ -140,6 +145,16 @@ a:hover {
 	left: 16%;
 	vertical-align: middle;
 	width: 30%;
+}
+.doubleRowImageWide {
+	display: inline-block;
+	position: relative;
+	margin-top: 2%;
+	margin-right: 2%;
+	margin-left: 2%;
+	left: 5%;
+	vertical-align: middle;
+	width: 42%;
 }
 .doubleColImage {
 	display: block;

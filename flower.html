@@ -18,55 +18,74 @@
 		<hr>
 		<section>
 			<h3>A Breath of Life</h3>
-			<p>&emsp;&emsp;I initially thought up this project over the summer of 2020, thinking it'd be cool to present my parents with a small robotic flower that stood up and opened in response to some input. I was inspired by seeing timelapses of flowers growing and then opening their petals. The main concept of the robotic flower is inspired from push toys. The toys consist of a several small pieces connected together by a string. This string is routed through the parts and is then anchored at a spring-loaded plate at the base of the toy. The force of the spring resisting compression pulls the string through the pieces, holding the toy structure (a giraffe is what we have at home) rigidly in shape. Pushing the spring-loaded blate on the bottom of the toy slackens the string causing the pieces to separate and the toy structure to collapse.</p>
-			<p>&emsp;&emsp;The most challenging task in this design was having the flower petals open when the flower stood up and then closing when the flower fell down. I made a total of ten different versions of the flower head trying to achieve good petal opening and closing performance. To justify spending so much time on this project, I also wrapped it into an assignment for my Electronics class where we had to design an artistic display using a moving mechanical element and sensory element communicating together through wifi. With this assignment to motivate me, I built the first full prototype of "A Breath of Life" in about a month.</p>
+			<p>&emsp;&emsp;Inspired by timelapses of flowers growing from small sprouts, to budding stems, and then opening up their petals as fully grown flowers; I set myself to building a robotic flower to emulate nature's beauty. The robotic flower is initially limp and collapsed on the ground. After a breath is detected by a humidity sensor, the flower becomes firm and stands up, then the flower petals open. As a result, it appears as if the user's breath on the flower brought it to life and hence the title "A Breath of Life". Below is a video of the final design. </p>
 			<video controls="controls" name="Demonstration of Final Design" src="images/projects/flower/flowerFinal.mp4" class="center"></video>
 			<p class="label">Demonstration of Final Design</p>
+			<p>&emsp;&emsp;The flower design is inspired primarily from push toys. Push toys are little puppets made of many small pieces connected together by a string or series of connected strings. The string is routed through the parts and is then anchored at a spring-loaded plate at the base of the toy. The force of the spring resisting compression pulls the string through the pieces, holding the toy structure rigidly in shape. Using your thumb to push on the spring-loaded plate compresses the spring causing the string to slacken and the pieces of the toy structure to separate. The toy structure then loses its shape and collapses. This same principle was used for the design of the flower. When the string connecting the flower parts is loose, the flower lies limp and collapsed. When the string connecting the flower parts is pulled taut, the flower strengthens and stands up. The opening of the flower petals is also executed under this same string-pulling mechanism, but in a more complicated manner than traditional push toys. Below are the push toys we have at home that inspired me to take the same direction with the flower design.</p>
+			<video controls="controls" name="Push Toy" src="images/projects/flower/pushToy.mp4" class="center"></video>
+			<p class="label">Push Toys at Home</p>
 		</section>
 		<hr>
 		<section>
 			<h3>Flower Head Prototyping</h3>
-			<p>&emsp;&emsp;Blah blah blah blah blah blah blah blah</p>
-			<img src="images/projects/flower/v01.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">First Prototype</p>
-			<img src="images/projects/flower/v02.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Second Prototype</p>
-			<img src="images/projects/flower/v03.jpg" alt="Completed Goose Automaton" class="center">
+			<p>&emsp;&emsp;Designing the flower such that the petals opened when the flower stood up and closed when the flower was limp was by far the most challenging task in this design. During my initial brainstorm, I tried to think of as many ways possible that the flower petals could be opened using only the actuation of the string pulling the flower pieces together. As I was trying to keep the design minimal, using a separate motor to move the petals was out of the question. Below are some of my preliminary sketches for the design and of different flower head mechanisms through which the petals could be opened. I imagined the flower would stand atop a small box hiding all the electronics including a rechargeable battery that would allow the flower to operate untethered.</p>
+			<img src="images/projects/flower/idea.jpg" alt="Sketch Showing Box and Different Flower Head Designs" class="center">
+			<p class="label">Robotic Flower Concept Sketch</p>
+			<img src="images/projects/flower/mechanisms.jpg" alt="Sketch Showing Different Flower Head Designs" class="center">
+			<p class="label">Sketches of Potential Flower Head Mechanisms</p>
+			<p>&emsp;&emsp;In selecting a flower head mechanism to use, my main requirement was to keep the mechanism as simple as possible and use just a single piece of string if possible. The concept that I ended up going with was to use a linkage system that would cause the petals to rotate as a spring loaded plate in the flower head was pulled down. With this concept in mind, I then went to mocking up prototypes in Solidworks CAD and 3D printing them. This process took a long time before I had a flower head mechanismn that functioned successfully. In total I ended up printing ten different prototypes.</p>
+			<p>&emsp;&emsp;This prototyping process took so long because I encountered a variety of different challenges along the way and had to learn many good lessons. The key issue I faced was poor translation from a pristine working system in CAD to a physical prototype produced using the imprecise manufacturing method of 3D printing. In response to this issue, I trialed different tolerance levels between interfaces (a gap of 0.3 mm seemed to work best for most interfaces), used a number of different 3D printers, and tested different printer settings using several different slicing softwares. This was a good reminder that manufacturing is not merely a short step taken at the conclusion of a design process, but rather an intensive process that determines how the design will manifest as a real working product. Below are pictures and videos of eight of the ten different prototypes. </p>
+			<img src="images/projects/flower/v01.jpg" alt="First Prototype" class="doubleRowImageWide">
+			<img src="images/projects/flower/v02.jpg" alt="Second Prototype" class="doubleRowImageWide">
+			<p class="label">First (left) and Second (right) Prototypes</p>
+			<p>&emsp;&emsp;The first prototype was much too small, leading to poor print quality on the fine details of the flower head mechanism. The circular base plate had a diameter of approximately 6 mm, while later prototypes used a diameter closer to 30 mm. Although the print quality was better at the larger scale with the second prototype, the interface tolerances used in the design were too small. Additionally, I had attempted to print the entire assembly as one part with all joints printed in place. Printing joints in place using a small amount of support material that can be torn out later is an exciting benefit of the 3D printing manufacturing process as it helps to forgo additional steps in fastening parts together. However, when the tolerances are too small as in the 2nd prototype, the joints fuse together preventing independent motion of parts within the assembly.</p>
+			<img src="images/projects/flower/v03.jpg" alt="Third Prototype" class="doubleRowImageWide">
+			<video controls="controls" name="Demonstration of Third Prototype" src="images/projects/flower/v03Demo.mp4" class="doubleRowImageWide"></video>
 			<p class="label">Third Prototype</p>
-			<video controls="controls" name="Demonstration of Third Prototype" src="images/projects/flower/v03Demo.mp4" class="center"></video>
-			<p class="label">Demonstration of Third Prototype</p>
-			<img src="images/projects/flower/v04.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Fourth Prototype</p>
-			<img src="images/projects/flower/v05.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Fifth Prototype</p>
-			<img src="images/projects/flower/v06.jpg" alt="Completed Goose Automaton" class="center">
+			<p>&emsp;&emsp;In the third prototype, I increased the gaps between interfaces slightly to reduce the likelihood of joints fusing together during printing. Nonetheless, many of the joints still fused together. When I bent the petal links back and forth to break off the support material at the joints, many of the links broke instead. Additionally, I added three holes to the upper plate of the flower head for springs and a capping piece to hold the springs in place in the flower head.</p>
+			<img src="images/projects/flower/v04.jpg" alt="Fourth Prototype" class="doubleRowImageWide">
+			<img src="images/projects/flower/v05.jpg" alt="Fifth Prototype" class="doubleRowImageWide">
+			<p class="label">Fourth (left) and Fifth (right) Prototypes</p>
+			<p>&emsp;&emsp;To combat the low print quality, I broke the flower head assembly into two subassemblies that could both be printed flat. This change diminished the effect of compounding print error by reducing the number of print layers significantly. Additionally, the amount of support material required during the printing process was also much lower. Ball and socket joints were used to connect the flower petal links to the lower links on the flower head assembly. Note the rectangular caps on one end of the joint connection on the lower link which prevents the flower petals from folding too far inwards. Still the print quality was rather low and the subassemblies could not be assembled into one flower head assembly. The print quality on the fifth prototype was so horrendous I didn't even bother removing the brim support around some of the parts. Even when using the exact same printer settings on the same model of printer, each printer would perform slightly different. Based on past experience with 3D printers, I assume these differences are most likely due to different bed levelings and different levels of wear on the printers affecting how smoothly filament flows out of the extruder or how smoothly the extruder slides back and forth on the belting and power screw systems.</p>
+			<img src="images/projects/flower/v06.jpg" alt="Sixth Prototype" class="doubleRowImageWide">
+			<video controls="controls" name="Demonstration of Sixth Prototype" src="images/projects/flower/v06Demo.mp4" class="doubleRowImageWide"></video>
 			<p class="label">Sixth Prototype</p>
-			<video controls="controls" name="Demonstration of Sixth Prototype" src="images/projects/flower/v06Demo.mp4" class="center"></video>
-			<p class="label">Demonstration of Sixth Prototype</p>
-			<img src="images/projects/flower/v07.jpg" alt="Completed Goose Automaton" class="center">
+			<p>&emsp;&emsp;In the sixth prototype, I tried printing on a totally different model of 3D printer and performed a quick releveling before printing. The print quality was better and I was able to connect the two subassemblies together into one flower head assembly. Note the black sharpie mark on one of the petal links which I used along with a corresponding mark on one of the lower links to align the two subassemblies before I began connecting the links as only one arrangement appropriately aligned all five links and all three spring holes. After a little bit of sanding, smooth rotation at the joints was possible.</p>
+			<img src="images/projects/flower/v07.jpg" alt="Seventh Prototype" class="doubleRowImageWide">
+			<video controls="controls" name="Demonstration of Seventh Prototype" src="images/projects/flower/v07Demo.mp4" class="doubleRowImageWide"></video>
 			<p class="label">Seventh Prototype</p>
-			<video controls="controls" name="Demonstration of Seventh Prototype" src="images/projects/flower/v07Demo.mp4" class="center"></video>
-			<p class="label">Demonstration of Seventh Prototype</p>
-			<img src="images/projects/flower/v08.jpg" alt="Completed Goose Automaton" class="center">
+			<p>&emsp;&emsp;Simultaneously printed with the sixth prototype with some slight sizing adjustments, I noticed in the seventh prototype as I had in the sixth that when the upper plate rose as the petals folded inwards some of the lower links would move out of alignment with the joint holes in the upper plate. This prevented easy rotation of the petal links as the lower links would collide with the upper plate every so often. I returned to the original printers I was using after I noticed the printer I used for the sixth prototype had a warped bed. I also tested the fit of my springs, collected from retractable pens which I had made gross measurements of with my ruler, in the three spring holes and found the holes to be just a tad too small.</p>
+			<img src="images/projects/flower/v08.jpg" alt="Eighth Prototype" class="doubleRowImageWide">
+			<video controls="controls" name="Demonstration of Eighth Prototype" src="images/projects/flower/v08Demo.mp4" class="doubleRowImageWide"></video>
 			<p class="label">Eighth Prototype</p>
-			<video controls="controls" name="Demonstration of Eighth Prototype" src="images/projects/flower/v08Demo.mp4" class="center"></video>
-			<p class="label">Demonstration of Eighth Prototype</p>
-			<img src="images/projects/flower/prototypes.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Prototypes</p>
-			<img src="images/projects/flower/sanding1st.jpg" alt="Completed Goose Automaton" class="center">
-			<p class="label">Sanding First Prototype</p>
+			<p>&emsp;&emsp;In the eighth prototype, I increased the spring hole diameter slightly to accomodate the springs, lengthened the caps on the lower links to prevent misalignments, and added petals to the petal links. I had tried adding some fine texture to the surface of the petals for aesthetic purposes which turned out to be a mistake as it made it extremely difficult to remove the support material from the petal surfaces. Additionally, I think I may have not printed the parts flat on the bed surface leading to poor print quality overall. This resulted in one of the petal links snapping off when I tried to rotate it.</p>
+			<img src="images/projects/flower/prototypes.jpg" alt="Prototypes" class="center">
+			<p class="label">Prototypes (3rd through 8th)</p>
+		</section>
+		<hr>
+		<section>
+			<h3>First System Prototype</h3>
+			<p>&emsp;&emsp;Having reached a point in the flower head prototyping where I was confident that my next flower head prototype would function as expected from the design, I set to building a full prototype of the system. This first system prototype included the flower head (with springs embedded), flower stem pieces, and a box containing the humidity sensor, servo motor (for pulling the string a consistent distance), microcontrollers, and wiring between components. To justify all the work I had done in prototyping the flower head mechanism, I wrapped this first system prototype into an assignment for my electronics class. The goal of the assignment was to create some kind of electromechanical artpiece using a sensor node and actuator node communicating with one another through WiFi. In my case, the sensor node was composed of a DHT11 humidity sensor and an Arduino MKR WiFi 1010 acting as the client, while the actuator node was composed of a DFRobot SER0039 Hobby Servo and a Raspberry Pi 4 Model B acting as the server. Having two microcontrollers communicate in this system provided no additional benefit to just using one microcontroller simulataneously running the sensor and actuator node, but I did it nonetheless for the sake of meeting the assignement requirements. </p>
+			<p>&emsp;&emsp;In the ninth prototype of the flower head, I lengthened the caps on the lower links even further and removed the fine texture on the petal surfaces to ensure the support material could be removed easily. Below is an image showing the processing of the 3D printed flower head and stem pieces. I trimmed off the brim support structure of the prints and sanded down areas where the laying down of filament had resulted in rough patches.</p>
+			<img src="images/projects/flower/sanding1st.jpg" alt="Sanding and Trimming 3D Printed Flower Parts" class="center">
+			<p class="label">Processing First Full Flower Prototype</p>
+			<p>&emsp;&emsp;After finishing my first system prototype, I put together a short video (shown below) presenting my completed assignment for my electronics class.</p>
+			<video controls="controls" name="Demonstration of First Prototype" src="images/projects/flower/Flipgrid10.mp4" class="center"></video>
+			<p class="label">Demonstration of First Prototype</p>
+		</section>
+		<hr>
+		<section>
+		<h3>Second System Prototype</h3>
+			<p>&emsp;&emsp;Seeing the idea I thought up come to life, even if it was a little frightening to observe, was reassuring that with just a few more steps I could repackage the robotic flower as a present for my parents just in time for Christmas. The final prototype had no need for the two microcontrollers, so I decided to just use the Arduino. With some advice from more experienced makers at Tufts, I moved to a new slicing software. Additionally, I decided to add a rechargeable LiPo battery to the system allowing it to be enjoyed in places other than next to the wall outlet.</p>
+		<h4>3D Printed Flower Head</h4>
+			<p>&emsp;&emsp;The new slicing software I started using to translate CAD files to 3D-printable files was PrusaSlicer (the official slicing software for the printer), instead of using the OctoPrint software provided on the web interface for the 3D printers. Not only were the default printer settings better when using this new software, but the slicing engine also provided me with more parameters I could change to improve the print quality</p>
 			<img src="images/projects/flower/sanding2nd.jpg" alt="Completed Goose Automaton" class="center">
 			<p class="label">Sanding Second Prototype</p>
 			<img src="images/projects/flower/sanding2nd_2.jpg" alt="Completed Goose Automaton" class="center">
 			<p class="label">Sanding Second Prototype</p>
-			<video controls="controls" name="First Prototype" src="images/projects/flower/Flipgrid10.mp4" class="center"></video>
-			<p class="label">Demonstration of First Prototype</p>
 			<img src="images/projects/flower/boltsAndSprings.jpg" alt="Completed Goose Automaton" class="center">
 			<p class="label">Assembly of Final Flower Head</p>
-		</section>
-		<hr>
-		<section>
-			<h3>Soldering</h3>
+		<h4>Soldering Electronic Components</h4>
 			<p>&emsp;&emsp;Blah blah blah blah blah blah blah blah</p>
 			<img src="images/projects/flower/solderingBattery.jpg" alt="Completed Goose Automaton" class="center">
 			<p class="label">Soldering Battery Wires</p>
@@ -74,10 +93,7 @@
 			<p class="label">Soldering Ground Wires</p>
 			<img src="images/projects/flower/batteryAndSwitch.jpg" alt="Completed Goose Automaton" class="center">
 			<p class="label">Battery and Switch</p>
-		</section>
-		<hr>
-		<section>
-			<h3>Box Assembly</h3>
+		<h4>Box Assembly</h4>
 			<p>&emsp;&emsp;Blah blah blah blah blah blah blah blah</p>
 			<img src="images/projects/flower/boxConnectors.jpg" alt="Completed Goose Automaton" class="center">
 			<p class="label">Box Connectors And Flower Stem</p>
