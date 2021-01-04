@@ -4,13 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Project description for my goose automaton">
-<title>Voltage Regulator PCB</title>
+<title>Voltage Regulator PCA</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <header role='banner'>
-	<h1>Voltage Regulator PCB</h1>
+	<h1>Voltage Regulator PCA - 2020</h1>
 	<a href="index.html" title="Home" class="home">Home</a>
 </header>
 <main role='main'>
@@ -18,7 +18,7 @@
 		<hr>
 		<section>
 			<h3>Introduction</h3>
-			<p>&emsp;&emsp;This project was completed as part of my electronics class during the fall semester of my junior year at Tufts and was the first printed circuit board (PCB) I designed. The PCB is about 1" x 2" and provides 3.3V, 5V, and 12V connections as well as ground connections for each. The electronic components are mounted using the through-hole method and include the following: </p>
+			<p>&emsp;&emsp;This project was completed as part of my electronics class during the fall semester of my junior year at Tufts and was the first printed circuit assembly (PCA) I designed. For reference, a printed circuit board (PCB) is just the board without components mounted, while the PCA is the PCB with components mounted. The PCA is about 1" x 2" and provides 3.3V, 5V, and 12V connections as well as ground connections for each. Additionally, a red LED lights up when the board is connected to power. The electronic components are mounted using the through-hole method and include the following: </p>
 			<br><ul>
 				<div class="doubleList">
 					<li>1 Barrel Jack Connector</li>
@@ -29,17 +29,17 @@
 				<div class="doubleList">
 					<li>1 Screw Terminal (1x2)</li>
 					<li>4 Pin Headers (1x2)</li>
-					<li>1 1K Resistor</li>
+					<li>1 1K Ohm Resistor</li>
 					<li>1 Red LED</li>
 				</div>
 			</ul>
-			<img src="images/electronics/voltageReg/isoView.jpg" alt="Finished Voltage Regulator PCBs" class="center">
-			<p class="label">Final Voltage Regulator PCB: one with components mounted (right) and one without components mounted (left)</p>
+			<img src="images/electronics/voltageReg/isoView.jpg" alt="Finished Voltage Regulator PCB and PCA" class="center">
+			<p class="label">Final Voltage Regulator PCB (left) and PCA (right)</p>
 		</section>
 		<hr>
 		<section>
 			<h3>Design Process</h3>
-			<p>The electronics of the PCB were first assembled on a breadboard and tested together to ensure everything worked as expected. Then, the breadboard prototype was translated to the design of a PCB using KiCAD, a free schematic and PCB design software. The design of the PCB on KiCAD can be broken down into three steps: drawing a schematic to illustrate the functions of the circuit, assigning footprints to components in the schematic to describe the physical structure (number of pin holes, pin pad size, pin size, pin spacing, and pin arrangement) of the PCB for each component, and then designing the structure of the PCB itself (dimensioning the board, locating components, and drawing traces).</p>
+			<p>&emsp;&emsp;The circuit was first assembled on a breadboard and tested to ensure everything worked as expected before a PCB was printed. Then, the breadboard prototype was translated to the design of a PCB using KiCAD, a free schematic and PCB design software. The design of the PCB on KiCAD can be broken down into three steps: drawing a schematic to illustrate the functions of the circuit, assigning footprints to components in the schematic to describe their physical structure (pin hole arrangement), and then designing the structure of the PCB itself (dimensioning the board, locating components, and drawing traces).</p>
 			<img src="images/electronics/voltageReg/schematic.png" alt="Voltage Regulator Schematic" class="center">
 			<p class="label">KiCAD Schematic of Voltage Regulator Circuit</p>
 			<img src="images/electronics/voltageReg/footprints.png" alt="Voltage Regulator Footprints" class="center">
@@ -52,7 +52,7 @@
 		<hr>
 		<section>
 			<h3>Construction</h3>
-			<p>After completing the PCB design, I sent the design to OSH Park, a PCB fabricator, who then sent me back 3 copies of PCB. Our instructors had bought all the PCB components we would need through Digikey, so the last step was just soldering on components. Being careful to avoid soldering together traces on the board, I soldered on each of the components to the PCB. I trimmed off the excess wire length on the components and the PCB was ready to go.</p>
+			<p>&emsp;&emsp;After completing the PCB design, I sent the design along with some money to OSH Park, a PCB fabricator. In return, they sent me back three copies of the PCB a few weeks later. To transistion the nice-looking PCBs into working PCAs, the last step was to solder on the electronic components. These components were the same as those used in the initial breadboard prototype and were purchased by the course instructors off of Digi-Key. Being careful to avoid soldering together traces on the board, I soldered on each of the components to the PCB. I trimmed off the excess pin length on the components and the PCA was ready to go!</p>
 			<img src="images/electronics/voltageReg/cutEnds.jpg" alt="Trimming Wire" class="center">
 			<p class="label">Trimming Off Excess Wire During Soldering Process</p>
 		</section>

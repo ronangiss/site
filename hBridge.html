@@ -4,13 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Project description for my goose automaton">
-<title>Motor Driver PCB</title>
+<title>Motor Driver PCA</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <header role='banner'>
-	<h1>Motor Driver PCB</h1>
+	<h1>Motor Driver PCA - 2020</h1>
 	<a href="index.html" title="Home" class="home">Home</a>
 </header>
 <main role='main'>
@@ -18,28 +18,29 @@
 		<hr>
 		<section>
 			<h3>Introduction</h3>
-			<p>&emsp;&emsp;This project was completed as part of my electronics class during the fall semester of my junior year at Tufts. The PCB is about 1" x 2" and can be used to control a motor running at higher voltage using lower voltage control signals. This application is useful when high performance (high torque and high speed) is desired from the motor but a lower voltage control device such as an Arduino or Raspberry Pi is desired. Additionally, a red LED lights up when the board is connected to power. The electronic components are mounted using the through-hole method and include the following: </p>
+			<p>&emsp;&emsp;This project was completed as part of my electronics class during the fall semester of my junior year at Tufts. The printed circuit assembly (PCA) is about 1" x 2" and can be used to control a motor running at high voltage (~12V) using low voltage (~3.3V) control signals. This application is useful when high performance (high torque and high speed) is desired from the motor and the use of a lower voltage control device such as an Arduino or Raspberry Pi is also desired. Additionally, a red LED lights up when the board is connected to power. The electronic components are mounted using the through-hole method and include the following: </p>
 			<br><ul>
 				<div class="doubleList">
 					<li>1 Barrel Jack Connector</li>
-					<li>1 3.3V Voltage Regulator</li>
-					<li>1 5V Voltage Regulator</li>
-					<li>3 10 uF Capacitors</li>
+					<li>2 N-Channel MOSFETs</li>
+					<li>2 P-Channel MOSFETs</li>
+					<li>2 BJTs</li>
+					<li>1 Red LED</li>
 				</div>
 				<div class="doubleList">
-					<li>1 Screw Terminal (1x2)</li>
+					<li>2 Screw Terminals (1x2)</li>
 					<li>4 Pin Headers (1x2)</li>
-					<li>1 1K Resistor</li>
-					<li>1 Red LED</li>
+					<li>3 1K Ohm Resistors</li>
+					<li>4 10K Ohm Resistors</li>
 				</div>
 			</ul>
 			<img src="images/electronics/hBridge/isoView.jpg" alt="Finished Motor Driver PCBs" class="center">
-			<p class="label">Final Motor Driver PCB: one with components mounted (right) and one without components mounted (left)</p>
+			<p class="label">Final Motor Driver PCB (left) and PCA (right)</p>
 		</section>
 		<hr>
 		<section>
 			<h3>Design Process</h3>
-			<p>The electronics of the PCB were first assembled on a breadboard and tested together to ensure everything worked as expected. Then, the breadboard prototype was translated to the design of a PCB using KiCAD, a free schematic and PCB design software. The design of the PCB on KiCAD can be broken down into three steps: drawing a schematic to illustrate the functions of the circuit, assigning footprints to components in the schematic to describe the physical structure (number of pin holes, pin pad size, pin size, pin spacing, and pin arrangement) of the PCB for each component, and then designing the structure of the PCB itself (dimensioning the board, locating components, and drawing traces).</p>
+			<p>&emsp;&emsp;The process used to design the voltage regulator PCB was also used to design the motor driver PCB. The circuit was first assembled on a breadboard and tested. Then, the breadboard prototype was translated to the design of a PCB using KiCAD. The design of the PCB on KiCAD can be broken down into three steps: drawing a schematic to illustrate the functions of the circuit, assigning footprints to components in the schematic to describe their physical structure (pin hole arrangement), and then designing the structure of the PCB itself (dimensioning the board, locating components, and drawing traces).</p>
 			<img src="images/electronics/hBridge/schematic.png" alt="Motor Driver Schematic" class="center">
 			<p class="label">KiCAD Schematic of Motor Driver Circuit</p>
 			<img src="images/electronics/hBridge/footprints.png" alt="Motor Driver Footprints" class="center">
@@ -52,7 +53,7 @@
 		<hr>
 		<section>
 			<h3>Construction</h3>
-			<p>After completing the PCB design, I sent the design to OSH Park, a PCB fabricator, who then sent me back 3 copies of PCB. Our instructors had bought all the PCB components we would need through Digikey, so the last step was just soldering on components. Being careful to avoid soldering together traces on the board, I soldered on each of the components to the PCB. I trimmed off the excess wire length on the components and the PCB was ready to go.</p>
+			<p>&emsp;&emsp;Again, the process used to construct the voltage regulator PCA was also used to construct the motor driver PCA. After completing the PCB design, I sent the design to OSH Park, who then returned three copies of the PCB a few weeks later. Being particularly careful to avoid soldering together traces on the board (the motor driver PCB was more compact than the voltage regulator PCB), I soldered on each of the components to the PCB. I trimmed off the excess pin length on the components and the PCA was ready to go!</p>
 		</section>
 	</article>
 </main>
