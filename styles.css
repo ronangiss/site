@@ -64,7 +64,7 @@ h4 {
 	font-weight: bold;
 	color: mediumblue;
 }
-article p {
+article {
 	font-size: 1.1em;
 	line-height: 1.4; /*spacing between lines*/
 	text-align: justify;
