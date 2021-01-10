@@ -88,6 +88,9 @@ a:hover {
 	cursor: pointer;
 	color: darkslateblue;
 }
+embed {
+	margin: 1em 0;
+}
 .imageContainer {
 	max-height: 250px;
 	overflow: hidden;
