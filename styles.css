@@ -96,13 +96,12 @@ embed {
 	overflow: hidden;
 }
 .imageLabel {
-	font-size: 1.53em;
+	font-size: 1.4em;
 	font-weight: bold;
 	text-align: center;
 	background: wheat;
 	border-radius: 10px;
 	padding:2.5px;
-	height: 80px;
 }
 .pageLink {
 	color: orangered;
