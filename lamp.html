@@ -4,13 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="A place to document my teardowns">
-<title>Lamp</title>
+<title>Desk Lamp</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <header role='banner'>
-	<h1>Teardown - <i>Lamp</i> 2020</h1>
+	<h1>Teardown - <i>Tensor Desk Lamp</i> 2020</h1>
 	<br><a href="index.html" title="Home" class="home">Home</a>
 
 </header>
@@ -19,11 +19,23 @@
 <hr>
 <section>
 	<h3>Introduction</h3>
-	<p>&emsp;&emsp;Another device to be repaired from my grandma. My grandma used this small desk lamp to study in highschool in the early 1950s. Over time, the connections that held together the joints allowing the desk lamp to be moved and repositioned loosened. She asked me if there was any way I could fix it. Given that the joints were riveted, the only way I could see the joints being tight again would be to take out the rivets and replace them with a nice fastener. I broke the wire....</p> 
+	<p>&emsp;&emsp;The Model 8100 Tensor Desk Lamp was another device given to me by my grandma to be repaired. My grandma had used the small desk lamp for her studies in highschool during the early 1950s. Over time, the joints in the lamp arm had loosened. As a result, the lamp could only be positioned closely to its base where the moment arm of the lamp was smallest. When the lamp was repositioned to stretch out from its base, the lamp failed to sustain its position and would fall over. My grandma asked me if there was any way I could fix it.</p>
+	<p>&emsp;&emsp;Unfortunately, this story is one of failure. Not only did I fail to fix it, but I also rendered the device inoperable by accidentally splitting the wire supplying power to the lamp. Nonetheless, the old lamp made for an interesting teardown and I was forgiven by my grandma.</p> 
 	<img src="images/teardowns/lamp/original.jpg" alt="Small Blue Box Labeled 'Netgear Gigabit Switch ProSAFE GS105'" class="center">
 	<p class="label">Original Lamp</p>
 	<img src="images/teardowns/lamp/explodedWire.jpg" alt="Small Blue Box Labeled 'Netgear Gigabit Switch ProSAFE GS105'" class="center">
 	<p class="label">Exploded Wire</p>
+</section>
+<hr>
+<section>
+	<h3>Failed Repair</h3>
+	<p>&emsp;&emsp;Maybe add something here about the repairing old electronics book</p>
+</section>
+<hr>
+<section>
+	<h3>Lamp Base</h3>
+	<p>&emsp;&emsp;The base of the lamp consists of a step down transformer, switch, and fuse? Of these components, my interest was drawn most to the transformer. Compared to the clean stainless steel exterior of the transformer on the subwoofer speaker I tore down, this transformer presented differently. The scattered pieces of tape and heavy application of lacquer over the iron plates of the transformer seemed unprofessional. A few Youtube videos later (I found this <a href="https://www.youtube.com/watch?v=UchitHGF4n8">video</a> particularly helpful), I learned some basics of transformer design.</p>
+	<p>&emsp;&emsp;Fundamentally, transformers are circuit components used to raise or lower AC voltage in a circuit using a pair of inductors. Alternating current moving through one inductor generates an alternating magnetic field and thus an induced electromotive force (EMF) on the other inductor driving the flow of current. To strengthen and guide the magnetic field from the first inductor through the second inductor, an iron core is used. In addition to the copper wire windings, this iron core contributes to transformers often appearing as hefty blocks. To reduce the eddy currents generated in the iron by the inductor's magnetic field which can lead to transformer overheating, the iron block is broken into many thin plates held together by lacquer. If the first inductor has fewer coils than the second inductor, more current moves through the second inductor and thus it also has a lower voltage. Since the voltage outputted by this kind of transformer would be lower than the input voltage, it is said to be a step down transformer.</p>
 	<img src="images/teardowns/lamp/explodedBase.jpg" alt="Small Blue Box Labeled 'Netgear Gigabit Switch ProSAFE GS105'" class="center">
 	<p class="label">Exploded Base</p>
 	<img src="images/teardowns/lamp/baseLabel.jpg" alt="Small Blue Box Labeled 'Netgear Gigabit Switch ProSAFE GS105'" class="center">
