@@ -6,6 +6,7 @@
 <meta name="description" content="A place to document my teardowns">
 <title>Iron</title>
 <link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.js" integrity="sha512-pOkH5W0iYlsujt/wd8KQwGJlc76bfVQ+gN3wNj2jE671otBKfTqSU17mdb74MdGqU2G7ScJqH9BqQ8UvWL0hdg==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -62,7 +63,8 @@
 <hr>
 <section>
 	<h3>Patent</h3>
-	<embed src="files/ironPatent3.pdf" type="application/pdf" width="100%" height="1100">
+	<div id="ironPatent"></div>
+	<script>PDFObject.embed("files/ironPatent3.pdf", "#ironPatent");</script>
 </section>
 </article>
 </main>

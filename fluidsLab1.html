@@ -6,6 +6,7 @@
 <meta name="description" content="Project description for my goose automaton">
 <title>Flow Over Airfoil</title>
 <link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.js" integrity="sha512-pOkH5W0iYlsujt/wd8KQwGJlc76bfVQ+gN3wNj2jE671otBKfTqSU17mdb74MdGqU2G7ScJqH9BqQ8UvWL0hdg==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,7 +21,8 @@
 			<h3>Introduction</h3>
 			<p>&emsp;&emsp;This report was completed as part of my fluids class during the fall semester of my junior year at Tufts and was the first simulation I ran in COMSOL Multiphysics. The purpose of the simulation was to examine how air flows over an airfoil and generates the aerodynamic forces necessary for flight. Download the report <a href="files/COMSOL/FluidsLab1.pdf" download>here</a> or read it below (the pdf won't render correctly on mobile devices).</p>
 		</section>
-		<embed src="files/COMSOL/FluidsLab1.pdf" type="application/pdf" width="100%" height="1100">
+		<div id="fluidsLab1"></div>
+		<script>PDFObject.embed("files/COMSOL/FluidsLab1.pdf", "#fluidsLab1");</script>
 	</article>
 </main>
 <footer role='contentinfo'>

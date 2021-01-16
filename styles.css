@@ -88,9 +88,6 @@ a:hover {
 	cursor: pointer;
 	color: darkslateblue;
 }
-embed {
-	margin: 1em 0;
-}
 .imageContainer {
 	max-height: 250px;
 	overflow: hidden;
@@ -188,6 +185,11 @@ embed {
 	margin: auto;
 	text-align: center;
 }
+.pdfobject-container {
+	height: 70rem; 
+	border: 0.5rem solid rgba(0,0,0,.2); 
+}
+
 #aboutMe {
 	display: inline-block;
 	vertical-align: top;
