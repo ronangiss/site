@@ -139,6 +139,13 @@ embed {
 	width: 45%;
 	margin-right: 4%;
 }
+.smallDoubleList {
+	font-size: 0.85em;
+	display: inline-block;
+	vertical-align: top;
+	width: 46%;
+	margin-right: 3%;
+}
 .doubleRowImage {
 	display: inline-block;
 	position: relative;
