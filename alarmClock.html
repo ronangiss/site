@@ -24,11 +24,48 @@
 	<br>
 	<p>&emsp;&emsp;<i>The NIST (National Institute of Standards and Technology—Time and Frequency Division) WWVB radio station is located in Ft. Collins, Colorado, and transmits the exact time signal continuously throughout the United States at 60 kHz.  The signal can be received up to 2,000 miles away through the internal antenna in the projection alarm. However, due to the nature of the Earth’s Ionosphere, reception is very limited during daylight hours. The projection alarm will search for a signal every night when reception is best. The WWVB radio station derives its signal from the NIST Atomic clock in Boulder, Colorado. A team of atomic physicists is continually measuring every second, of every day, to an accuracy of ten billionths of a second per day. These physicists have created an international standard, measuring a second as 9,192,631,770 vibrations of a Cesium-133 atom in a vacuum.</i></p>
 	<br>
-	<p>&emsp;&emsp;It's fascinating to learn how the measurement of time is unified across the nation. The unification of time is particularly important in the modern era as it helps people hundreds of miles away from each other schedule times to communicate.</p>
+	<p>&emsp;&emsp;I found it fascinating to learn how the measurement of time has been unified across the nation. Although it wasn't always broadcasting the time, the NIST WWVB radio station has been around since 1919!</p>
 	<img src="images/teardowns/alarmClock/original.jpg" alt="Sunbeam Dry Iron Resting Sole Down" class="center">
 	<p class="label">Original Alarm Clock</p>
 	<img src="images/teardowns/alarmClock/exploded.jpg" alt="Sunbeam Dry Iron Resting Sole Down" class="center">
 	<p class="label">Labelled Exploded View</p>
+</section>
+<hr>
+<section>
+	<h3>Primary PCA</h3>
+	<p>&emsp;&emsp;The primary PCB and the projector PCB were not marked with labels to indicate what type of electrical components were located where on the PCA. This made it difficult to identify components on the PCAs unless the components themselves were labeled such as with the through-hole mounted capacitors. It is interesting to note two black blobs on the PCA, one of which has many traces leading towards it. Hidden underneath each black blob is likely an integrated circuit (IC). The larger blob with many traces coming to it is likely some kind of microprocessor. The black blob is called a potting compound and is used to protect the chip on the board from thermal, electrical, chemical, and physical damage over the course of its life. Physical damage is probably a particularly relevant concern for an alarm clock which may receive a healthy smacking around every morning.</p>
+	<img src="images/teardowns/alarmClock/mainPCBtop.jpg" alt="Sunbeam Dry Iron Resting Sole Down" class="center">
+	<p class="label">Top of Primary PCA</p>
+	<ul class ="center">
+	<div class="doubleList">
+		<li>C1: Electrolytic Capacitor <br>&emsp;&emsp; 47 uF, 16 V</li>
+		<li>C2: Electrolytic Capacitor <br>&emsp;&emsp; 100 uF, 6.3 V</li>
+		<li>C3: Electrolytic Capacitor <br>&emsp;&emsp; 22 uF, 16 V</li>
+	</div>
+	<div class="doubleList">
+		<li>C4: Electrolytic Capacitor <br>&emsp;&emsp; 6.8 uF, 50 V</li>
+		<li>C5: Electrolytic Capacitor <br>&emsp;&emsp; 100 uF, 10 V</li>
+		<li>C6: Polyester Film Capacitor <br>&emsp;&emsp; 6.8 nf, 100 V</li>
+	</div>
+	</ul>
+	<img src="images/teardowns/alarmClock/mainPCBbot.jpg" alt="Sunbeam Dry Iron Resting Sole Down" class="center">
+	<p class="label">Bottom of Primary PCA</p>
+</section>
+<hr>
+<section>
+	<h3>Projector</h3>
+	<img src="images/teardowns/alarmClock/sidePCBtop.jpg" alt="Sunbeam Dry Iron Resting Sole Down" class="doubleRowImageWide">
+	<img src="images/teardowns/alarmClock/sidePCBbot.jpg" alt="Sunbeam Dry Iron Resting Sole Down" class="doubleRowImageWide">
+	<p class="label">Projector PCA</p>
+</section>
+<hr>
+<section>
+	<h3>AC Adapter</h3>
+	<img src="images/teardowns/alarmClock/explodedTransformer.jpg" alt="Sunbeam Dry Iron Resting Sole Down" class="center">
+	<p class="label">Labelled Exploded View</p>
+	<img src="images/teardowns/alarmClock/transformerPCB.jpg" alt="Sunbeam Dry Iron Resting Sole Down" class="center">
+	<p class="label">Close-up of Transformer PCA</p>
+	<p>&emsp;&emsp;PCA contains 4 ceramic disc capacitors, 4 diodes, and 1 large electrolytic capacitor. Together these circuit components rectify the low voltage AC current output by the transformer to DC current and ensure a steady flow of current flows through the power jack to the PCA.</p>
 </section>
 </article>
 </main>
