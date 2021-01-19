@@ -8,7 +8,7 @@ html {
 					
 	}
 body {
-	width: 70%; /* page content fills 70% of page width*/
+	width: 75%; /* page content fills 70% of page width*/
 	margin: 0 auto; /* top/bottom left/right */
 	font: 100% Tahoma, Geneva, sans-serif; /*100% is basically same as 1em*/
 }
@@ -135,13 +135,6 @@ a:hover {
 	vertical-align: top;
 	width: 45%;
 	margin-right: 4%;
-}
-.smallDoubleList {
-	font-size: 0.85em;
-	display: inline-block;
-	vertical-align: top;
-	width: 46%;
-	margin-right: 3%;
 }
 .doubleRowImage {
 	display: inline-block;
