@@ -130,19 +130,19 @@ a:hover {
 	margin: 0.1em 0 0.5em;
 	font-weight: bold;
 }
-@media only screen 
-and (max-width: 2500px){
-	.doubleList {
-	display: inline-block;
-	vertical-align: top;
-	width: 100%;
-}
-}
 .doubleList {
 	display: inline-block;
 	vertical-align: top;
 	width: 45%;
 	margin-right: 4%;
+}
+@media only screen 
+and (min-width: 2500px){
+	.doubleList {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+}
 }
 .doubleRowImage {
 	display: inline-block;
