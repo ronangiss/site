@@ -28,9 +28,14 @@ hr {
 	border-style: none;
 	background-color: maroon;
 }
+ul {
+	margin-left: 5%;
+	text-align: center;
+}
 nav ul {
 	list-style-type: none; /*removes bullet points*/
 	width: 100%;
+	text-align:left;
 }
 nav li {	/* Used to crop images*/
 	display: inline-block;
@@ -42,9 +47,6 @@ nav li {	/* Used to crop images*/
 }
 nav li img:hover {
 	opacity: 0.7;
-}
-ul {
-	margin-left: 5%;
 }
 img {
 	width: 100%;
