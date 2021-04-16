@@ -47,9 +47,31 @@
 			<p>This page is mainly just intended to store information for myself about how to complete certain tasks in different coding languages, but it may be a useful resource for other folks as well.</p>
 		</section>
 		<section>
-			<button class="accordion">Python</button>
-			<div class="panel"><p>
-				Here's some text about python
+			<button class="accordion">Python</button><div class="panel">
+				<button class="accordion">Basics</button><div class="panel subpanel"><p>
+					Here's some text
+				</p></div>
+				<button class="accordion">Serial Communication</button><div class="panel subpanel"><p>
+					Here's some text
+				</p></div>
+				<button class="accordion">Virtual Environments</button><div class="panel subpanel"><p>
+					Here's some text
+				</p></div>
+				<button class="accordion">Webserver - Flask</button><div class="panel subpanel"><p>
+					Here's some text
+				</p></div>
+				<button class="accordion">Camera - OpenCV</button><div class="panel subpanel"><p>
+					Here's some text
+				</p></div>
+			</div>
+			<button class="accordion">Matlab</button><div class="panel"><p>
+				Here's some text
+			</p></div>
+			<button class="accordion">LabView</button><div class="panel"><p>
+				Here's some text
+			</p></div>
+			<button class="accordion">Arduino</button><div class="panel"><p>
+				Here's some text
 			</p></div>
 		</section>
 	</article>
@@ -73,8 +95,12 @@
   		var panel = this.nextElementSibling;
     	if (panel.style.maxHeight) {
       		panel.style.maxHeight = null;
+      		panel.style.padding = '0'
     	} else {
-      		panel.style.maxHeight = panel.scrollHeight + "px";
+      		panel.style.maxHeight = (panel.scrollHeight + 10) + "px";
+      		// if (panel.classList.contains('subpanel')){
+      		// 	panel.style.padding = '5px 10px'
+      		// 	}
     		} 
     	});
 	}

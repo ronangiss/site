@@ -208,8 +208,8 @@ and (min-width: 801px){
 	border: 0.5rem solid rgba(0,0,0,.2); 
 }
 .accordion {
-	background-color: #eee;
-  	color: #444;
+	background-color: lightgray;
+  	color: black;
   	cursor: pointer;
   	padding: 1.5%;
   	width: 100%;
@@ -219,12 +219,12 @@ and (min-width: 801px){
   	transition: 0.4s;
 }
 .active, .accordion:hover {
-	background-color: #ccc;
+	background-color: olivedrab;
 }
 .accordion:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 1em;
-  color: #777;
+  color: black;
   float: left;
   margin-right: 1em;
 }
@@ -232,14 +232,14 @@ and (min-width: 801px){
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 .panel {
-	padding: 0 18px;
+	padding: 0;
   	background-color: white;
   	max-height: 0;
   	overflow: hidden;
   	transition: max-height 0.2s ease-out;
 }
 .pageNav ul li {
-	margin: 0.2em 0em 0em 0em;
+	margin: 0.5em 0.1em 0em 0.1em;
 	padding: 0.5%;
 	width: 12%;
 	text-align: center;
@@ -268,8 +268,8 @@ and (min-width: 801px){
 }
 #mainTitle {
 	text-align: center;
-	color: midnightblue;
-	background: cadetblue;
+	color: maroon;
+	background: slategray;
 }
 #intro {
 	width: 80%;
