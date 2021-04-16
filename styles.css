@@ -52,9 +52,17 @@ img {
 	width: 100%;
 	height: auto;
 }
-h2 {
-	font-size: 1.5em;
+h1 {
+	font-size: 3em;
 	font-weight: bold;
+	font-family: Palatino, serif;
+	margin: 0;
+}
+h2 {
+	font-size: 1.8em;
+	font-weight: bold;
+	font-family: Palatino, serif;
+	margin: 0;
 }
 h3 {
 	font-size: 1.3em;
@@ -132,6 +140,10 @@ a:hover {
 	margin: 0.1em 0 0.5em;
 	font-weight: bold;
 }
+.faded {
+	-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0));
+}
 @media only screen 
 and (min-width: 320px){
 	.doubleList {
@@ -195,7 +207,52 @@ and (min-width: 801px){
 	height: 70rem; 
 	border: 0.5rem solid rgba(0,0,0,.2); 
 }
-
+.accordion {
+	background-color: #eee;
+  	color: #444;
+  	cursor: pointer;
+  	padding: 1.5%;
+  	width: 100%;
+  	text-align: left;
+  	border: none;
+  	outline: none;
+  	transition: 0.4s;
+}
+.active, .accordion:hover {
+	background-color: #ccc;
+}
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 1em;
+  color: #777;
+  float: left;
+  margin-right: 1em;
+}
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+.panel {
+	padding: 0 18px;
+  	background-color: white;
+  	max-height: 0;
+  	overflow: hidden;
+  	transition: max-height 0.2s ease-out;
+}
+.pageNav ul li {
+	margin: 0.2em 0em 0em 0em;
+	padding: 0.5%;
+	width: 12%;
+	text-align: center;
+	background-color: indigo;
+}
+.pageNav ul li:hover {
+	background-color: darkviolet;
+}
+.pageNav ul li a {
+	font-size: 1.3em;
+	color: white;
+	text-decoration: none;
+}
 #aboutMe {
 	display: inline-block;
 	vertical-align: top;
@@ -216,4 +273,10 @@ and (min-width: 801px){
 }
 #intro {
 	width: 80%;
+}
+#intro h2{
+	margin: 0.5em 0;
+}
+#homeLink {
+	margin-left: 25em;
 }

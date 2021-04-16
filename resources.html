@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Homepage for Rónán Gissler's Projects in Mechanical Engineering">
+<meta name="google-site-verification" content="a5yGE61wbLl2nfdXtS-jhn2NdsYSYXnah-SQnvN8668" />
+<title>Home</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<header role='banner' id = "mainTitle">
+<!-- Add background image for title -->
+	<h1>Projects in Mechanical Engineering</h1>
+	<h2>with Rónán Gissler</h2>
+	<nav role='navigation' class='pageNav'>
+				<ul>
+					<li>
+						<a href="projects/projects.html" title="Projects Page">
+						Projects
+						</a>
+					</li>
+					<li>
+						<a href="teardowns/teardowns.html" title="Teardowns Page">
+						Teardowns
+						</a>
+					</li>
+					<li>
+						<a href="resources.html" title="Resources Page">
+						Resources
+						</a>
+					</li>
+					<li id="homeLink">
+						<a href="index.html" title="Home Page">
+						Home
+						</a>
+					</li>
+				</ul>
+			</nav>
+</header>
+<main role='main'>
+	<article role='article'>
+		<section id="intro">
+			<h2>Resources</h2>
+			<p>This page is mainly just intended to store information for myself about how to complete certain tasks in different coding languages, but it may be a useful resource for other folks as well.</p>
+		</section>
+		<section>
+			<button class="accordion">Python</button>
+			<div class="panel"><p>
+				Here's some text about python
+			</p></div>
+		</section>
+	</article>
+</main>
+<footer role='contentinfo'>
+	<a href="contactMe.html" title="Contact Me" class="footerLink">
+	<h2>Contact Me</h2>
+	</a>
+</footer>
+<script type="text/javascript">
+	var acc = document.getElementsByClassName("accordion");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+  		acc[i].addEventListener("click", function() {
+  		/*Toggle between adding and removing the "active" class,
+  		to highlight the button that controls the panel*/
+  		this.classList.toggle("active");
+
+  		/*Toggle between hiding and showing the active panel*/
+  		var panel = this.nextElementSibling;
+    	if (panel.style.maxHeight) {
+      		panel.style.maxHeight = null;
+    	} else {
+      		panel.style.maxHeight = panel.scrollHeight + "px";
+    		} 
+    	});
+	}
+
+</script>
+<body>
+</html>

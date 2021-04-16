@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Flow Over Airfoil Report">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flow Over Airfoil</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.js" integrity="sha512-pOkH5W0iYlsujt/wd8KQwGJlc76bfVQ+gN3wNj2jE671otBKfTqSU17mdb74MdGqU2G7ScJqH9BqQ8UvWL0hdg==" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<header role='banner'>
+	<h1>Flow Over Airfoil - 2020</h1>
+	<a href="index.html" title="Home" class="home">Home</a>
+</header>
+<main role='main'>
+	<article role='article'>
+		<hr>
+		<section>
+			<h3>Introduction</h3>
+			<p>&emsp;&emsp;This report was completed as part of my fluids class during the fall semester of my junior year at Tufts and was the first simulation I ran in COMSOL Multiphysics. The purpose of the simulation was to examine how air flows over an airfoil and generates the aerodynamic forces necessary for flight. Download the report <a href="files/COMSOL/FluidsLab1.pdf" download>here</a> or read it below.</p>
+		</section>
+		<div id="fluidsLab1"></div>
+		<script>PDFObject.embed("files/COMSOL/FluidsLab1.pdf", "#fluidsLab1");</script>
+	</article>
+</main>
+<footer role='contentinfo'>
+	<a href="index.html" title="Home" class="footerLink">
+		<h2>Home</h2>
+	</a><br><br>
+	<a href="contactMe.html" title="Contact Me" class="footerLink">
+	<h2>Contact Me</h2>
+	</a>
+</footer>
+<body>
+
+</html>
