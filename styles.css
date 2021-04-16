@@ -219,7 +219,7 @@ and (min-width: 801px){
   	transition: 0.4s;
 }
 .active, .accordion:hover {
-	background-color: olivedrab;
+	background-color: lightseagreen;
 }
 .accordion:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
