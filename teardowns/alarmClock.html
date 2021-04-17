@@ -5,14 +5,14 @@
 <meta charset="UTF-8">
 <meta name="description" content="Teardown Report of a La Crosse Technology Alarm Clock">
 <title>Alarm Clock</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.js" integrity="sha512-pOkH5W0iYlsujt/wd8KQwGJlc76bfVQ+gN3wNj2jE671otBKfTqSU17mdb74MdGqU2G7ScJqH9BqQ8UvWL0hdg==" crossorigin="anonymous"></script>
 </head>
 
 <body>
 <header role='banner'>
 	<h1>Teardown - <i>La Crosse Technology Alarm Clock</i> 2021</h1>
-	<br><a href="index.html" title="Home" class="home">Home</a>
+	<br><a href="../index.html" title="Home" class="home">Home</a>
 
 </header>
 <main role='main'>
@@ -25,16 +25,16 @@
 	<p>&emsp;&emsp;<i>The NIST (National Institute of Standards and Technology—Time and Frequency Division) WWVB radio station is located in Ft. Collins, Colorado, and transmits the exact time signal continuously throughout the United States at 60 kHz.  The signal can be received up to 2,000 miles away through the internal antenna in the projection alarm. However, due to the nature of the Earth’s Ionosphere, reception is very limited during daylight hours. The projection alarm will search for a signal every night when reception is best. The WWVB radio station derives its signal from the NIST Atomic clock in Boulder, Colorado. A team of atomic physicists is continually measuring every second, of every day, to an accuracy of ten billionths of a second per day. These physicists have created an international standard, measuring a second as 9,192,631,770 vibrations of a Cesium-133 atom in a vacuum.</i></p>
 	<br>
 	<p>&emsp;&emsp;I found it fascinating to learn how the measurement of time has been unified across the nation. Although it wasn't always broadcasting the time, the NIST WWVB radio station has been around since 1919!</p>
-	<img src="images/teardowns/alarmClock/original.jpg" alt="Original Alarm Clock Product" class="center">
+	<img src="../images/teardowns/alarmClock/original.jpg" alt="Original Alarm Clock Product" class="center">
 	<p class="label">Original Alarm Clock</p>
-	<img src="images/teardowns/alarmClock/exploded.jpg" alt="Fully Disassembled Alarm Clock" class="center">
+	<img src="../images/teardowns/alarmClock/exploded.jpg" alt="Fully Disassembled Alarm Clock" class="center">
 	<p class="label">Labelled Exploded View</p>
 </section>
 <hr>
 <section>
 	<h3>Primary PCA</h3>
 	<p>&emsp;&emsp;The primary PCB and the projector PCB were not marked with any labels to indicate what type of electrical components were located on the PCA. This made it difficult to identify components on the PCAs unless the components themselves were already labeled such as with the through-hole mounted capacitors. I did my best to make educated guesses as to what was contained on the circuit board in the labelled photos below.</p>
-	<img src="images/teardowns/alarmClock/mainPCBtop.jpg" alt="Top of Primary PCA showing THT components" class="center">
+	<img src="../images/teardowns/alarmClock/mainPCBtop.jpg" alt="Top of Primary PCA showing THT components" class="center">
 	<p class="label">Top of Primary PCA</p>
 	<ul>
 	<div class="doubleList">
@@ -51,50 +51,50 @@
 	<br>
 	<p>&emsp;&emsp;On the bottom of the PCA there are two noteworthy black blobs, the larger of which has many traces leading towards it. Hidden underneath each black blob is likely an integrated circuit (IC). Given how many traces are running towards the larger blob, I would guess a microprocessor lies beneath it. The ICs underneath these black blobs are made using the Chip on Board (COB) manufacturing method rather than being made to function independently with separate packaging. Using the COB method to mount ICs on a PCB saves space on the board and cuts out manufacturing costs associated with the additional step of packaging each IC. Without the packaging though, the ICs are exposed to damage from the environment and so they are covered with the black blobs. The blobs are made of a material called a potting compound which acts to protect the chips on the PCB from thermal, electrical, chemical, and physical damage they may encounter during the life of the product. Physical damage to the PCB is an especially relevant concern for an alarm clock which may receive a serious beating each morning.</p>
 	<p>&emsp;&emsp;It's also worthwhile to note the unusual design of the buttons which don't look much like the more common tactile switch buttons as seen on the top of the board. Each button is composed of a warped metal sheet with three prongs each folded over its own conductive hole on the board. Pressing a plastic button on the outside of the alarm clock forces a small jut of plastic on the button up against the center of one of the metal sheets. This causes the metal sheet to deflect inwards and make contact with a circular conductive point on the board. This connects the circuit and allows the microprocessor to read a digital high from that button. As soon as the button is released, the metal sheet breaks contact with the conductive point and once again returns to its warped shape. With the circuit broken, the microprocessor would read a digital low from that button. This button design appears cheaper and more lightweight than tactile switches, but is likely slightly harder to implement.</p>
-	<img src="images/teardowns/alarmClock/mainPCBbot.jpg" alt="Bottom of Primary PCA showing mostly SMD components" class="center">
+	<img src="../images/teardowns/alarmClock/mainPCBbot.jpg" alt="Bottom of Primary PCA showing mostly SMD components" class="center">
 	<p class="label">Bottom of Primary PCA</p>
 </section>
 <hr>
 <section>
 	<h3>LCD Screens</h3>
 	<p>&emsp;&emsp;Although Liquid Crystal Display (LCD) screens are commonplace in modern digital technology, I hadn't taken the time to understand how they worked until now. The alarm clock contains two LCD screens. One is used as the main screen where the time, temperature, time-zone, battery-life, and other information are displayed for the user. The other LCD is used to display the time on a screen in the projector unit before it is projected onto the ceiling. After a bit of research, I got a basic grasp of how LCD worked (I found <a href="https://www.youtube.com/watch?v=VbdhbyiHX-s">this tutorial</a> particularly helpful). Based on my limited understanding, I labelled what I thought to be the important components of the LCD on the picture below.</p>
-	<img src="images/teardowns/alarmClock/contactPad.jpg" alt="Cross-Sectional View of Projector LCD Screen" class="center">
+	<img src="../images/teardowns/alarmClock/contactPad.jpg" alt="Cross-Sectional View of Projector LCD Screen" class="center">
 	<p class="label">Labelled Projector LCD Screen</p>
 	<p>&emsp;&emsp;The two parallel polarized plates in the above picture are misaligned by 90 degrees. Each polarizer only allows light waves to pass through that are oscillating in line with the polarizer. Since the two polarizers are misaligned, no light can pass through the screen unless somehow the oscillation direction of the light waves can be altered between the two polarized plates. This is where the liquid crystal comes into play. The liquid crystal molecules are arranged in such a way that they reorient the oscillations of the light waves by 90 degrees (twisted nematic mode), allowing light to pass through the LCD. However, when an electrical field is applied to the liquid crystal, the liquid crystal molecules rearrange and no longer reorient the oscillations of the light waves to pass through the second polarizer. Therefore, by applying voltage on and off across a pixel, the pixel darkens and lightens respectively. The primary LCD is categorized as transflective since it uses both ambient light and internal LEDs to light the display, while the projector LCD is categorized as transmissive since it relies on an internal red LED to light the display.</p>
 	<p>&emsp;&emsp;To control what is displayed on the LCD, the microprocessor selects the appropriate traces on the PCB to carry digital signals. Current then flows from the PCB leads across a flexible conductive strip to the LCD leads, illuminating pixels on the display. The flexible conductive strips (silicone zebra connector strips) require tight contact between the two surfaces to properly conduct electricity. This is not a problem when the PCB is screwed down tightly over the LCD inside the alarm clock, but it can be difficult to replicate just using one's hands. Below is a video of the primary LCD display popping up partially while I press the conductive strip down onto the PCB leads. Note that I have the LCD oriented backwards. In fact the bottom of the LCD rests above the pair of green LEDs used to light the screen at night.</p>
-	<video controls="controls" name="Testing LCD Screen" src="images/teardowns/alarmClock/LCDtest.mp4" class="center"></video>
+	<video controls="controls" name="Testing LCD Screen" src="../images/teardowns/alarmClock/LCDtest.mp4" class="center"></video>
 	<p class="label">Testing LCD Screen</p>
 </section>
 <hr>
 <section>
 	<h3>Projector</h3>
 	<p>&emsp;&emsp;Arguably the coolest part of this alarm clock, I was interested to see how the projector unit worked. Playing around with the projector I collected the following information: the LED appeared red when powered independent of the projector assembly, fine text appeared on the LCD screen when the flexible conductive strip was pressed between the leads of the powered PCA and the leads of the LCD, and the text that appeared on the ceiling in the fully assembled product was substantially larger than the text on the projector LCD. These observations led me to come to the conclusion that the lower lens focused the light from the LED onto the LCD while the upper lens expanded the projected text shining through the LCD. Note the small yellow sticker labeled "QC Pass" which notifies us that the projector passed the company's quality control process.</p>
-	<img src="images/teardowns/alarmClock/projector.jpg" alt="Black Cylindrical Projection Unit" class="center">
+	<img src="../images/teardowns/alarmClock/projector.jpg" alt="Black Cylindrical Projection Unit" class="center">
 	<p class="label">Projector Unit</p>
-	<img src="images/teardowns/alarmClock/explodedProjector.jpg" alt="Fully Disassembled Projection Unit" class="center">
+	<img src="../images/teardowns/alarmClock/explodedProjector.jpg" alt="Fully Disassembled Projection Unit" class="center">
 	<p class="label">Labelled Exploded View of Projector Unit</p>
 	<p>&emsp;&emsp;The PCA attached to the projector appears limited to receiving control signals from the primary PCA, controlling the projector LCD with its own microprocessor, and powering the red LED. Again, note the potting compound used to cover the microprocessor which was manufactured with the COB method.</p>
-	<img src="images/teardowns/alarmClock/sidePCBtop.jpg" alt="Top of Projector PCB showing IC" class="doubleRowImageWide">
-	<img src="images/teardowns/alarmClock/sidePCBbot.jpg" alt="Bottom of Projector PCB showing external wiring" class="doubleRowImageWide">
+	<img src="../images/teardowns/alarmClock/sidePCBtop.jpg" alt="Top of Projector PCB showing IC" class="doubleRowImageWide">
+	<img src="../images/teardowns/alarmClock/sidePCBbot.jpg" alt="Bottom of Projector PCB showing external wiring" class="doubleRowImageWide">
 	<p class="label">Projector PCA</p>
 </section>
 <hr>
 <section>
 	<h3>AC Adapter</h3>
 	<p>&emsp;&emsp;Reading the label on the AC adapter which stated that the device had an input voltage of 120V AC 60Hz at the wall outlet and output voltage of 3.4V DC at the power jack, I assumed the AC adapter contained a small transformer and rectifier circuit based on what I had seen with the transformer in the subwoofer speaker I tore down last year. Interested to see if my newfound intuition was right, I decided to open up the AC adapter.</p>
-	<img src="images/teardowns/alarmClock/explodedTransformer.jpg" alt="AC Adapter with Case Removed" class="center">
+	<img src="../images/teardowns/alarmClock/explodedTransformer.jpg" alt="AC Adapter with Case Removed" class="center">
 	<p class="label">Labelled Exploded View of AC Adapter</p>
-	<img src="images/teardowns/alarmClock/transformerPCB.jpg" alt="Transformer PCA with Rectifier Circuit" class="center">
+	<img src="../images/teardowns/alarmClock/transformerPCB.jpg" alt="Transformer PCA with Rectifier Circuit" class="center">
 	<p class="label">Close-up of Transformer PCA</p>
 	<p>&emsp;&emsp;Like I expected the AC adapter contained a small transformer and the four diodes rectifying the voltage from AC to DC. What I hadn't initially considered though were the 4 ceramic disc capacitors and 1 large electrolytic capacitor (1000 uF, 25 V). Using only the four diodes in the full bridge rectifier arrangement, the alternating current is converted to a repeating current by inverting the negative portion of the alternating current. The addition of the capacitors acts to smooth out the current supply by limiting the extent to which the voltage drops, maintaining a more constant current supply similar to direct current. Given the presence of helpful labels on the transformer PCB, this board was clearly produced by a different manufacturer than the manufacturer of the boards inside the alarm clock.</p>
 </section>
 </article>
 </main>
 <footer role='contentinfo'>
-	<a href="index.html" title="Home" class="footerLink">
+	<a href="../index.html" title="Home" class="footerLink">
 		<h2>Home</h2>
 	</a><br><br>
-	<a href="contactMe.html" title="Contact Me" class="footerLink">
+	<a href="../contactMe.html" title="Contact Me" class="footerLink">
 	<h2>Contact Me</h2>
 	</a>
 </footer>
