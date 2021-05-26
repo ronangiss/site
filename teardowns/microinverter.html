@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Teardown Report of a Netgear GS105 Ethernet Switch">
+<title>Microinverter</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+<header role='banner'>
+	<h1>Teardown - <i>Sunpower Microinverter</i> 2021</h1>
+	<br><a href="../index.html" title="Home" class="home">Home</a>
+
+</header>
+<main role='main'>
+<article role='article'>
+<hr>
+<section>
+	<h3>Introduction</h3>
+	<p>&emsp;&emsp;My parents recently installed solar panels on their roof to transistion to renewable energy use while at the same time breaking their dependence on the grid for energy supply. To power the house with solar energy required microinverters and a battery in addition to the solar panels. The primary function of the microinverters is to convert the DC power coming from each panel into AC power that can be used in the house circuits. The battery allows energy to be stored when more energy is produced by the panels than is used in the house. When one of the Sunpower MI-C-320-US208/240-00 Microinverters failed on my parents roof, I had the opportunity to crack it open and try to understand how it worked.</p> 
+	<p>&emsp;&emsp;Before I get into the teardown, I'd like to discuss a bit of the history of how microinverters came to be and what other products are used as alternatives based on some quick internet searches I did. Any solar energy system includes some kind of inverter to convert the DC output of the panel to the AC input used in power lines, homes, and appliances. Inverters accomplish this conversion from DC to AC through a series of switches (IGBTs) that are rapidly opened and closed with Pulse Width Modulation (PWM) by a controller IC imitating the sinusoidal nature of alternating current. When solar panels first came about commercially, the energy was converted from AC to DC using string-inverters. Several solar panels would be connected together through linking wires&mdash;forming a "string" of solar panels&mdash;fed into one centralized inverter unit. </p>
+	<img src="../images/teardowns/microinverter/front.jpg" alt="Gray Metal Box with SUNPOWER Logo" class="center">
+	<p class="label">Front View</p>
+	<img src="../images/teardowns/microinverter/label.jpg" alt="Product Label on Back of Microinverter" class="center">
+	<p class="label">Back View</p>
+</section>
+<hr>
+<section>
+	<h3>Potting Compound</h3>
+	<p>&emsp;&emsp;Although the switch was primarily an electrical product, the bolts used to mount the PCA inside the switch cover were noteworthy. Attached to each of the small PCA bolts were two washers. A split-ring lock washer closest to the head of the bolt and a flat washer below that. As the bolt is tightened down and the washers are pressed up against the PCB, the two ends of the split ring are forced back into alignment. As a result, pressure is built up between the bolt and the flat washer, reducing the likelihood that the bolt will loosen over time due to vibrations.</p>
+	<img src="../images/teardowns/microinverter/opened.jpg" alt="Microinverter Backing Removed Exposing Black Plastic Sheet on Interior" class="center">
+	<p class="label">Sealed Microinverter PCA</p>
+	<img src="../images/teardowns/microinverter/peeledSheet.jpg" alt="Black Plastic Sheet Pulled Back Revealing Potting Compound" class="center">
+	<p class="label">Potting Compound Exposed from Underneath Stiff Plastic Sheet</p>
+	<img src="../images/teardowns/microinverter/removingRubber.jpg" alt="Large PCA Components Exposed from Underneath Potting Compound" class="center">
+	<p class="label">PCA Components Partially Exposed From Excavation</p>
+	<img src="../images/teardowns/microinverter/exploded.jpg" alt="Backing, Plastic Sheet, Potting Compound (bagged for cleanliness), and Exposed PCA" class="center">
+	<p class="label">Exploded View with PCA Fully Exposed</p>
+</section>
+<hr>
+<section>
+	<h3>Switch PCA</h3>
+	<p>&emsp;&emsp;With the exception of the metal cover and bolts, the entire switch is contained on one PCA. The user-accessible portions of the PCA include five ethernet (RJ-45) ports each with a set of green LEDS to indicate link, activity, and speed; a green power LED; a power jack requiring 12 V DC; and a power switch. These externally accesible components are pictured below. The port labeled 5 and separated from the rest is designed to be used as the uplink, where the router (or other switches) would be connected. Although the router could be connected to any of the ports, it is likely clearer for troubleshooting purposes to use the uplink port for the connection to the router (or other switches).</p>
+	<img src="../images/teardowns/microinverter/PCA.jpg" alt="Close-up View of PCA" class="center">
+	<p class="label">Microinverter PCA</p>
+</section>
+</article>
+</main>
+<footer role='contentinfo'>
+	<a href="../index.html" title="Home" class="footerLink">
+		<h2>Home</h2>
+	</a><br><br>
+	<a href="../contactMe.html" title="Contact Me" class="footerLink">
+	<h2>Contact Me</h2>
+	</a>
+</footer>
+<body>
+
+</html>
