@@ -30,7 +30,7 @@ hr {
 }
 ul {
 	margin-left: 5%;
-	text-align: center;
+	text-align: left;
 }
 nav ul {
 	list-style-type: none; /*removes bullet points*/
@@ -278,5 +278,5 @@ and (min-width: 801px){
 	margin: 0.5em 0;
 }
 #homeLink {
-	margin-left: 25em;
+	margin-left: 15em;
 }
