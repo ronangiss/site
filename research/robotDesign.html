@@ -112,7 +112,7 @@
 <section>
 	<h3>Ninth Prototype</h3>
 	<p>&emsp;&emsp;Having reached some semblance of a working mechanical system, it was time to start thinking about how to implement the control electronics for the robot. These electronics included a magnetic encoder on each motor (<a href="https://www.pololu.com/product/4761">Pololu #4761</a>), a motor driver carrier board (<a href="https://www.pololu.com/product/2130">Pololu #2130</a>), a microcontroller board (<a href="https://www.amazon.com/Vilros-Raspberry-Starter-Power-Premium/dp/B0748MPQT4">Raspberry Pi Zero W</a>), and a LiPo battery. Fortunately for me, Pololu had a wealth of resources on their products including 3D models of all the parts. With the exception of the motors which I wanted to leave simplified without the gearbox workings, I downloaded and included the models for the Pololu products. I was also able to find a model for the Raspberry Pi Zero W on the internet which I verified with some quick caliper measurements. As can be seen in the picture below, the Pi (in a black plastic protective case) is monstrous relative to the robot, taking almost as much space as the robot itself. Figuring out how to include this Pi in the robot body was something I needed to mull over.</p>
-	<p>&emsp;&emsp;After someone helpfully pointed out during a lab meeting that my motors weren't secured in place by any part of the body, I also added some motor holder pieces that wrapped around the motor body and pressed up against the gear box.</p>
+	<p>&emsp;&emsp;After someone helpfully pointed out during a lab meeting that my motors weren't secured in place by any part of the body, I added some motor holder pieces that wrapped around the motor body and pressed up against the gear box. I also added a bolt and nut for each spur gear to secure it in place while it rotated. I selected a bolt shaft that was significantly narrower than the shaft hole in the spur gear. This way the spur gear could rotate freely, but was capped by the bolt head so it didn't fly off.</p>
 	<img src="../images/research/design/prototype_v9_piScale.png" alt="Original Alarm Clock Product" class="center">
 	<p class="label">Ninth Prototype with Raspberry Pi Zero W in Case for Scale</p>
 </section>
@@ -165,13 +165,16 @@
 <hr>
 <section>
 	<h3>Eleventh Prototype</h3>
-	<p>&emsp;&emsp;</p>
+	<p>&emsp;&emsp;Seeing the large electronics storage compartment of the robot made Professor Woodward quite concerned that I was trying to build a flying brick. He recommended I instead try to mount the electronics to small standoffs on the base and then figure out how to enclose these electronics with some minimal layer of protection and support. As a result, I removed the base completely. I decided to focus on wrapping up the rest of the design so that I could test the wing shifting ability with the electronics located offboard.</p>
+	<p>&emsp;&emsp;I simplified the design of the upper bearing capture pieces to take up less space and be a part of the body rather than being fastened on separately. I also redesigned the motor holder pieces to be a part of the body rather than being fastened on separately. To install the motors, I would deflect the motor holder pieces slightly away from the motor so that the motor could slide in place with the motor holder pieces then clamping in behind the gearbox when I released my grip. This idea had good potential given its simplicity, but during my first test print of the base, one of the motor holders snapped off during installation.</p>
 	<img src="../images/research/design/prototype_v11_iso.png" alt="Original Alarm Clock Product" class="center">
 	<p class="label">Eleventh Prototype - Isometric View</p>
 	<img src="../images/research/design/prototype_v11_top.png" alt="Original Alarm Clock Product" class="center">
 	<p class="label">Eleventh Prototype - Top View</p>
 	<img src="../images/research/design/prototype_v11_front.png" alt="Original Alarm Clock Product" class="center">
 	<p class="label">Eleventh Prototype - Front View</p>
+	<img src="../images/research/design/prototype_v11_holders.png" alt="Original Alarm Clock Product" class="center">
+	<p class="label">Motor Holder Snapped Off During Installation</p>
 </section>
 <hr>
 <section>
@@ -185,6 +188,8 @@
 	<p class="label">Twelfth Prototype - Bottom View</p>
 	<img src="../images/research/design/prototype_v12_base.png" alt="Original Alarm Clock Product" class="center">
 	<p class="label">Twelfth Prototype with Base Only</p>
+	<video controls="controls" name="Motor Vibration" src="../images/research/design/prototype_v12_vibration.mov" class="center"></video>
+	<p class="label">Motor Vibration Damped by Robot Body</p>
 </section>
 <hr>
 <section>
