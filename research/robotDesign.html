@@ -212,7 +212,7 @@
 	<p class="label">FEA of Original Motor Holders - Vertical Deflection Plot</p>
 	<img src="../images/research/design/prototype_v13_FEAdefNEW.png" alt="Original Alarm Clock Product" class="center">
 	<p class="label">FEA of New Motor Holders - Vertical Deflection Plot</p>
-	<p>&emsp;&emsp;With this new motor holder design, the motor holder pieces survived motor installation. I then tested driving the spur gears with the worms mounted on the motor shafts. Given how rough the surface quality of the 3D prints were and the brittle nature of the PLA I was using, I expected the motors to stall out and then rip the gears apart. I was pleasantly surprised to see that the gears ran together at a number of different duty cycles. My only concern was that the bolt and nut fixture for the spur gear was too loose causing the spur gear to move in and out of contact with the worm. I think this drawback was inherent to the nature of the fastening method for the spur gear. The answer was not so simple as to just tighten the bolt as that would then prevent the spur gear from being able to rotate at all.</p>
+	<p>&emsp;&emsp;With this new motor holder design, the motor holder pieces survived motor installation. I then tested driving the spur gears with the worms mounted on the motor shafts. Since I was already 3D printing the worms, I decided to also print the spur gears. Given how rough the surface quality of the 3D prints were and the brittle nature of the PLA I was using, I expected the motors to stall out and then rip the gears apart. I was pleasantly surprised to see that the gears ran together at a number of different duty cycles. My only concern was that the bolt and nut fixture for the spur gear was too loose causing the spur gear to move in and out of contact with the worm. I think this drawback was inherent to the nature of the fastening method for the spur gear. The answer was not so simple as to just tighten the bolt as that would then prevent the spur gear from being able to rotate at all.</p>
 	<video controls="controls" name="Worm to Spur Gear Test" src="../images/research/design/prototype_v13_gearTest.mp4" class="center"></video>
 	<p class="label">Worm to Spur Gear Test</p>
 	<p>&emsp;&emsp;Having been successful testing the robot body, it was time to start trying to incorporate the racks and attached wing connector structures. I printed out several different parts to test both how well they interfaced with one another and what level of detail was attainable with the 3D printer. I came to realize that there were some issues with tolerancing in my design where I hadn't taken into account the fact that the 3D printer wasn't perfectly consistent in its print quality. To address this I went back into the design and added small gaps between interfaces so that the parts would fit as expected. In my experience, I'd learned that 0.2 mm was the lucky number for most interfaces that were going to be in contact with one another. In terms of how small I could make prints, I was impressed with the precision of the relatively cheap 3D printer. Although some areas fused over that shouldn't have and some areas failed to fuse that should have, for the most part the printers stood up to their reported 0.1 mm accuracy.</p>
@@ -224,16 +224,30 @@
 <hr>
 <section>
 	<h3>Fourteenth Prototype</h3>
-	<p>&emsp;&emsp;</p>
+	<p>&emsp;&emsp;After printing a number of test parts from my SolidWorks design, I fell under the impression that a four bar linkage was too much complexity for a first shot at a working prototype. Furthermore, it would be difficult to consisently set specific dihedral/anhedral angles using the four bar linkage. Consequently, I decided to return to the five preset hole arrangement for dihedral/anhedral angle adjustment. I also made slight tolerance adjustments given what I'd learned from the last test print with certain parts not interfacing as expected. The electronics are hidden in the model below so as not to distract from the rest of the model.</p>
 	<img src="../images/research/design/prototype_v14.png" alt="Original Alarm Clock Product" class="center">
 	<p class="label">Fourteenth Prototype</p>
+	<p>&emsp;&emsp;Using this new design, I printed another prototype. Since I had successfully used 3D printed spur gears with the worms in the last printed prototype, I decided to also print the rack. As a tradeoff for the good print quality, there was a lot of support material I had to remove from the parts. This support material is much less dense than the parts themselves and just used to support the part during printing as layers are added one on top of the next. To remove the support material, I spent an hour or so carefully picking it away using wire cutters, pliers, and tweezers. Despite my care to avoid applying too much force when removing the support material, I still managed to rip off several of the clip-in slots for the electronics boards on the base of the robot body. Those clip-in slots would need to be strengthened in later designs.</p>
+	<img src="../images/research/design/prototype_v14_supportMat.png" alt="Original Alarm Clock Product" class="center">
+	<p class="label">Parts Printed and Support Material Removed</p>
+	<p>&emsp;&emsp;I prepared the short sections of carbon fiber tubing&mdash;used to mount the bearings&mdash;for this prototype by cutting sections off the long carbon fiber tubes we'd purchased online. To cut the carbon fiber tubes, I used the edge of a file to grind off a piece all the while constantly irrigating with water so as not to produce too much toxic carbon fiber dust.</p>
+	<img src="../images/research/design/prototype_v14_carbon.png" alt="Original Alarm Clock Product" class="center">
+	<p class="label">Cutting Carbon Fiber Tubes</p>
+	<p>&emsp;&emsp;When I went to load the carbon fiber tubes I'd cut into the 3D printed robot body piece, I realized that the holes on the robot body for the carbon fiber tubes were slightly too small. Instead of reprinting the whole body, Professor Woodward had the insightful recommendation to just widen the hole with a drill press. This worked splendidly!</p>
+	<img src="../images/research/design/prototype_v14_drill.png" alt="Original Alarm Clock Product" class="center">
+	<p class="label">Widening Bearing Shaft Holes with Drill Press</p>
+	<p>&emsp;&emsp;With the holes widened, I loaded the bearings into their respective locations on the robot body. The rack I had printed didn't fit so well into the rack holder piece, forcing the rack holder to bulge to accommodate the rack. This was likely the result of tolerancing issues between the rack and rack holder pieces. To help the rack fit better, I did my best to file down the interior of the rack holder to make more space for the rack. I encountered further tolerancing issues when I went to mount the rack holder inbetween the bearing capture system. The rack holder was held much too tightly and was forcing the rack against the motor holder pieces, causing the rack to rub against the robot body as it slid back and forth. This made it nearly impossible to move the rack as I attempted to do so by hand.</p>
+	<img src="../images/research/design/prototype_v14_print.png" alt="Original Alarm Clock Product" class="center">
+	<p class="label">Bearings Assembled on Body</p>
+	<img src="../images/research/design/prototype_v14_printWithRack.png" alt="Original Alarm Clock Product" class="center">
+	<p class="label">Rack in Bearing Capture System</p>
 </section>
 <hr>
 <section>
 	<h3>Fifteenth Prototype</h3>
 	<p>&emsp;&emsp;</p>
 	<img src="../images/research/design/prototype_v15.png" alt="Original Alarm Clock Product" class="center">
-	<p class="label">Fifteenth Prototype</p>
+	<p class="label">Fifteenth Prototype with Wings</p>
 </section>
 </article>
 </main>
