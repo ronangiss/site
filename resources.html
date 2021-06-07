@@ -28,11 +28,6 @@
 						</a>
 					</li>
 					<li>
-						<a href="research/research.html" title="Research Page">
-						Research
-						</a>
-					</li>
-					<li>
 						<a href="resources.html" title="Resources Page">
 						Resources
 						</a>
@@ -54,9 +49,14 @@
 		<section>
 			<h3>Programming</h3>
 			<button class="accordion">Python</button><div class="panel">
-				<button class="accordion">Basics</button><div class="panel subpanel"><p>
-					Here's some text
-				</p></div>
+				<button class="accordion">Basics</button><div class="panel subpanel">
+					<p class="python">sudo raspi-config</p>
+					<p>Opens raspberry pi configuration window. Common uses include enabling new interfaces like SSH or WiFi. "sudo" is simply added to authorize the following command as the use of certain commands is restricted for security purposes. By typing "sudo" you are authorizing the command from the <b>s</b>uper<b>u</b>ser to <b>do</b> something.</p><br>
+					<p class="python">sudo apt-get update</p>
+					<p>Update raspberry pi package indexes with state and location of new software. Typically followed by the upgrade command.</p><br>
+					<p class="python">sudo apt-get upgrade</p>
+					<p>Upgrade raspberry pi by actualling installing the packages from the updated package indexes.</p>
+				</div>
 				<button class="accordion">Serial Communication</button><div class="panel subpanel"><p>
 					Here's some text
 				</p></div>
@@ -124,6 +124,37 @@
 
   		/*Toggle between hiding and showing the active panel*/
   		var panel = this.nextElementSibling;
+  		/*hide panel*/
+    	if (panel.style.maxHeight) {
+      		panel.style.maxHeight = null;
+      		panel.style.padding = '0px 10px'
+    	} 
+    	/*show panel*/
+    	else { 
+      		panel.style.maxHeight = (panel.scrollHeight + 10) + "px";
+      		if (panel.classList.contains('subpanel')){
+      			panel.style.padding = '5px 10px'
+      			} else {
+      				panel.style.padding = '0 0 10px 0'
+      			}
+    		} 
+    	});
+	}
+
+</script>
+<!--
+<script type="text/javascript">
+	var acc = document.getElementsByClassName("accordion");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+  		acc[i].addEventListener("click", function() {
+  		/*Toggle between adding and removing the "active" class,
+  		to highlight the button that controls the panel*/
+  		this.classList.toggle("active");
+
+  		/*Toggle between hiding and showing the active panel*/
+  		var panel = this.nextElementSibling;
     	if (panel.style.maxHeight) {
       		panel.style.maxHeight = null;
       		panel.style.padding = '0'
@@ -139,5 +170,6 @@
 	}
 
 </script>
+-->
 <body>
 </html>

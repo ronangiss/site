@@ -209,18 +209,19 @@ and (min-width: 801px){
 }
 .accordion {
 	background-color: lightgray;
-  	color: black;
-  	cursor: pointer;
-  	padding: 1.5%;
-  	width: 100%;
-  	text-align: left;
-  	border: none;
-  	outline: none;
-  	transition: 0.4s;
+  color: black;
+  cursor: pointer;
+  padding: 1.5%;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
 }
 .active, .accordion:hover {
 	background-color: lightseagreen;
 }
+/*Insert + or - icon after button but before button label, seems like I can also write before...*/
 .accordion:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 1em;
@@ -231,12 +232,13 @@ and (min-width: 801px){
 .active:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
+
 .panel {
 	padding: 0;
-  	background-color: white;
-  	max-height: 0;
-  	overflow: hidden;
-  	transition: max-height 0.2s ease-out;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 .pageNav ul li {
 	margin: 0.5em 0.1em 0em 0.1em;
@@ -252,6 +254,11 @@ and (min-width: 801px){
 	font-size: 1.3em;
 	color: white;
 	text-decoration: none;
+}
+.python {
+	font-style: italic;
+	color: dimgray;
+	background-color: white;
 }
 #aboutMe {
 	display: inline-block;
