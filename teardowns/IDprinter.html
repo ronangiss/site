@@ -11,7 +11,7 @@
 
 <body>
 <header role='banner'>
-	<h1>Teardown - <i>Eltron P310 ID Card Printer</i> 2021</h1>
+	<h1>Teardown - <i>Eltron P310C ID Card Printer</i> 2021</h1>
 	<br><a href="../index.html" title="Home" class="home">Home</a>
 
 </header>
@@ -20,8 +20,8 @@
 <hr>
 <section>
 	<h3>Introduction</h3>
-	<p>&emsp;&emsp;The Eltron P310 ID card printer was yet another lucky find rejected to the junk piles of Medford. As the name suggests, the machine can be used to print identification cards for enhanced security in a variety of organizations such as schools, hospitals, and commercial businesses. Blank cards (made of PVC or a PVC based composite) are loaded into the blue card holder on the right side of the printer and a color ribbon roll is mounted on the printer interior, stretched between a pair of plastic shafts. Through a 25 pin connector and associated software driver, a computer can be interfaced with the printer to send card designs to the printer for production. Unfortunately, the printer came with neither cards, color ribbon rolls, nor connectors so I was not able to test it (for purely academic purposes of course).</p>
-	<p>&emsp;&emsp;The printer applies color to the initially white cards through a process known as resin thermal transfer or color dye sublimation.</p>
+	<p>&emsp;&emsp;The Eltron P310C ID card printer was yet another lucky find rejected to the junk piles of Medford. As the name suggests, the machine can be used to print identification cards for enhanced security in a variety of organizations such as schools, hospitals, and commercial businesses. Blank cards (made of PVC or a PVC based composite) are loaded into the blue card holder on the right side of the printer and a color ribbon roll is mounted on the printer interior, stretched between a pair of plastic shafts. Through a 25 pin connector and associated software driver, a computer can be interfaced with the printer to send card designs to the printer for production. Unfortunately, the printer came with neither cards, color ribbon rolls, nor connectors so I was not able to test it (for purely academic purposes of course).</p>
+	<p>&emsp;&emsp;The printer applies color to the initially white cards using a thermal print head through one of two methods&mdash;dye sublimation or resin thermal transfer. In dye sublimation, the print head sublimates the color ribbon into a vapor that is then deposited on the card surface. In resin thermal transfer, the print head melts the monochrome ribbon into a liquid that is then deposited on the card surface. Resin thermal transfer printing results in much more durable prints, but limits the print color to just a single option. Both printing methods can be achieved with the Eltron P310C by loading the appropriate color ribbon roll and selecting the desired setting in the driver software.</p>
 	<img src="../images/teardowns/IDprinter/original.jpg" alt="Original Product Sitting on Carpet" class="center">
 	<p class="label">Original Printer</p>
 	<div class="doubleRowImage">
@@ -36,13 +36,15 @@
 	<p class="label">Printer Back</p>
 	<img src="../images/teardowns/IDprinter/backLabel.jpg" alt="Product Information Including Model, Part, and Serial Numbers" class="center">
 	<p class="label">Closeup of Label on Printer Back</p>
-	<p>&emsp;&emsp;Examining the <a href="https://cdn.barcodesinc.com/resources/EltronP310Manual.pdf">Eltron P310 manual</a>, some important information can be decoded from the part number, "P310C-OM1OP", written on the label. The "C" following the printer name indicates that the printer is designed to print in color rather than being monochrome. The set of characters following the hyphen indicates that the printer is not capable of programming smart cards (with embedded chips), is capable of magnetically encoding the cards, produces high coercivity (HICO) magnetic encoding, must have cards loaded in with magnetic stripe side facing down, has standard memory, and uses a parallel (as opposed to serial) computer interface connection.</p>
+	<p>&emsp;&emsp;Examining the <a href="https://cdn.barcodesinc.com/resources/EltronP310Manual.pdf">Eltron P310 manual</a>, some important information can be decoded from the part number, "P310C-OM1OP", written on the label. The "C" following the printer name indicates that the printer is designed to print in color rather than being limited to monochrome. The set of characters following the hyphen indicates that the printer is not capable of programming smart cards (with embedded chips), is capable of magnetically encoding cards, must have high coercivity (HiCo) magnetic cards loaded in with magnetic stripe side facing down, has standard memory, and uses a parallel (as opposed to serial) computer interface connection. High coercivity cards are used when the cards are expected to receive high use and possess stronger magnetic fields&mdash;measured in Oersteds for this application&mdash;than low coercivity (LoCo) cards.</p>
 	<img src="../images/teardowns/IDprinter/interior.jpg" alt="Card Processing Section Accessible for Part Replacement" class="center">
 	<p class="label">Printer Interior</p>
 	<img src="../images/teardowns/IDprinter/interiorLabel.jpg" alt="Instructions for Ribbon, Card, and Lint Roller Replacement" class="center">
 	<p class="label">Use Instructions Label on Interior</p>
+	<p>&emsp;&emsp;The images on the label communicate instructions for the following tasks from left to right: color ribbon loading, card loading, and cleaning roller replacement. Highlighting the active pieces in blue and providing warnings in yellow while leaving the rest of the instructions in black and white was a helpful tactic for emphasizing key takeaways from the instructions and made the images fairly intuitive to read.</p>
 	<img src="../images/teardowns/IDprinter/rollLabel.jpg" alt="Advertisement for True Colours Printer Ribbons" class="center">
 	<p class="label">Card Printer Ribbon Label</p>
+	<p>&emsp;&emsp;When printing via dye sublimation, a YMCKO color ribbon is typically loaded into the printer. YMCKO stands for five steps in the printing process: yellow, magenta, cyan, black, and overlay. The YMCKO ribbon contains repeating sections of YMCKO panels in series. The card slides under the print head to receive a coating and is then pulled back before the print head to receive the next coating. As with paper printers, the primary colors of pigment (yellow, magenta, and cyan) can be used to create all matter of colors on the card. The final coating, the overlay, adds a clear protective layer over the card to preserve its life. Each of these layers is only a few microns thick.</p>
 </section>
 <hr>
 <section>
