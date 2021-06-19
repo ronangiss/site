@@ -20,7 +20,8 @@
 <hr>
 <section>
 	<h3>Introduction</h3>
-	<p>&emsp;&emsp;The Eltron P310 ID card printer was yet another lucky find rejected to the junk piles of Medford. As the name suggests, the machine can be used to print identification cards for enhanced security in a variety of organizations such as schools, hospitals, and commercial businesses. Cards are loaded into the blue card holder on the right side of the printer and a color ribbon roll is mounted on the printer interior, stretched between a pair of plastic shafts. Through a 25 pin connector, the printer can be interfaced with a computer so that card designs can be sent to the printer for production. Unfortunately, the printer came with neither ID cards, color ribbon rolls, or connectors so I was not able to test it (for purely academic purposes of course).</p>
+	<p>&emsp;&emsp;The Eltron P310 ID card printer was yet another lucky find rejected to the junk piles of Medford. As the name suggests, the machine can be used to print identification cards for enhanced security in a variety of organizations such as schools, hospitals, and commercial businesses. Blank cards (made of PVC or a PVC based composite) are loaded into the blue card holder on the right side of the printer and a color ribbon roll is mounted on the printer interior, stretched between a pair of plastic shafts. Through a 25 pin connector and associated software driver, a computer can be interfaced with the printer to send card designs to the printer for production. Unfortunately, the printer came with neither cards, color ribbon rolls, nor connectors so I was not able to test it (for purely academic purposes of course).</p>
+	<p>&emsp;&emsp;The printer applies color to the initially white cards through a process known as resin thermal transfer or color dye sublimation.</p>
 	<img src="../images/teardowns/IDprinter/original.jpg" alt="Original Product Sitting on Carpet" class="center">
 	<p class="label">Original Printer</p>
 	<div class="doubleRowImage">
@@ -35,7 +36,7 @@
 	<p class="label">Printer Back</p>
 	<img src="../images/teardowns/IDprinter/backLabel.jpg" alt="Product Information Including Model, Part, and Serial Numbers" class="center">
 	<p class="label">Closeup of Label on Printer Back</p>
-	<p>&emsp;&emsp;Examining the <a href="https://cdn.barcodesinc.com/resources/EltronP310Manual.pdf">Eltron P310 manual</a>, some important information can be decoded from the part number, "P310C-OM1OP", written on the label. The "C" following the printer name indicates that the printer is designed to print in color rather than being monochrome. The set of characters following the hyphen indicates that the printer is not capable of producing smart cards, is capable of magnetic encoding, produces stripe down HICO magnetic encoding, has standard memory, and uses a parallel (as opposed to serial) computer interface connection.</p>
+	<p>&emsp;&emsp;Examining the <a href="https://cdn.barcodesinc.com/resources/EltronP310Manual.pdf">Eltron P310 manual</a>, some important information can be decoded from the part number, "P310C-OM1OP", written on the label. The "C" following the printer name indicates that the printer is designed to print in color rather than being monochrome. The set of characters following the hyphen indicates that the printer is not capable of programming smart cards (with embedded chips), is capable of magnetically encoding the cards, produces high coercivity (HICO) magnetic encoding, must have cards loaded in with magnetic stripe side facing down, has standard memory, and uses a parallel (as opposed to serial) computer interface connection.</p>
 	<img src="../images/teardowns/IDprinter/interior.jpg" alt="Card Processing Section Accessible for Part Replacement" class="center">
 	<p class="label">Printer Interior</p>
 	<img src="../images/teardowns/IDprinter/interiorLabel.jpg" alt="Instructions for Ribbon, Card, and Lint Roller Replacement" class="center">
@@ -110,6 +111,7 @@
 <hr>
 <section>
 	<h3>Entry Unit</h3>
+	<p>&emsp;&emsp;The entry unit is used to control the thickness of cards permitted to enter the machine. Based on its relatively simple design which only obstructs cards that are too thick from passing, it seems like cards thinner than the desired setting would still be allowed to pass. Since this unit contains no sensor to communicate to the rest of the printer what thickness card is being inserted, it seems unlikely that the rest of the printer would be adjusting its process in any way to account for cards of different sizes. Instead, it's more likely the entry unit serves to reduce the likelihood of multiple cards being sent into the printer simulatenously which could generate unpredictable issues within the printer that might jam the system.</p>
 	<div class="doubleRowImage">
 		<img src="../images/teardowns/IDprinter/entryUnitFront.jpg" alt="Entrance Gap Covered in Bristles and with Depth Adjusted by Cam Mechanism">
 		<p class="label">Entry Unit - Back View</p>
@@ -135,9 +137,10 @@
 <section>
 	<h3>Rollers</h3>
 	<img src="../images/teardowns/IDprinter/blueRollers.jpg" alt="Lint Roller and Rubber Roller Secured in Blue Plastic Piece" class="center">
-	<p class="label">Card Cleaner Rollers</p>
+	<p class="label">Card Cleaning Rollers</p>
 	<img src="../images/teardowns/IDprinter/blueRollersSpring.jpg" alt="Torsion Spring with Unique Ends to Secure Spring and Press it Against Shaft End" class="center">
 	<p class="label">Closeup of Torsion Spring Securing Lint Roller</p>
+	<p>&emsp;&emsp;With just the torsion spring holding the lint roller in place, it can be easily removed and replaced as it accumulates dust over the course of printer operation. It's interesting to note that in addition to the card cleaning rollers, the manual states that the printer also comes with cleaning cards. The cleaning cards are supposed to be fed through the printer when the printer indicates that cleaning is required by flashing the orange and red status indicator lights. The cleaning cards are pre-saturated with cleaning fluid to wipe clean the interior surfaces of the printer feed system including the print head, magnetic encoding station, and rollers.</p>
 	<img src="../images/teardowns/IDprinter/exitRollers.jpg" alt="Small Rollers Held in Place by Torsion Springs" class="center">
 	<p class="label">Rollers Leading Up to Card Exit</p>
 	<img src="../images/teardowns/IDprinter/rollers.jpg" alt="Most Rollers in Printer Laid Out in Series According to Order" class="center">
@@ -201,18 +204,18 @@
 	<p class="label">DC Motor for Roller Rotation</p>
 
 	<img src="../images/teardowns/IDprinter/heatingElement.jpg" alt="Metal Plate Piece with Many Wires Leading In and Labelled 'R-1525'" class="center">
-	<p class="label">Color Ribbon Fusing Heating Element</p>
+	<p class="label">Print Head</p>
 
 	<img src="../images/teardowns/IDprinter/fan.jpg" alt="Small 12V DC Brushless Fan Motor" class="center">
-	<p class="label">Cooling Fan for Heating Element</p>
+	<p class="label">Cooling Fan for Print Head</p>
 
 	<div class="doubleRowImage">
 		<img src="../images/teardowns/IDprinter/heatingLight.jpg" alt="Small Plastic Piece with Two LED Heads at Tip">
-		<p class="label">Light Unit Adjacent to Heating Element</p>
+		<p class="label">Light Unit Adjacent to Print Head</p>
 	</div>
 	<div class="doubleRowImage">
 		<img src="../images/teardowns/IDprinter/heatingLightExposed.jpg" alt="Two LEDs Laid in Plastic with Wires Leading Out From Each Terminal">
-		<p class="label">LEDs Exposed in Heating Element Light Unit</p>
+		<p class="label">LEDs Exposed in Light Unit</p>
 	</div>
 	<p></p>
 	<div class="doubleRowImage">
@@ -230,10 +233,10 @@
 	<p class="label">Unremovable Pieces from Printer Mechanism</p>
 
 	<img src="../images/teardowns/IDprinter/heatingElementExploded.jpg" alt="Metal Cover Removed from Heating Element Revealing Copper Tone PCB with Traces and Vias" class="center">
-	<p class="label">Heating Element PCB</p>
+	<p class="label">Print Head PCB</p>
 
-	<video controls="controls" name="Testing Lever Arm Action" src="../images/teardowns/IDprinter/armAction.mp4" class="center"></video>
-	<p class="label">Testing Lever Arm Action</p>
+	<video controls="controls" name="Testing Print Head Unlock Lever" src="../images/teardowns/IDprinter/armAction.mp4" class="center"></video>
+	<p class="label">Testing Print Head Unlock Lever</p>
 </section>
 <hr>
 <section>
