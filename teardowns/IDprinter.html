@@ -49,8 +49,10 @@
 <hr>
 <section>
 	<h3>Status Indicator Lights</h3>
+	<p>&emsp;&emsp;The status indicator lights located on the front cover of the printer are used to communicate basic status updates to the user. The adjacent blue panel button also allows the user to execute some basic functions such as clearing errors (indicated by the status lights), initiate the cleaning process, or initiate a test print.</p>
 	<img src="../images/teardowns/IDprinter/exteriorLights.jpg" alt="Green, Yellow, Red LEDs for Different Printer States" class="center">
 	<p class="label">Exterior View</p>
+	<p>&emsp;&emsp;Examining the simple one-sided PCB which holds the status indicator lights and panel button, it's clear that all the computation for these processes is directed off to a separate board to which the wires leaving the PCB are directed. Looking at the traces, it's interesting to note that the resistor only appears to be used for the green LED. Maybe the green LED has a substantially different forward voltage (voltage required to light the LED when current travels forward through the diode), than either the yellow or red LED. In addition to labelling each component, the polarity of the LEDs is labelled on the PCB to ensure proper installation where "A" stands for anode and "K" stands for cathode. I'm not sure what the purpose of the missing component labeled "CT1" would be. Possibly that component was used for a different customization of the printer and CT may have stood for "connection" or "common terminal".</p>
 	<div class="doubleRowImage">
 		<img src="../images/teardowns/IDprinter/lightPCBback.jpg" alt="Green PCB Backing Mounted Inside Plastic Cover">
 		<p class="label">PCB Back View</p>
