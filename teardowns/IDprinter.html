@@ -65,6 +65,7 @@
 <hr>
 <section>
 	<h3>Main PCBs</h3>
+	<p>&emsp;&emsp;The wires leading off from the status indicator PCB are connected to a large control PCB mounted in the back of the printer.</p>
 	<img src="../images/teardowns/IDprinter/PCBstorageExploded.jpg" alt="Two Large Green PCBs Mounted On Metal Backing" class="center">
 	<p class="label">PCB Storage Under Printer Cover</p>
 	<img src="../images/teardowns/IDprinter/PCBsexploded.jpg" alt="Main and Power PCBs Disassembled from Printer Body" class="center">
@@ -72,6 +73,47 @@
 
 	<img src="../images/teardowns/IDprinter/mainPCBfront.jpg" alt="Large Green PCB with Many ICs and Wire Connector Slots" class="center">
 	<p class="label">Main PCB - Top View</p>
+	<ol type = "1">
+		<li><p>Coldfire MCF5206 Microprocessor (<a href="https://www.nxp.com/docs/en/data-sheet/MCF5206UM.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;Trying to make sense of the over 400 page long datasheet was overwhelming and more than I was willing to slog through, but it provided some basic information of note. The microprocessor has 160 pins including a clock input, i2C compatible Motoral Bus (M-Bus) clock and data pins, two pairs of DUART transferring and receiving pins, interrupt control pins, timer in and out pins, chip select pins, and general purpose input/output (GPIO) pins. Computational information is stored on board in the form of cache and SRAM (static random access memory), and can also be stored off board in the form of DRAM (dynamic random access memory). Given all these capabilities, this part maybe would be more aptly named a microcontroller instead of a microprocessor.</p>
+		</li>
+		<br>
+		<li><p>ISSI IS41C16100 DRAM (<a href="https://pdf1.alldatasheet.com/datasheet-pdf/view/96737/ISSI/IS41C16100-60T.html">datasheet</a>)</p>
+			<p>&emsp;&emsp;The DRAM can contain 16 MBIT (2MB) of information with an accelerated processor cycle access method called EDO Page Mode. Memory access time is an important parameter for memory units such as this one as accessing information from memory takes much longer (more processor cycles) than running tasks on the processor.</p>
+		</li>
+		<br>
+		<li><p>ON Semiconductor HCT574A Octal Shift Registers (<a href="https://www.onsemi.com/pdf/datasheet/mc74hct574a-d.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The three shift registers&mdash;each composed of a series of 8 D-Type Flip-Flops&mdash;can feed a captured value down the cascade of Flip-Flop circuits following a clock signal. The shift registers are potentially used to expand the capability of the GPIO pins on the microprocessor to a number of devices greater than the number of GPIO pins. The shift registers make this possible by carrying in a set of digital (i.e. binary) signals in series to then be read by multiple devices in parallel on different Flip-Flop circuits of the shift register and vice versa when the devices are writing signals to the microprocessor.</p>
+		</li>
+		<br>
+		<li><p>Analog Devices ADM202 CMOS Driver/Receiver (<a href="https://www.mouser.com/datasheet/2/609/ADM202-1503026.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The CMOS driver/receiver can transform a 5V input to a +/-10V output using a switching power supply type circuit.</p>
+		</li>
+		<br>
+		<li><p>Texas Instruments HCT00 Quadruple NAND Gate (<a href="https://www.digchip.com/datasheets/parts/datasheet/477/HCT00-pdf.php">datasheet</a>)</p>
+			<p>&emsp;&emsp;The quadruple NAND gate unit contains four two-input, positive NAND gates presumably using diode logic setups to produce the NAND logic condition.</p>
+		</li>
+		<br>
+		<li><p>Analog Devices AD8403 Digital Potentiometer (<a href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD8400_8402_8403.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The digital potentiometer contains four independent, 256-position, digitally controlled variable resistors.</p>
+		</li>
+		<br>
+		<li><p>ST Microelectronics LM317 Adjustable Voltage Regulator (<a href="https://www.mouser.com/datasheet/2/389/cd00000455-1795522.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The adjustable voltage regulator can be used to produce output voltages between 1.2V and 37V when controlled using a variable resistor, possibly the function of the nearby digital potentiometer.</p>
+		</li>
+		<br>
+		<li><p>ST Microelectronics L293B Push-Pull Four Channel Driver (<a href="https://www.mouser.com/datasheet/2/389/cd00000058-1795356.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The primary function of a driver is to control a high power (high voltage and high current) supply using low power logic signals. "Push-Pull" indicates that a push-pull amplifer circuit is included in this component to raise the output current so that the driver can output high power. The functionality of the push-pull and driver circuits are founded in transistors. For example, one transistor alone could be used as a driver by opening and closing a high power line in response to a control signal. A typical application of a driver is to control motors&mdash;a high power application&mdash;using logic signals coming from a low power microcontroller or some such device. It just so happens that there are exactly four motors in this ID printer. This would lead me to believe that this four channel driver is responsible for driving those four motors.</p>
+		</li>
+		<br>
+		<li><p>ON Semiconductor HC574 Octal Shift Registers (<a href="https://www.onsemi.com/pdf/datasheet/74vhc574-d.pdf">datasheet</a>)</p>
+		</li>
+		<br>
+		<li><p>ON Semiconductor HC573 Octal Transparent Latch(<a href="https://www.onsemi.com/pdf/datasheet/mc74hc573a-d.pdf">datasheet</a>)</p>
+		</li>
+	</ol>
+	<br>
+	<p>&emsp;&emsp;There are some other ICs for which I couldn't read the labels and there are lots of other components on the board like diodes, electrolytica capacitors, and connectors. Many of the ICs are dated using a similar scheme year-week scheme. For example, 0309 at the end of the microprocessor label to indicate the 9th work week of 2003 or the 0308 at the end of the HCT574A components to indicate the 8th week of 2003. Most devices on the board are also made to operate around 5V.</p>
 	<img src="../images/teardowns/IDprinter/mainPCBback.jpg" alt="Many SMT components and One Red Wire Linking Components Across Board" class="center">
 	<p class="label">Main PCB - Bottom View</p>
 	<img src="../images/teardowns/IDprinter/mainPCBcap.jpg" alt="25V 6800uF Electrolytic Capacitor" class="center">
