@@ -71,6 +71,8 @@
 	<img src="../images/teardowns/IDprinter/PCBsexploded.jpg" alt="Main and Power PCBs Disassembled from Printer Body" class="center">
 	<p class="label">Exploded View with Main and Power PCBs</p>
 
+	<img src="../images/teardowns/IDprinter/mainPCBfrontPorts.jpg" alt="Large Green PCB with Many ICs and Wire Connector Slots" class="center">
+	<p class="label">Main PCB - Top View</p>
 	<img src="../images/teardowns/IDprinter/mainPCBfront.jpg" alt="Large Green PCB with Many ICs and Wire Connector Slots" class="center">
 	<p class="label">Main PCB - Top View</p>
 	<ol type = "1">
@@ -82,16 +84,31 @@
 			<p>&emsp;&emsp;The DRAM can contain 16 MBIT (2MB) of information with an accelerated processor cycle access method called EDO Page Mode. Memory access time is an important parameter for memory units such as this one as accessing information from memory takes much longer (more processor cycles) than running tasks on the processor.</p>
 		</li>
 		<br>
-		<li><p>ON Semiconductor HCT574A Octal Shift Registers (<a href="https://www.onsemi.com/pdf/datasheet/mc74hct574a-d.pdf">datasheet</a>)</p>
-			<p>&emsp;&emsp;The three shift registers&mdash;each composed of a series of 8 D-Type Flip-Flops&mdash;can feed a captured value down the cascade of Flip-Flop circuits following a clock signal. The shift registers are potentially used to expand the capability of the GPIO pins on the microprocessor to a number of devices greater than the number of GPIO pins. The shift registers make this possible by carrying in a set of digital (i.e. binary) signals in series to then be read by multiple devices in parallel on different Flip-Flop circuits of the shift register and vice versa when the devices are writing signals to the microprocessor.</p>
+		<li><p>ON Semiconductor HCT574A Octal Register (<a href="https://www.onsemi.com/pdf/datasheet/mc74hct574a-d.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The full name of this component in the datasheet is actually "Octal 3-State Noninverting D Flip-Flop with LSTTL-Compatible Inputs". There's a lot to unpack in that name. "Octal" indicates that the register includes eight "D Flip-Flop" circuits. The D-type flip-flop circuit is a type of circuit using several logic circuits (i.e. AND, OR, NAND, NOR) to store or latch onto a binary value (1 or 0) even when the input changes. Each flip-flop will only take in a new value during the next clock cycle triggered by a clock pin connected to the register. "3-State" indicates that the outputs can be high (1), low (0), or a high impedance state which effectively disables the output from affecting anything downstream (i.e. disconnected from output bus). This special high impedance state is triggered on all flip-flops when the output enable pin on the register is set high. "Non-inverting" means that when data is read in, the same signal is then sent out. An inverting register would flip all of the binary input data, 1s would become 0s and 0s would becomes 1s. "LSTTL" stands for Low Power Schottky Transistor-Transitor Logic and likely some modification was required to make the register compatible with this more advanced lower power transistor-transistor logic (TTL) as compared to previous forms of TTL. TTL&mdash;which includes AND, OR, NAND, and NOR logic&mdash;forms the basic foundations for all computer operations. These conditional logic gates are each composed of a pair of transistors, hence the name "transistor-transistor logic".</p>
 		</li>
 		<br>
-		<li><p>Analog Devices ADM202 CMOS Driver/Receiver (<a href="https://www.mouser.com/datasheet/2/609/ADM202-1503026.pdf">datasheet</a>)</p>
-			<p>&emsp;&emsp;The CMOS driver/receiver can transform a 5V input to a +/-10V output using a switching power supply type circuit.</p>
+		<li><p>Fairchild Semiconductor HC574 Octal Register (<a href="https://www.onsemi.com/pdf/datasheet/74vhc574-d.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The full name for this device is "Octal D-Type Flip-Flop with 3-STATE Outputs". Now that we know what those words mean it's not quite as scary to seem them crop up. Although the name is slightly different, I wasn't able to perceive any functional differences between this register and the previous HCT574 register from the datasheets. Fairchild Semiconductor has since been purchased by ON Semiconductor.</p>
+		</li>
+		<br>
+		<li><p>ON Semiconductor HC573 Octal Transparent Latch(<a href="https://www.onsemi.com/pdf/datasheet/mc74hc573a-d.pdf">datasheet</a>)</p>
+		</li>
+		<br>
+		<li><p>Nexperia 74HC165 PISO Shift Register (<a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT165.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The four shift registers&mdash;each composed of a series of 8 D-Type Flip-Flops&mdash;can feed a captured value down the cascade of Flip-Flop circuits following a clock signal. The shift registers are potentially used to expand the capability of the GPIO pins on the microprocessor to a number of devices greater than the number of GPIO pins. The shift registers make this possible by carrying in a set of digital (i.e. binary) signals in series to then be read by multiple devices in parallel on different Flip-Flop circuits of the shift register and vice versa when the devices are writing signals to the microprocessor. When chip is enabled, data is transferred from shift register to storage register to appear as an output (the shift and storage registers have independent clocks).</p>
 		</li>
 		<br>
 		<li><p>Texas Instruments HCT00 Quadruple NAND Gate (<a href="https://www.digchip.com/datasheets/parts/datasheet/477/HCT00-pdf.php">datasheet</a>)</p>
 			<p>&emsp;&emsp;The quadruple NAND gate unit contains four two-input, positive NAND gates presumably using diode logic setups to produce the NAND logic condition.</p>
+		</li>
+		<br>
+		<li><p>Nexperia 74HCT32D Quadruple OR Gate (<a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT32.pdf">datasheet</a>)</p>
+			
+		</li>
+		<br>
+		<li><p>Texas Instruments LS00 Quadruple NAND Gate (<a href="https://www.ti.com/lit/ds/symlink/sn74ls00.pdf?ts=1624720064502&ref_url=https%253A%252F%252Fen.wikipedia.org%252F">datasheet</a>)</p>
+			
 		</li>
 		<br>
 		<li><p>Analog Devices AD8403 Digital Potentiometer (<a href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD8400_8402_8403.pdf">datasheet</a>)</p>
@@ -102,14 +119,28 @@
 			<p>&emsp;&emsp;The adjustable voltage regulator can be used to produce output voltages between 1.2V and 37V when controlled using a variable resistor, possibly the function of the nearby digital potentiometer.</p>
 		</li>
 		<br>
+		<li><p>Analog Devices ADM202 CMOS Driver/Receiver (<a href="https://www.mouser.com/datasheet/2/609/ADM202-1503026.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The CMOS driver/receiver can transform a 5V input to a +/-10V output using a switching power supply type circuit. Given the rectangular body, parallel rows of pins mounted using through hole technology (THT) this IC can be described as a Dual In-line Package (DIP). I'm not sure why, but the name DIP somehow sounds much more friendly than IC.</p>
+		</li>
+		<br>
 		<li><p>ST Microelectronics L293B Push-Pull Four Channel Driver (<a href="https://www.mouser.com/datasheet/2/389/cd00000058-1795356.pdf">datasheet</a>)</p>
 			<p>&emsp;&emsp;The primary function of a driver is to control a high power (high voltage and high current) supply using low power logic signals. "Push-Pull" indicates that a push-pull amplifer circuit is included in this component to raise the output current so that the driver can output high power. The functionality of the push-pull and driver circuits are founded in transistors. For example, one transistor alone could be used as a driver by opening and closing a high power line in response to a control signal. A typical application of a driver is to control motors&mdash;a high power application&mdash;using logic signals coming from a low power microcontroller or some such device. It just so happens that there are exactly four motors in this ID printer. This would lead me to believe that this four channel driver is responsible for driving those four motors.</p>
 		</li>
 		<br>
-		<li><p>ON Semiconductor HC574 Octal Shift Registers (<a href="https://www.onsemi.com/pdf/datasheet/74vhc574-d.pdf">datasheet</a>)</p>
+		<li><p>Texas Instruments LM339 Quad Differential Comparator (<a href="https://www.ti.com/lit/ds/symlink/lm339.pdf?ts=1624583768128&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FLM339">datasheet</a>)</p>
+			
 		</li>
 		<br>
-		<li><p>ON Semiconductor HC573 Octal Transparent Latch(<a href="https://www.onsemi.com/pdf/datasheet/mc74hc573a-d.pdf">datasheet</a>)</p>
+		<li><p>Nexperia 74HC04D Hex Inverter (<a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf">datasheet</a>)</p>
+			
+		</li>
+		<br>
+		<li><p>Fairchild (ON-owned) 74VHCU04 Hex Inverter (<a href="https://www.mouser.com/datasheet/2/149/74VHCU04-105448.pdf">datasheet</a>)</p>
+			
+		</li>
+		<br>
+		<li><p>Omron Relay (<a href="https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5le.pdf">datasheet</a>)</p>
+			
 		</li>
 	</ol>
 	<br>
