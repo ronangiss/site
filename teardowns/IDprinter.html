@@ -64,13 +64,17 @@
 </section>
 <hr>
 <section>
-	<h3>Main Control PCB</h3>
-	<p>&emsp;&emsp;The wires leading off from the status indicator PCB are connected to a large control PCB mounted in the back of the printer.</p>
+	<h3>Large PCBs</h3>
+	<p>&emsp;&emsp;Behind the back cover of the ID printer lies two large PCBs, each packed with components. The larger main board controls the printer action as a whole while the smaller side board controls the magnetic encoding capability of the printer. Wires leading from different devices and satellite PCBs (including the magnetic encoding PCB) all lead to the main control PCB to receive instruction or provide information collected from sensors.</p>
 	<img src="../images/teardowns/IDprinter/PCBstorageExploded.jpg" alt="Two Large Green PCBs Mounted On Metal Backing" class="center">
 	<p class="label">PCB Storage Under Printer Cover</p>
+	<p>&emsp;&emsp;Beneath the printer body lies another large PCB storing the power distribution board for the printer. This board takes in power from the outlet and converts it into a form that can be managed by the main control board before it is further manipulated into other forms to be distributed across different electrical components in the printer.</p>
 	<img src="../images/teardowns/IDprinter/PCBsexploded.jpg" alt="Main and Power PCBs Disassembled from Printer Body" class="center">
 	<p class="label">Exploded View with Main and Power PCBs</p>
-
+</section>
+<hr>
+<section>
+	<h3>Main Control PCB</h3>
 	<img src="../images/teardowns/IDprinter/mainPCBfrontPorts.jpg" alt="Large Green PCB with Many ICs and Wire Connector Slots" class="center">
 	<p class="label">Main PCB - Top View (Ports Labelled)</p>
 	<img src="../images/teardowns/IDprinter/mainPCBfront.jpg" alt="Large Green PCB with Many ICs and Wire Connector Slots" class="center">
@@ -158,6 +162,7 @@
 	<p class="label">Closeup of Oscillator</p>
 	<p>&emsp;&emsp;The label on the oscillator is easy to read and fairly informative. The oscillator has model number FOX147-20 and resonates at a frequency of 14.7456 MHz. What they don't tell you on the label but that you can find on the <a href="https://www.datasheets360.com/pdf/-1875265506809640198">datasheet</a> is that this oscillator is produced by FOX Standard Crystals and is a parallel resonator with a load capacitance of 20pF. This load capacitance is important to consider when adding an oscillator to the circuit as its interaction with other capacitances in the circuit will impact the performance of the oscillator (in ways I know not how to explain).</p>
 </section>
+<hr>
 <section>
 	<h3>Side PCB - for Magnetic Encoding</h3>
 	<img src="../images/teardowns/IDprinter/sidePCBfront.jpg" alt="Rectangular Green PCB with Many ICs and Transistors" class="center">
