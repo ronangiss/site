@@ -64,7 +64,7 @@
 </section>
 <hr>
 <section>
-	<h3>Main PCBs</h3>
+	<h3>Main Control PCB</h3>
 	<p>&emsp;&emsp;The wires leading off from the status indicator PCB are connected to a large control PCB mounted in the back of the printer.</p>
 	<img src="../images/teardowns/IDprinter/PCBstorageExploded.jpg" alt="Two Large Green PCBs Mounted On Metal Backing" class="center">
 	<p class="label">PCB Storage Under Printer Cover</p>
@@ -72,9 +72,9 @@
 	<p class="label">Exploded View with Main and Power PCBs</p>
 
 	<img src="../images/teardowns/IDprinter/mainPCBfrontPorts.jpg" alt="Large Green PCB with Many ICs and Wire Connector Slots" class="center">
-	<p class="label">Main PCB - Top View</p>
+	<p class="label">Main PCB - Top View (Ports Labelled)</p>
 	<img src="../images/teardowns/IDprinter/mainPCBfront.jpg" alt="Large Green PCB with Many ICs and Wire Connector Slots" class="center">
-	<p class="label">Main PCB - Top View</p>
+	<p class="label">Main PCB - Top View (Components Labelled)</p>
 	<ol type = "1">
 		<li><p>Coldfire MCF5206 Microprocessor (<a href="https://www.nxp.com/docs/en/data-sheet/MCF5206UM.pdf">datasheet</a>)</p>
 			<p>&emsp;&emsp;Trying to make sense of the over 400 page long datasheet was overwhelming and more than I was willing to slog through, but it provided some basic information of note. The microprocessor has 160 pins including a clock input, i2C compatible Motoral Bus (M-Bus) clock and data pins, two pairs of DUART transferring and receiving pins, interrupt control pins, timer in and out pins, chip select pins, and general purpose input/output (GPIO) pins. Computational information is stored on board in the form of cache and SRAM (static random access memory), and can also be stored off board in the form of DRAM (dynamic random access memory). Given all these capabilities, this part maybe would be more aptly named a microcontroller instead of a microprocessor.</p>
@@ -89,62 +89,65 @@
 		</li>
 		<br>
 		<li><p>Fairchild Semiconductor HC574 Octal Register (<a href="https://www.onsemi.com/pdf/datasheet/74vhc574-d.pdf">datasheet</a>)</p>
-			<p>&emsp;&emsp;The full name for this device is "Octal D-Type Flip-Flop with 3-STATE Outputs". Now that we know what those words mean it's not quite as scary to seem them crop up. Although the name is slightly different, I wasn't able to perceive any functional differences between this register and the previous HCT574 register from the datasheets. Fairchild Semiconductor has since been purchased by ON Semiconductor.</p>
+			<p>&emsp;&emsp;The full name for this component is "Octal D-Type Flip-Flop with 3-STATE Outputs". Now that we know what those words mean it's not quite as scary to seem them crop up. As a reminder, since the register contains eight flip-flop circuits, it can store "eight bits" or "one byte" of information. Although the name is slightly different, I wasn't able to perceive any functional differences between this register and the previous HCT574 register from the datasheets. Fairchild Semiconductor has since been purchased by ON Semiconductor.</p>
 		</li>
 		<br>
-		<li><p>ON Semiconductor HC573 Octal Transparent Latch(<a href="https://www.onsemi.com/pdf/datasheet/mc74hc573a-d.pdf">datasheet</a>)</p>
+		<li><p>ON Semiconductor HC573 Octal Transparent Latch Register(<a href="https://www.onsemi.com/pdf/datasheet/mc74hc573a-d.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;The full name for this component is "Octal 3-State Noninverting Transparent Latch". This name sounds fairly familiar with the exception of "transparent latch". As with the previous registers, this register latches onto values to store them. However, instead of taking in new values at the rising edge of the clock signal (as it moves from low to high) this register takes in new values whenever the latch enable pin is set to high. In effect, if the latch enable pin is held high then the latches appear transparent to the incoming data. In other words, the input will move right through the latch and change the value of the output. This register is otherwise the same in all other respects to the previous registers.</p>
 		</li>
 		<br>
 		<li><p>Nexperia 74HC165 PISO Shift Register (<a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT165.pdf">datasheet</a>)</p>
-			<p>&emsp;&emsp;The four shift registers&mdash;each composed of a series of 8 D-Type Flip-Flops&mdash;can feed a captured value down the cascade of Flip-Flop circuits following a clock signal. The shift registers are potentially used to expand the capability of the GPIO pins on the microprocessor to a number of devices greater than the number of GPIO pins. The shift registers make this possible by carrying in a set of digital (i.e. binary) signals in series to then be read by multiple devices in parallel on different Flip-Flop circuits of the shift register and vice versa when the devices are writing signals to the microprocessor. When chip is enabled, data is transferred from shift register to storage register to appear as an output (the shift and storage registers have independent clocks).</p>
+			<p>&emsp;&emsp;Like the previous registers, this register contains eight D-type flip-flop circuits. However, since this register is what's called a "shift register", each flip-flop circuit is connected to the next so that values can be fed in series down the cascade of flip-flop circuits. This shift register is a parallel in-serial out (PISO) shift register. This means that data can be fed in through parallel lines into each flip-flop circuit and then sent off all together in series on a single line. In addition to PISO, there are also SIPO, SISO, and PIPO shift registers. Despite taking in data in parallel and sending it out in parallel, the registers discussed previously would not be considered PIPO shift registers as they do not shift the data before sending it out again. These PISO shift registers are potentially used to expand the capability of the general purpose input/output (GPIO) pins on the microcontroller to accomodate a greater number of input devices. This is possible since the readings from eight input devices can be recorded in parallel but then sent all together on one line to the microcontroller in series.</p>
 		</li>
 		<br>
 		<li><p>Texas Instruments HCT00 Quadruple NAND Gate (<a href="https://www.digchip.com/datasheets/parts/datasheet/477/HCT00-pdf.php">datasheet</a>)</p>
-			<p>&emsp;&emsp;The quadruple NAND gate unit contains four two-input, positive NAND gates presumably using diode logic setups to produce the NAND logic condition.</p>
+			<p>&emsp;&emsp;As the name would suggest, this component contains four independent, two-input NAND gates. As a reminder, the result of this NAND logic is that a low signal is only output if both inputs are high. In all other cases, the output is high. It's worth noting that these logic conditions can be constructed in ways other than TTL. For example, they can also be built using diodes or even using a combination of diodes and transistors. I would assume that the logic components on this PCB are also constructed using TTL, but I can't say for sure.</p>
 		</li>
 		<br>
 		<li><p>Nexperia 74HCT32D Quadruple OR Gate (<a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT32.pdf">datasheet</a>)</p>
-			
+			<p>&emsp;&emsp;This component contains four independent, two-input OR gates. As a reminder, the result of this OR logic is that a low signal is only output if both inputs are low. In all other cases, the output is high.</p>
 		</li>
 		<br>
 		<li><p>Texas Instruments LS00 Quadruple NAND Gate (<a href="https://www.ti.com/lit/ds/symlink/sn74ls00.pdf?ts=1624720064502&ref_url=https%253A%252F%252Fen.wikipedia.org%252F">datasheet</a>)</p>
-			
+			<p>&emsp;&emsp;Like the HCT00, this component also contains four independent, two-input NAND gates.</p>
 		</li>
 		<br>
 		<li><p>Analog Devices AD8403 Digital Potentiometer (<a href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD8400_8402_8403.pdf">datasheet</a>)</p>
-			<p>&emsp;&emsp;The digital potentiometer contains four independent, 256-position, digitally controlled variable resistors.</p>
+			<p>&emsp;&emsp;When I think of potentiometers, I typically imagine a knob connected to a component whose resistance varies as I twist the knob. However, this potentiometer is digital instead of mechanical like the knob. The variable resistance of the digital potentiometer is controlled by mapping a number code sent in binary through serial input to a resistance level. This component contains four independent, 256-position, digital potentiometers.</p>
 		</li>
 		<br>
 		<li><p>ST Microelectronics LM317 Adjustable Voltage Regulator (<a href="https://www.mouser.com/datasheet/2/389/cd00000455-1795522.pdf">datasheet</a>)</p>
-			<p>&emsp;&emsp;The adjustable voltage regulator can be used to produce output voltages between 1.2V and 37V when controlled using a variable resistor, possibly the function of the nearby digital potentiometer.</p>
+			<p>&emsp;&emsp;The adjustable voltage regulator can be used to produce output voltages between 1.2V and 37V when controlled using a variable resistor. Given the proximity of the digital potentiometers it seems possible that the digital potentiometers are used to control the output voltage of the voltage regulator. However, the proximity of other components related to driving the motors (of which there are four) in the printer would seem to indicate that the digital potentiometers (of which there are also four) are involved in driving the motors. The motors require 18V while the PCB hosting these control components is mostly running at 5V, seeming to indicate that the voltage regulator is somehow also involved in the motor operation to step-up the voltage for them. Why then is there only one voltage regulator and why isn't the step-up from 5V to 18V set with a fixed resistor attached to the voltage regulator? One potential explanation is that only one motor is controlled at a time and its speed is controlled by adjusting the voltage supplied to the motor.</p>
 		</li>
 		<br>
 		<li><p>Analog Devices ADM202 CMOS Driver/Receiver (<a href="https://www.mouser.com/datasheet/2/609/ADM202-1503026.pdf">datasheet</a>)</p>
-			<p>&emsp;&emsp;The CMOS driver/receiver can transform a 5V input to a +/-10V output using a switching power supply type circuit. Given the rectangular body, parallel rows of pins mounted using through hole technology (THT) this IC can be described as a Dual In-line Package (DIP). I'm not sure why, but the name DIP somehow sounds much more friendly than IC.</p>
+			<p>&emsp;&emsp;The CMOS driver/receiver can transform a 5V input to a +/-10V output using a switching power supply type circuit. Unlike the tight surface mount appearance of many of the other ICs on this board, the through hole mounting of this component and its thicker body make it stand out along with a few other similarly shaped boards. Such a board with a rectangular body and parallel rows of pins on either side is often described as a Dual In-line Package (DIP). I'm not completely sure why, but the name DIP somehow sounds much more friendly and inviting than IC. Maybe it's because you can say it without having to spell it out.</p>
 		</li>
 		<br>
 		<li><p>ST Microelectronics L293B Push-Pull Four Channel Driver (<a href="https://www.mouser.com/datasheet/2/389/cd00000058-1795356.pdf">datasheet</a>)</p>
-			<p>&emsp;&emsp;The primary function of a driver is to control a high power (high voltage and high current) supply using low power logic signals. "Push-Pull" indicates that a push-pull amplifer circuit is included in this component to raise the output current so that the driver can output high power. The functionality of the push-pull and driver circuits are founded in transistors. For example, one transistor alone could be used as a driver by opening and closing a high power line in response to a control signal. A typical application of a driver is to control motors&mdash;a high power application&mdash;using logic signals coming from a low power microcontroller or some such device. It just so happens that there are exactly four motors in this ID printer. This would lead me to believe that this four channel driver is responsible for driving those four motors.</p>
+			<p>&emsp;&emsp;The primary function of a driver is to control a high power (high voltage and high current) supply using low power logic signals. "Push-Pull" indicates that a push-pull amplifer circuit is included in this component to raise the output current so that the driver can output high power. The functionality of the push-pull and driver circuits are founded in transistors. For example, one transistor alone could be used as a driver by opening and closing a high power line in response to a control signal. A typical application of a driver is to drive motors&mdash;a high power application&mdash;using logic signals coming from a low power microcontroller or some such device. As there are four motors in the printer, it would seem likely that this four channel driver is used to drive the motors. The driver can drive the motors forward, backwards, or not at all.</p>
 		</li>
 		<br>
 		<li><p>Texas Instruments LM339 Quad Differential Comparator (<a href="https://www.ti.com/lit/ds/symlink/lm339.pdf?ts=1624583768128&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FLM339">datasheet</a>)</p>
-			
+			<p>&emsp;&emsp;As the name would suggest, this component contains four comparators&mdash;each of which is used to compare two input voltages. Typically, voltage comparators are used to detect a digital signal such as one being emitted by a sensor. When the voltage coming from the sensor is greater than some set reference voltage, then the comparator outputs a positive voltage. On the other hand, when the voltage coming from the sensor is less than the reference voltage, then the comparator outputs a negative voltage. And finally when the two input voltages are approximately equal, then the comparator outputs zero voltage. As there are a number of sensors in the printer, it's possible that the purpose of the comparator is indeed for sensor state detection. One final interesting note from the datasheet of this component is that it falls under a class of similar quad differential comparators with the LM339 requiring the most limited operation temperature range of 0-70 degrees Celsius. This seems like a fair choice for the designers of this product to make as the office environment in which these ID printers are used will always stay well within that temperature range.</p>
 		</li>
 		<br>
 		<li><p>Nexperia 74HC04D Hex Inverter (<a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf">datasheet</a>)</p>
-			
+			<p>&emsp;&emsp;Of all the components mentioned so far, the hex inverter is one of the simplest. As one could easily derive from the name, this component contains six independent inverter circuits, each having an input and output. The output is simply the inversion of the input signal. Put in a high (1) and get out a low (0), and vice versa. As with many circuit components, the inverting operation is also founded in transistors. It's interesting to note how the model numbers of several of the logic ICs begins with 74. This is because these chips are all a part of the 74 logic chip series.</p>
 		</li>
 		<br>
-		<li><p>Fairchild (ON-owned) 74VHCU04 Hex Inverter (<a href="https://www.mouser.com/datasheet/2/149/74VHCU04-105448.pdf">datasheet</a>)</p>
-			
+		<li><p>Fairchild Semiconductor 74VHCU04 Hex Inverter (<a href="https://www.mouser.com/datasheet/2/149/74VHCU04-105448.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp;As with the 74HC04D, this component also contains six inverter circuits. The board pinouts are identical, but there's likely some difference between the two hex inverters that's escaping my analysis. </p>
 		</li>
 		<br>
-		<li><p>Omron Relay (<a href="https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5le.pdf">datasheet</a>)</p>
-			
+		<li><p>Omron G5LE Power Relay (<a href="https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5le.pdf">datasheet</a>)</p>
+			<p>&emsp;&emsp; Like drivers, relays are also used to control the opening and closing of high power lines with low power inputs. However, in relays the low and high power lines are electrically isolated as opposed to being connected through a transistor. Therefore, relays are used when high power spikes are more likely which could damage the control circuit if the switch was not electrically isolated. Given it's large size, I would assume that this relay uses a mechanical switch to isolate the two circuits. For a mechanical relay, the low power line can be used to drive an electromagnet causing a nearby metallic lever to rotate and connect the high power circuit. There are also solid state relays which rely on a light and light sensor to electrically isolate the circuits. As this relay is a "one-pole" relay, it only commands one high power line. Given that the heater likely requires high power and the heater port is adjacent to the relay, I would assume that this relay is used to control the power supply to the heater.</p>
 		</li>
 	</ol>
 	<br>
-	<p>&emsp;&emsp;There are some other ICs for which I couldn't read the labels and there are lots of other components on the board like diodes, electrolytica capacitors, and connectors. Many of the ICs are dated using a similar scheme year-week scheme. For example, 0309 at the end of the microprocessor label to indicate the 9th work week of 2003 or the 0308 at the end of the HCT574A components to indicate the 8th week of 2003. Most devices on the board are also made to operate around 5V.</p>
+	<p>&emsp;&emsp;I examined many of the ICs on this board in great depth, but not all of them. For many of the ICs, I either couldn't read the label or find information about the product by looking up the model number on the label. Furthermore, there were many other components besides the ICs which I haven't even mentioned. So before I conclude the discussion of the main PCB, I'd like to mention a few important components on this board. There are also several spots on the board that don't seem to be in use. These locations are possibly reserved for components used in other configurations of the printer. For example, there is a large MOSFET type spot with solder pads tinned, but empty. Additionally, a few of the ports weren't in use.</p>
+	<p>&emsp;&emsp;A large rectangular chip lies just below the Coldfire microcontroller with fine pitch connectors. Given these physical parameters and its proximity to the microcontroller, I would guess it's some sort of memory unit. At the bottom right corner of the board lies a long DIP with a heat sink attached on top. I'm not sure what this component does, but given how hot it must be getting maybe it's some sort of computational unit or driver for the heater. To the right of the DIP with heat sink is another voltage regulator looking component (could also be a MOSFET). If it's a voltage regulator, maybe it's used to step up the voltage for the heater. To the left of the DIP with heat sink is a large capacitor (25V 6800uF). Possibly this capacitor is used in conjunction with the heater to decouple its power draw from that of the main control board. In other words, if the heater demanded a high power draw, the capacitor would protect the control board from otherwise shutting down from the power surge. Above and below the motor driver are four diodes. Given their proximity to the motor driver, I would expect that one diode is connecting to the driving signal for each motor. Given the large inductive load of the motors, they will cause a power surge when stopped as a result of the back EMF generated by the motor coils. To prevent this power surge from damaging the transistors in the driver, the diodes provide an alternate path for the current to travel and dissipate. There are also a pair of crystal oscillators used to track time. Why there are a pair instead of just one, I cannot say.</p>
+	<p>&emsp;&emsp;For the components who's labels I could read and interpret, many of them used a similar labelling scheme. Typically, the model number was printed on one line and a manufacturing code printed on the line beneath it. The manufacturing code usually consisted of some letters&mdash;likely the location of a manufacturing facility&mdash;followed by some numbers&mdash;likely the date that product was manufactured. This date was often reported using a year-week scheme. For example, 0309 at the end of the microprocessor label to indicate the 9th work week of 2003.</p>
 	<img src="../images/teardowns/IDprinter/mainPCBback.jpg" alt="Many SMT components and One Red Wire Linking Components Across Board" class="center">
 	<p class="label">Main PCB - Bottom View</p>
 	<img src="../images/teardowns/IDprinter/mainPCBcap.jpg" alt="25V 6800uF Electrolytic Capacitor" class="center">
@@ -153,7 +156,10 @@
 	<p class="label">Closeup of Processor</p>
 	<img src="../images/teardowns/IDprinter/mainPCBosc.jpg" alt="Labelled Metal Oscillator Cover" class="center">
 	<p class="label">Closeup of Oscillator</p>
-
+	<p>&emsp;&emsp;The label on the oscillator is easy to read and fairly informative. The oscillator has model number FOX147-20 and resonates at a frequency of 14.7456 MHz. What they don't tell you on the label but that you can find on the <a href="https://www.datasheets360.com/pdf/-1875265506809640198">datasheet</a> is that this oscillator is produced by FOX Standard Crystals and is a parallel resonator with a load capacitance of 20pF. This load capacitance is important to consider when adding an oscillator to the circuit as its interaction with other capacitances in the circuit will impact the performance of the oscillator (in ways I know not how to explain).</p>
+</section>
+<section>
+	<h3>Side PCB - for Magnetic Encoding</h3>
 	<img src="../images/teardowns/IDprinter/sidePCBfront.jpg" alt="Rectangular Green PCB with Many ICs and Transistors" class="center">
 	<p class="label">Side PCB - Top View</p>
 	<img src="../images/teardowns/IDprinter/sidePCBback.jpg" alt="Many SMT components and Vias Across Board" class="center">
