@@ -262,7 +262,7 @@
 <hr>
 <section>
 	<h3>Entry Unit</h3>
-	<p>&emsp;&emsp;The entry unit is used to control the thickness of cards permitted to enter the machine. Based on its relatively simple design which only obstructs cards that are too thick from passing, it seems like cards thinner than the desired setting would still be allowed to pass. Since this unit contains no sensor to communicate to the rest of the printer what thickness card is being inserted, it seems unlikely that the rest of the printer would be adjusting its process in any way to account for cards of different sizes. Instead, it's more likely the entry unit serves to reduce the likelihood of multiple cards being sent into the printer simulatenously which could generate unpredictable issues within the printer that might jam the system.</p>
+	<p>&emsp;&emsp;The entry unit is used to bring blank ID cards into the machine and has a relatively simple design. Cards are stacked magnetic strip down in the card holder hopper transparent plastic piece. To bring in a card, the motor located at the bottom of the component drives a timing belt causing the roller located at the bottom of the card stack to begin rotating. Due to the somewhat adhesive nature of the rubber used for the roller this causes a card to be pulled into the machine through a set of cleaning bristles and card height lever arm. As the card height lever arm is rotated, more or less space can be provided for the card to travel through. This design isn't foolproof as it only obstructs cards that are too thick or a stack of multiple cards from passing, cards thinner than the desired setting would still be allowed to pass. Since this unit contains no sensor to communicate to the rest of the printer what thickness card is being inserted, it seems unlikely that the rest of the printer would be adjusting its process in any way to account for cards of different sizes. Instead, it's more likely the card height lever arm serves to reduce the likelihood of multiple cards being sent into the printer simulatenously which might jam the system.</p>
 	<div class="doubleRowImage">
 		<img src="../images/teardowns/IDprinter/entryUnitFront.jpg" alt="Entrance Gap Covered in Bristles and with Depth Adjusted by Cam Mechanism">
 		<p class="label">Entry Unit - Back View</p>
@@ -272,7 +272,7 @@
 		<p class="label">Entry Unit - Side View</p>
 	</div>
 	<img src="../images/teardowns/IDprinter/entryUnitSlots.jpg" alt="Small Circular Holes at Different Angles to Set Accepted Card Thickness" class="center">
-	<p class="label">Entry Unit Card Width Adjustment Slots</p>
+	<p class="label">Entry Unit Card Height Adjustment Slots</p>
 	<div class="doubleRowImage">
 		<img src="../images/teardowns/IDprinter/entryTight.jpg" alt="Cam Mechanism Rotated Fully Downward">
 		<p class="label">Setting for Thinnest Card</p>
@@ -287,13 +287,15 @@
 <hr>
 <section>
 	<h3>Rollers</h3>
+	<p>&emsp;&emsp;Many rollers exist throughout the printer with their fundamental purpose being to drive the ID card through the printer. Powering the DC gear motor at the entry unit, rotates the entry roller bringing the card into the system. After that, the card position in the printer is continuosly monitored by each step of the stepper motor which actuates a timing belt system covering the length of the printer. There are also a series of passive rollers which serve additional functions in the printer such as the cleaning rollers below. The upper cleaning roller is wrapped in typical commerical lint roller tape to pick up dust off the card before it has the opportunity to carry these contaminants deeper into the printer.</p>
 	<img src="../images/teardowns/IDprinter/blueRollers.jpg" alt="Lint Roller and Rubber Roller Secured in Blue Plastic Piece" class="center">
 	<p class="label">Card Cleaning Rollers</p>
 	<img src="../images/teardowns/IDprinter/blueRollersSpring.jpg" alt="Torsion Spring with Unique Ends to Secure Spring and Press it Against Shaft End" class="center">
 	<p class="label">Closeup of Torsion Spring Securing Lint Roller</p>
-	<p>&emsp;&emsp;With just the torsion spring holding the lint roller in place, it can be easily removed and replaced as it accumulates dust over the course of printer operation. It's interesting to note that in addition to the card cleaning rollers, the manual states that the printer also comes with cleaning cards. The cleaning cards are supposed to be fed through the printer when the printer indicates that cleaning is required by flashing the orange and red status indicator lights. The cleaning cards are pre-saturated with cleaning fluid to wipe clean the interior surfaces of the printer feed system including the print head, magnetic encoding station, and rollers.</p>
+	<p>&emsp;&emsp;With just the torsion spring holding the lint roller in place, it can be easily removed and replaced as it accumulates dust over the course of printer operation. It's interesting to note that in addition to the card cleaning rollers, the manual states that the printer also comes with cleaning cards. The cleaning cards are supposed to be fed through the printer when the printer indicates that cleaning is required by flashing the orange and red status indicator lights. The cleaning cards are pre-saturated with cleaning fluid (likely isopropanol) to wipe clean the interior surfaces of the printer feed system including the print head, magnetic encoding station, and rollers.</p>
 	<img src="../images/teardowns/IDprinter/exitRollers.jpg" alt="Small Rollers Held in Place by Torsion Springs" class="center">
 	<p class="label">Rollers Leading Up to Card Exit</p>
+	<p>&emsp;&emsp;At the exit of the print head lies a pair of rollers mounted side by side, each with a torsional spring forcing the roller down onto the passing card. These rollers are used to ensure the card makes good contact with the magnetic encoding unit for best encoding performance.</p>
 	<img src="../images/teardowns/IDprinter/rollers.jpg" alt="Most Rollers in Printer Laid Out in Series According to Order" class="center">
 	<p class="label">Rollers Removed</p>
 </section>
