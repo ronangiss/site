@@ -302,8 +302,9 @@
 <hr>
 <section>
 	<h3>Disassembling Printer Body</h3>
+	<p>&emsp;&emsp;Up until the printer body, the teardown had been accomplished solely using a small phillips screwdriver. To remove the metal backing which protected the mechanical drive system of the printer and where the main control PCB and magnetic encoding PCB had been mounted, a special hex star screwdriver head was required. After removing the backing plates and bolts connecting either half of the printer body, I was able to open up the printer body completely and expose all the printer components.</p>
 	<img src="../images/teardowns/IDprinter/mechanismCover.jpg" alt="Stainless Steel Cover with Mount Outcroppings and Exposed Wiring" class="center">
-	<p class="label">Metal Cover for Protecting Mechanical System and Mounting Main PCBs</p>
+	<p class="label">Metal Cover Requiring Special Screwdriver for Disassembly</p>
 	<img src="../images/teardowns/IDprinter/hexStarScrewdriver.jpg" alt="Small Brown Hexagon Star Screwdriver Held in Fingers" class="center">
 	<p class="label">Special Hex Star Screwdriver Head Required for Interior Disassembly</p>
 	<img src="../images/teardowns/IDprinter/fullExploded.jpg" alt="Main, Power PCBs, and Body Dissassembled" class="center">
@@ -312,12 +313,14 @@
 <hr>
 <section>
 	<h3>Printer Body Front Half</h3>
+	<p>&emsp;&emsp;For the most part, the front half of the printer body simply contained complementary mounts for the components of the back half of the printer body such as bearing mounts for each roller shaft. Nonetheless, the front half of the printer body also contained a card entry detection sensor and it extended the range of the stepper motor timing belt system to cover the rollers near the printer exit.</p>
 	<img src="../images/teardowns/IDprinter/frontGears.jpg" alt="Two Belts Connecting Gear Train Under Small Plastic Cover" class="center">
 	<p class="label">Exposed Timing Belt System on Printer Front</p>
 	<img src="../images/teardowns/IDprinter/frontHalfFront.jpg" alt="Timing Belt Holding Together Gear Train Connecting Rollers" class="center">
 	<p class="label">Printer Body Front Half - Front View</p>
 	<img src="../images/teardowns/IDprinter/frontHalfBack.jpg" alt="Shaft and Roller Ends Along with Electronic Card Sensing Component" class="center">
 	<p class="label">Printer Body Front Half - Back View</p>
+	<p>&emsp;&emsp;I'm not sure what the purpose is of the spring loaded metal plate on the backing of the front half of the printer body. It's located at the magnetic encoding station and a card passing over its top edge would cause the springs to compress generating force upwards on the card. Therefore, maybe it acts in conjunction with the pair of torsional spring loaded passive rollers above to keep pressure on the card as it is magnetically encoded.</p>
 	<img src="../images/teardowns/IDprinter/frontHalfFrontExploded.jpg" alt="Timing Belt, Gears, Shafts, Rollers, and Card Entry Sensor" class="center">
 	<p class="label">Printer Body Front Half - Front Exploded View</p>
 	<img src="../images/teardowns/IDprinter/frontHalfBackExploded.jpg" alt="Bearings Tucked into Plastic and Spring Loaded Metal Plate Removed" class="center">
@@ -325,20 +328,37 @@
 	<img src="../images/teardowns/IDprinter/entryDetection.jpg" alt="Small Black Sensor Tucked in Card Roller Route" class="center">
 	<p class="label">Card Entry Detection</p>
 	<img src="../images/teardowns/IDprinter/entryDetector.jpg" alt="Card Detection Sensor with Four Exiting Wires" class="center">
-	<p class="label">Card Entry Detection Electronics Unit</p>
+	<p class="label">Card Entry Detection Sensor</p>
+	<p>&emsp;&emsp;The card entry detection sensor is a beam-interrupt type optical sensor known as a slotted optical switch. Although I couldn't find the datasheet for this exact product, I found one for a similar looking product <a href="https://www.ttelectronics.com/TTElectronics/media/ProductFiles/Optoelectronics/Datasheets/OPB830_OPB840.pdf">here</a>. When an ID card passes between the two terminals of the sensor, it blocks the light shining from the top terminal (labeled E for emitter) from reaching the phototransistor in the bottom terminal (labeled S for sensor), causing the sensor output to change as the phototransistor switches either open or closed. When the signal coming from the phototransistor changes, it's change is detected by a voltage comparator. The digital output from the voltage comparator is then sent to the microcontroller communicating that a card has been detected at the printer entry. This solution to card detection would be fairly easy to implement in the design and likely produces consistent card detection results. That is, until someone decides to get tricky and start loading translucent or transparent cards into the printer.</p>
 </section>
 <hr>
 <section>
 	<h3>Printer Body Back Half</h3>
 	<img src="../images/teardowns/IDprinter/mechanism.jpg" alt="Springs, Pulleys, Belts, Gears, Bearings, Linkages, and Shafts on Printer Back Half" class="center">
 	<p class="label">Printer Mechanism</p>
-	<img src="../images/teardowns/IDprinter/opticalEncoder.jpg" alt="Gold Slotted Circular Plate with Attached Light Sensor" class="center">
-	<p class="label">Closeup of Optical Encoder Mechanism</p>
+	<img src="../images/teardowns/IDprinter/mechanismExploded.jpg" alt="Roller Driving System and Heating Element System Components Disassembled from Body Back Half" class="center">
+	<p class="label">Printer Mechanism Exploded View</p>
+	<h4>Introduction</h4>
+	<p>&emsp;&emsp;</p>
+	<h4>Printer Mechanism PCB</h4>
 	<img src="../images/teardowns/IDprinter/mechanismPCBfront.jpg" alt="Connection Points for Motor, Sensors, and Control Signals" class="center">
 	<p class="label">Printer Mechanism PCB - Top View</p>
 	<img src="../images/teardowns/IDprinter/mechanismPCBback.jpg" alt="Simple Green PCB Backing with THT Soldering and Traces" class="center">
 	<p class="label">Printer Mechanism PCB - Bottom View</p>
-
+	<h4>Optical Encoder</h4>
+	<img src="../images/teardowns/IDprinter/opticalEncoder.jpg" alt="Gold Slotted Circular Plate with Attached Light Sensor" class="center">
+	<p class="label">Closeup of Optical Encoder Mechanism</p>
+	<div class="doubleRowImage">
+		<img src="../images/teardowns/IDprinter/opticalEncoderFront.jpg" alt="Gold Disk with Slots Along Circumference and Spring Mounted at Front">
+		<p class="label">Optical Encoder Disk - Front View</p>
+	</div>
+	<div class="doubleRowImage">
+		<img src="../images/teardowns/IDprinter/opticalEncoderBack.jpg" alt="Black Plastic Teardrop Shaped Piece Mounted Concentric with Encoder Disk">
+		<p class="label">Optical Encoder Disk - Back View</p>
+	</div>
+	<img src="../images/teardowns/IDprinter/opticalSensor.jpg" alt="Small PCB with Light Sensors and Wires Leading Offboard" class="center">
+	<p class="label">Optical Encoder Light Sensor</p>
+	<h4>Magnetic Encoder</h4>
 	<img src="../images/teardowns/IDprinter/magneticEncoder.jpg" alt="Metal Sensor Mounted After Roller Exiting Heating Element" class="center">
 	<p class="label">Magnetic Encoder Mounted in Body</p>
 	<div class="doubleRowImage">
@@ -350,18 +370,13 @@
 		<p class="label">Magnetic Encoder - Bottom View</p>
 	</div>
 	<p>&emps;&emps;The magnetic encoder unit contains a read/write head and there must be a nearby or included card sensor. The encoder reads after writing to assure a reliable result. Encoding occurs on all 3 tracks as the card passes over the encoder unit.</p>
-	<img src="../images/teardowns/IDprinter/mechanismExploded.jpg" alt="Roller Driving System and Heating Element System Components Disassembled from Body Back Half" class="center">
-	<p class="label">Printer Mechanism Exploded View</p>
-
-	<img src="../images/teardowns/IDprinter/motor.jpg" alt="18V 4.5N*cm Motor by Buhler" class="center">
-	<p class="label">DC Motor for Roller Rotation</p>
-
+	<h4>Print Head</h4>
 	<img src="../images/teardowns/IDprinter/heatingElement.jpg" alt="Metal Plate Piece with Many Wires Leading In and Labelled 'R-1525'" class="center">
 	<p class="label">Print Head</p>
-
+	<img src="../images/teardowns/IDprinter/heatingElementExploded.jpg" alt="Metal Cover Removed from Heating Element Revealing Copper Tone PCB with Traces and Vias" class="center">
+	<p class="label">Print Head PCB</p>
 	<img src="../images/teardowns/IDprinter/fan.jpg" alt="Small 12V DC Brushless Fan Motor" class="center">
 	<p class="label">Cooling Fan for Print Head</p>
-
 	<div class="doubleRowImage">
 		<img src="../images/teardowns/IDprinter/heatingLight.jpg" alt="Small Plastic Piece with Two LED Heads at Tip">
 		<p class="label">Light Unit Adjacent to Print Head</p>
@@ -370,26 +385,13 @@
 		<img src="../images/teardowns/IDprinter/heatingLightExposed.jpg" alt="Two LEDs Laid in Plastic with Wires Leading Out From Each Terminal">
 		<p class="label">LEDs Exposed in Light Unit</p>
 	</div>
-	<p></p>
-	<div class="doubleRowImage">
-		<img src="../images/teardowns/IDprinter/opticalEncoderFront.jpg" alt="Gold Disk with Slots Along Circumference and Spring Mounted at Front">
-		<p class="label">Optical Encoder Disk - Front View</p>
-	</div>
-	<div class="doubleRowImage">
-		<img src="../images/teardowns/IDprinter/opticalEncoderBack.jpg" alt="Black Plastic Teardrop Shaped Piece Mounted Concentric with Encoder Disk">
-		<p class="label">Optical Encoder Disk - Back View</p>
-	</div>
-	<img src="../images/teardowns/IDprinter/opticalSensor.jpg" alt="Small PCB with Light Sensors and Wires Leading Offboard" class="center">
-	<p class="label">Optical Encoder Light Sensor</p>
-
-	<img src="../images/teardowns/IDprinter/unremovablePieces.jpg" alt="Several Shaft Mounted Disks and Metal Lever Arm Remaining Inside Body" class="center">
-	<p class="label">Unremovable Pieces from Printer Mechanism</p>
-
-	<img src="../images/teardowns/IDprinter/heatingElementExploded.jpg" alt="Metal Cover Removed from Heating Element Revealing Copper Tone PCB with Traces and Vias" class="center">
-	<p class="label">Print Head PCB</p>
-
+	<img src="../images/teardowns/IDprinter/motor.jpg" alt="18V 4.5N*cm Motor by Buhler" class="center">
+	<p class="label">DC Motor for Roller Rotation</p>
 	<video controls="controls" name="Testing Print Head Unlock Lever" src="../images/teardowns/IDprinter/armAction.mp4" class="center"></video>
 	<p class="label">Testing Print Head Unlock Lever</p>
+	<h4>Conclusion</h4>
+	<img src="../images/teardowns/IDprinter/unremovablePieces.jpg" alt="Several Shaft Mounted Disks and Metal Lever Arm Remaining Inside Body" class="center">
+	<p class="label">Unremovable Pieces from Printer Mechanism</p>
 </section>
 <hr>
 <section>
