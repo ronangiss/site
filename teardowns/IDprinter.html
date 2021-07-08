@@ -339,12 +339,16 @@
 	<img src="../images/teardowns/IDprinter/mechanismExploded.jpg" alt="Roller Driving System and Heating Element System Components Disassembled from Body Back Half" class="center">
 	<p class="label">Printer Mechanism Exploded View</p>
 	<h4>Introduction</h4>
-	<p>&emsp;&emsp;</p>
+	<p>&emsp;&emsp;The back half of the printer body contained the devices used in the primary operation of the printer&mdash;print head and magnetic encoder&mdash;and the mechanical assembly to drive those operations. From a mechanical perspective, this was the most exciting piece of the printer. A system of many shafts connected together by a timing belt were driven by a flywheel and stepper motor to drive the ID card through the printer. A belt and pulley system driven by a separate geared DC motor controls the rolling up of the used color ribbon as the print head moved through each layer of color. Yet another geared DC motor drives a cam to rotate the print head up during card travel and down during printing.</p>
+	<p>&emsp;&emsp;In order for the onboard microcontroller to keep track of all these processes to ensure they are executed at appropriate time intervals a number of optical sensors exist across the mechanical assembly. All these sensors are beam interrupt type optical sensors like that used to detect the card first entering the printer. In total, three of these sensors are used to track whether the print head is up or down, whether the print head is latched or unlatched, and how far the color ribbon has unwound.</p>
+	<br>
 	<h4>Printer Mechanism PCB</h4>
+	<p>&emsp;&emsp;The printer mechanism daughter board is a simple PCB with no onboard intelligence. Its function is instead to provide connection points for the many sensors and motors in the mechanical assembly so that information can then be sent back and forth through a compact ribbon cable. As a clear statement of its simplicity, this board is one side (i.e. copper traces are only drawn on the bottom). One sided boards are easier to manufacture, but they can be difficult for the board designer as space to draw traces is more limited. On a board with many components such as this, it is almost unavoidable that some of the traces will have to cross. Instead of using vias though, the designers of this PCB using little jumper wires and resistors in several locations to connect traces across the board. All of the sensor and motor connectors use a JST-type style with an asymmetric shape that only permits the opposing female ends to be inserted in one orientation. This ensures that the sensors and motors are not installed correctly during assembly of the printer.</p>
 	<img src="../images/teardowns/IDprinter/mechanismPCBfront.jpg" alt="Connection Points for Motor, Sensors, and Control Signals" class="center">
 	<p class="label">Printer Mechanism PCB - Top View</p>
 	<img src="../images/teardowns/IDprinter/mechanismPCBback.jpg" alt="Simple Green PCB Backing with THT Soldering and Traces" class="center">
 	<p class="label">Printer Mechanism PCB - Bottom View</p>
+	<br>
 	<h4>Optical Encoder</h4>
 	<img src="../images/teardowns/IDprinter/opticalEncoder.jpg" alt="Gold Slotted Circular Plate with Attached Light Sensor" class="center">
 	<p class="label">Closeup of Optical Encoder Mechanism</p>
@@ -358,6 +362,7 @@
 	</div>
 	<img src="../images/teardowns/IDprinter/opticalSensor.jpg" alt="Small PCB with Light Sensors and Wires Leading Offboard" class="center">
 	<p class="label">Optical Encoder Light Sensor</p>
+	<br>
 	<h4>Magnetic Encoder</h4>
 	<img src="../images/teardowns/IDprinter/magneticEncoder.jpg" alt="Metal Sensor Mounted After Roller Exiting Heating Element" class="center">
 	<p class="label">Magnetic Encoder Mounted in Body</p>
@@ -370,6 +375,7 @@
 		<p class="label">Magnetic Encoder - Bottom View</p>
 	</div>
 	<p>&emps;&emps;The magnetic encoder unit contains a read/write head and there must be a nearby or included card sensor. The encoder reads after writing to assure a reliable result. Encoding occurs on all 3 tracks as the card passes over the encoder unit.</p>
+	<br>
 	<h4>Print Head</h4>
 	<img src="../images/teardowns/IDprinter/heatingElement.jpg" alt="Metal Plate Piece with Many Wires Leading In and Labelled 'R-1525'" class="center">
 	<p class="label">Print Head</p>
@@ -389,6 +395,7 @@
 	<p class="label">DC Motor for Roller Rotation</p>
 	<video controls="controls" name="Testing Print Head Unlock Lever" src="../images/teardowns/IDprinter/armAction.mp4" class="center"></video>
 	<p class="label">Testing Print Head Unlock Lever</p>
+	<br>
 	<h4>Conclusion</h4>
 	<img src="../images/teardowns/IDprinter/unremovablePieces.jpg" alt="Several Shaft Mounted Disks and Metal Lever Arm Remaining Inside Body" class="center">
 	<p class="label">Unremovable Pieces from Printer Mechanism</p>
