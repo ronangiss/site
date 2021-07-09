@@ -329,7 +329,7 @@
 	<p class="label">Card Entry Detection</p>
 	<img src="../images/teardowns/IDprinter/entryDetector.jpg" alt="Card Detection Sensor with Four Exiting Wires" class="center">
 	<p class="label">Card Entry Detection Sensor</p>
-	<p>&emsp;&emsp;The card entry detection sensor is a beam-interrupt type optical sensor known as a slotted optical switch. Although I couldn't find the datasheet for this exact product, I found one for a similar looking product <a href="https://www.ttelectronics.com/TTElectronics/media/ProductFiles/Optoelectronics/Datasheets/OPB830_OPB840.pdf">here</a>. When an ID card passes between the two terminals of the sensor, it blocks the light shining from the top terminal (labeled E for emitter) from reaching the phototransistor in the bottom terminal (labeled S for sensor), causing the sensor output to change as the phototransistor switches either open or closed. When the signal coming from the phototransistor changes, it's change is detected by a voltage comparator. The digital output from the voltage comparator is then sent to the microcontroller communicating that a card has been detected at the printer entry. This solution to card detection would be fairly easy to implement in the design and likely produces consistent card detection results. That is, until someone decides to get tricky and start loading translucent or transparent cards into the printer.</p>
+	<p>&emsp;&emsp;The card entry detection sensor is a LED-phototransistor optical sensor known as a slotted optical switch. It can be thought of as a beam interrupt sensor, but in reality the light emitter produces diffuse light as opposed to a focused laser across its terminals. Although I couldn't find the datasheet for this exact product, I found one for a similar looking product <a href="https://www.ttelectronics.com/TTElectronics/media/ProductFiles/Optoelectronics/Datasheets/OPB830_OPB840.pdf">here</a>. When an ID card passes between the two terminals of the sensor, it blocks the light shining from the LED in the top terminal (labeled E for emitter) from reaching the phototransistor in the bottom terminal (labeled S for sensor), causing the sensor output to change as the phototransistor switches either open or closed. When the signal coming from the phototransistor changes, it's change is detected by a voltage comparator. The digital output from the voltage comparator is then sent to the microcontroller communicating that a card has been detected at the printer entry. This solution to card detection would be fairly easy to implement in the design and likely produces consistent card detection results. That is, until someone decides to get tricky and start loading translucent or transparent cards into the printer.</p>
 </section>
 <hr>
 <section>
@@ -340,7 +340,7 @@
 	<p class="label">Printer Mechanism Exploded View</p>
 	<h4>Introduction</h4>
 	<p>&emsp;&emsp;The back half of the printer body contained the devices used in the primary operation of the printer&mdash;print head and magnetic encoder&mdash;and the mechanical assembly to drive those operations. From a mechanical perspective, this was the most exciting piece of the printer. A system of many shafts connected together by a timing belt were driven by a flywheel and stepper motor to drive the ID card through the printer. A belt and pulley system driven by a separate geared DC motor controls the rolling up of the used color ribbon as the print head moved through each layer of color. Yet another geared DC motor drives a cam to rotate the print head up during card travel and down during printing.</p>
-	<p>&emsp;&emsp;In order for the onboard microcontroller to keep track of all these processes to ensure they are executed at appropriate time intervals a number of optical sensors exist across the mechanical assembly. All these sensors are beam interrupt type optical sensors like that used to detect the card first entering the printer. In total, three of these sensors are used to track whether the print head is up or down, whether the print head is latched or unlatched, and how far the color ribbon has unwound.</p>
+	<p>&emsp;&emsp;In order for the onboard microcontroller to keep track of all these processes to ensure they are executed at appropriate time intervals a number of optical sensors exist across the mechanical assembly. All these sensors are LED-phototransistor optical sensors like that used to detect the card first entering the printer. In total, three of these sensors are used to track whether the print head is up or down, whether the print head is latched or unlatched, and how far the color ribbon has unwound.</p>
 	<br>
 	<h4>Printer Mechanism PCB</h4>
 	<p>&emsp;&emsp;The printer mechanism daughter board is a simple PCB with no onboard intelligence. Its function is instead to provide connection points for the many sensors and motors in the mechanical assembly so that information can then be sent back and forth through a compact ribbon cable. As a clear statement of its simplicity, this board is one side (i.e. copper traces are only drawn on the bottom). One sided boards are easier to manufacture, but they can be difficult for the board designer as space to draw traces is more limited. On a board with many components such as this, it is almost unavoidable that some of the traces will have to cross. Instead of using vias though, the designers of this PCB using little jumper wires and resistors in several locations to connect traces across the board. All of the sensor and motor connectors use a JST-type style with an asymmetric shape that only permits the opposing female ends to be inserted in one orientation. This ensures that the sensors and motors are not installed correctly during assembly of the printer.</p>
@@ -349,7 +349,32 @@
 	<img src="../images/teardowns/IDprinter/mechanismPCBback.jpg" alt="Simple Green PCB Backing with THT Soldering and Traces" class="center">
 	<p class="label">Printer Mechanism PCB - Bottom View</p>
 	<br>
+	<h4>Print Head</h4>
+	<img src="../images/teardowns/IDprinter/heatingElement.jpg" alt="Metal Plate Piece with Many Wires Leading In and Labelled 'R-1525'" class="center">
+	<p class="label">Print Head</p>
+	<img src="../images/teardowns/IDprinter/heatingElementExploded.jpg" alt="Metal Cover Removed from Heating Element Revealing Copper Tone PCB with Traces and Vias" class="center">
+	<p class="label">Print Head PCB</p>
+	<img src="../images/teardowns/IDprinter/fan.jpg" alt="Small 12V DC Brushless Fan Motor" class="center">
+	<p class="label">Cooling Fan for Print Head</p>
+	<p>&emsp;&emsp;Sitting just behind the print head is a LED-phototransistor sensor. Unlike the other LED-phototransistor sensors across the printer which have the LED and phototransistor separated across a channel, the LED and phototransistor in this sensor are neighboring. In this arrangement, the sensor acts as a reflected light sensor rather than a beam interrupt sensor. Furthermore, the phototransistor only responds to yellow reflected light. Although I'm not sure, I think this is accomplished by using a yellow casing on the phototransistor. If the LED emits white light, then the only light reflecting towards the phototransistor is the same color as that panel of the ribbon. For all panels except yellow, the light reflect by the ribbon is absorbed by the phototransistor. The yellow panel reflects yellow light which is then also reflected by the yellow casing of the phototransistor. This sensor is used to detect the first panel in the YMCKO color ribbon, the yellow panel. When the phototransistor is triggered, the microcontroller perceives that the imaging operation has concluded.</p>
+	<div class="doubleRowImage">
+		<img src="../images/teardowns/IDprinter/heatingLight.jpg" alt="Small Plastic Piece with Two LED Heads at Tip">
+		<p class="label">Light Unit Adjacent to Print Head</p>
+	</div>
+	<div class="doubleRowImage">
+		<img src="../images/teardowns/IDprinter/heatingLightExposed.jpg" alt="Two LEDs Laid in Plastic with Wires Leading Out From Each Terminal">
+		<p class="label">LEDs Exposed in Light Unit</p>
+	</div>
+	<p>&emsp;&emsp;Below is a close-up of the motor used to raise the print head during card travel and lower it against the card during printing. This motor is the same as the motors used for take-up of the color ribbon and feeding in the card. It's interesting to note that these motors are rated for 18V when the stepper motor is rated for 24V and the technical manual states that all motors receive 24V. It's not unheard of to drive motors at higher voltages than they are rated, especially when the motors are only to be driven over short bursts such as the DC geared motors in the printer. Increasing the voltage above the rated voltage of the motors and then expecting continuous operation though will likely cause the motors to overheat. This could potentially damage the insulation between the motor windings and render the motor useless. </p>
+	<img src="../images/teardowns/IDprinter/motor.jpg" alt="18V 4.5N*cm Motor by Buhler" class="center">
+	<p class="label">Print Head Up/Down Geared DC Motor</p>
+	<p>&emsp;&emsp;Below is a short video demonstrating the full range of motion the print head is capable of when unlatched. This motion is much more dramatic than the regular raising and lowering of the print head during printer operation, but is useful when an operator is trying to clean the printer interior or remove a card jam.</p>
+	<video controls="controls" name="Testing Print Head Unlock Lever" src="../images/teardowns/IDprinter/armAction.mp4" class="center"></video>
+	<p class="label">Testing Print Head Unlock Lever</p>
+	<br>
 	<h4>Optical Encoder</h4>
+	<p>&emsp;&emsp;The small white PCB shown tucked into the mechanical assembly in the picture below carries two LED-phototransistors: one to detect whether the print head is latched or unlatched and another used as an optical encoder sensor for the color ribbon. As soon as I saw the pattern of slots lining the circumference of the brass circle in the mechanical assembly, I thought to myself 'that looks like an optical encoder'. As the slotted disk spins, the LED-phototransistor pairs sends out high and low signals corresponding to whether the sensor is over the open or closed part of the disk. Each time the signal changes, the microcontroller records one tick and by using the number of ticks&mdash;two times the number of slots&mdash;each tick count can then be translated into degrees of rotation of the shaft. Attached to the opposing end of the shaft is the mount for the color ribbon in the printer interior. Therefore the optical encoder is used to track the rotation of the color ribbon.</p>
+	<p>&emsp;&emsp;The reason why the printer needs to track the rotation of the color ribbon isn't obvious though. The reflected light sensor by the print head already detects the beginning of the yellow panel and since all panels will have the same length, the microcontroller should know how long to activate the ribbon take-up motor to move the color ribbon through all five panels. Shouldn't it? The problem is actually a little more complicated than that though since the diameter of the ribbon roll formed at the ribbon take-up motor increases during printer operation as ribbon is transferred through the machine. This means that the angle of rotation on the take-up motor required to wind up one panel will decrease over the course of printer operation. By keeping track of how much the color ribbon has unwound, the microcontroller is able to calculate the diameter of the take-up roll and command the appropriate amount of take-up motor actuation time. I thought this was a clever solution to a non-steady state problem.</p>
 	<img src="../images/teardowns/IDprinter/opticalEncoder.jpg" alt="Gold Slotted Circular Plate with Attached Light Sensor" class="center">
 	<p class="label">Closeup of Optical Encoder Mechanism</p>
 	<div class="doubleRowImage">
@@ -361,7 +386,7 @@
 		<p class="label">Optical Encoder Disk - Back View</p>
 	</div>
 	<img src="../images/teardowns/IDprinter/opticalSensor.jpg" alt="Small PCB with Light Sensors and Wires Leading Offboard" class="center">
-	<p class="label">Optical Encoder Light Sensor</p>
+	<p class="label">Optical Encoder Sensor</p>
 	<br>
 	<h4>Magnetic Encoder</h4>
 	<img src="../images/teardowns/IDprinter/magneticEncoder.jpg" alt="Metal Sensor Mounted After Roller Exiting Heating Element" class="center">
@@ -375,26 +400,6 @@
 		<p class="label">Magnetic Encoder - Bottom View</p>
 	</div>
 	<p>&emps;&emps;The magnetic encoder unit contains a read/write head and there must be a nearby or included card sensor. The encoder reads after writing to assure a reliable result. Encoding occurs on all 3 tracks as the card passes over the encoder unit.</p>
-	<br>
-	<h4>Print Head</h4>
-	<img src="../images/teardowns/IDprinter/heatingElement.jpg" alt="Metal Plate Piece with Many Wires Leading In and Labelled 'R-1525'" class="center">
-	<p class="label">Print Head</p>
-	<img src="../images/teardowns/IDprinter/heatingElementExploded.jpg" alt="Metal Cover Removed from Heating Element Revealing Copper Tone PCB with Traces and Vias" class="center">
-	<p class="label">Print Head PCB</p>
-	<img src="../images/teardowns/IDprinter/fan.jpg" alt="Small 12V DC Brushless Fan Motor" class="center">
-	<p class="label">Cooling Fan for Print Head</p>
-	<div class="doubleRowImage">
-		<img src="../images/teardowns/IDprinter/heatingLight.jpg" alt="Small Plastic Piece with Two LED Heads at Tip">
-		<p class="label">Light Unit Adjacent to Print Head</p>
-	</div>
-	<div class="doubleRowImage">
-		<img src="../images/teardowns/IDprinter/heatingLightExposed.jpg" alt="Two LEDs Laid in Plastic with Wires Leading Out From Each Terminal">
-		<p class="label">LEDs Exposed in Light Unit</p>
-	</div>
-	<img src="../images/teardowns/IDprinter/motor.jpg" alt="18V 4.5N*cm Motor by Buhler" class="center">
-	<p class="label">DC Motor for Roller Rotation</p>
-	<video controls="controls" name="Testing Print Head Unlock Lever" src="../images/teardowns/IDprinter/armAction.mp4" class="center"></video>
-	<p class="label">Testing Print Head Unlock Lever</p>
 	<br>
 	<h4>Conclusion</h4>
 	<img src="../images/teardowns/IDprinter/unremovablePieces.jpg" alt="Several Shaft Mounted Disks and Metal Lever Arm Remaining Inside Body" class="center">
