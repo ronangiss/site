@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Homepage for Rónán Gissler's Projects in Mechanical Engineering">
+<meta name="google-site-verification" content="a5yGE61wbLl2nfdXtS-jhn2NdsYSYXnah-SQnvN8668" />
+<title>Research</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+<header role='banner' id = "mainTitle">
+<!-- Add background image for title -->
+	<h1>Research Documentation</h1>
+	<h2>Rónán Gissler</h2>
+</header>
+<main role='main'>
+	<article role='article'>
+		<section id="intro">
+			<h2>Flying Squirrel Inspired Robot Research</h2>
+			<p>&emsp;&emsp;In February of 2020, I began working with Professor Woodward&mdash;a mechanical engineering professor at Tufts&mdash;to design a flying-squirrel inspired robot. The purpose of this page is to document the research that I've completed for this project so that I can remember what I've done. It may also prove useful to anyone choosing to continue the research.</p>
+		</section>
+		<section>
+			<h3>Introduction</h3>
+			<p>&emsp;&emsp;This research was inspired by Professor Woodward's PhD thesis on a jumping and gliding robot called the MultiMo-Bat. The general aim of this research is to study whether complex maneuvers can be achieved with simple control inputs by taking advantage of mechanical intelligence (the plant) rather than computational intelligence (the controller). More specifically, seeking to achieve perching behavior in a gliding robot simply by adjusting the location of the center-of-pressure (COP) relative to the center-of-mass (COM) along the robot's length. The COP is defined as the application location of the resultant aerodynamic force during flight and the COM is defined as the application location of the resultant weight force. Moving the COP relative to the COM along the length of the robot adjusts the lever arm (lengthwise distance between COP and COM) of the aerodynamic moment. In turn this aerodyanmic moment can be used to control the pitch angle of the flier. For simplicity sake, the act of shifting the COP relative to the COM to control the pitch angle of the flier for perching will henceforth be called "pitch control".</p>
+			<p>&emsp;&emsp;There are a number of different ways to achieve pitch control, but typically this is accomplished by moving the flier's wings. Flying squirrels, birds, and other airborne animals usually control their gliding flight with wing sweep motions. Not to mention that many of these animals also have tails which&mdash;taking advantage of a long lever arm&mdash;likely play an important role in pitch control. Some fighter jets and micro aerial vehicles (MAVs) also employ wing sweep motions to control their flight. However, the aim of this research is to focus on "simple control inputs". Wing sweep may be relatively simply from an actuation perspective, but from an aerodynamic perspective it is not. Wing sweep changes the area, shape, and tension of the airfoil (i.e. wing). As a result, the aerodynamic performance of the airfoil, particularly its coefficient of lift and drag, will change in difficult to predict ways. Instead, we propose just sliding the wings back and forth in the chordwise direction (i.e. lengthwise). This form of flight control doesn't occur in nature, likely because such limited degrees of freedom (DOFs) wouldn't be evolutionary advantageous. There are many reasons why flying animals would need to collapse their wings that make wing sweep advantageous such as moving through tight spaces or diving. Chordwise wing shifting has also not been implemented in any manufactured aircraft, likely since it's an impractical method of flight control. Aircraft are manufactured to be lightweight and compact, the space required to achieve full flight envelope control with chordwise wing shifting only would be immense. Nonetheless, this design is suitable for a test aircraft to study pitch control as it isolates the COP shifting from confounding factors like changes in wing area, shape, and tension that would result if a wing sweep method was utilized.</p>
+			<p>&emsp;&emsp;You may be wondering if we are not employing a wing sweep method of flight control as flying squirrels do and our robot doesn't have a tail, how are we seeking bioinspiration from flying squirrels? Our robotic system is designed at a scale similar to the Northern Flying Squirrel both in mass and size. Through an understanding of the perching flight kinematics of flying squirrels, we can seek to emulate these kinematics to achieve similar behaviors in our robots. Significant differences we note in performance between our robot and flying squirrels can be then be used to infer the importance of tails and wing changes during perching. The conclusions from this research could also have further implications in the world of wing-morphing MAVs which for the most part still use methods of flight control similar to traditional aircraft like ailerons for roll control, an elevator for pitch control, and a rudder for yaw control. If roll control, pitch control, and yaw control could all be achieved simply using chordwise wing shifting this could significantly simplify future MAV design. Furthermore, this research could also prove useful in the design of multi-modal locomotion robots which can use gliding as a relatively inexpensive means of locomotion that is best coupled with other forms of locomotion that return the gravitational potential energy for further glides.</p>
+		</section>
+		<section>
+			<h3>Work</h3>
+			<nav role='navigation'>
+				<ul>
+					<li>
+						<a href="robotDesign.html" title="Design" class="pageLink">
+							<div class="imageContainer">
+								<img src="../images/home/research_design.png" alt="Solidworks Model of Robot">
+							</div>
+							<div class="imageLabel">Robot Design</div>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</section>
+	</article>
+</main>
+<body>
+</html>
