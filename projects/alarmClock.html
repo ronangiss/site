@@ -31,7 +31,384 @@
 		<hr>
 		<section>
 			<h3>Arduino Code</h3>
-			<p>&emsp;&emsp;Working on figuring out how to include this...</p>
+			<code><pre>
+/*
+   Author: Rónán Gissler
+   Date: 1/30/21
+   The below code makes extensive use of code provided in examples on the WIO terminal 
+   wiki, including the buzzer melody example, RTC example, TFT_Clock example and 
+   other more basic examples on graphics and button control.
+   The thermistor code was adapted from Example #3 from the Adafruit Learning System 
+   Guide on Thermistors.
+   To execute this program in full on your own WIO terminal, you will need to plug
+   in a 10K Ohm resistor and thermistor into the GPIO pins on the back of the WIO.
+*/
+
+#include"TFT_eSPI.h"
+TFT_eSPI tft;
+
+#include "RTC_SAMD51.h"
+#include "DateTime.h"
+RTC_SAMD51 rtc;
+
+//background color on screen
+#define BACKGROUND_CLR 0x5AAA
+
+//boolean used to set analog or digital time display
+boolean analog = true;
+
+// sec, min, hr hand angles
+float sdeg, mdeg, hdeg;
+// sec, min, hr hand angle multipliers for positioning of tip
+float sx, sy, mx, my, hx, hy;
+//start and end point coordinates of lines on clock face
+uint16_t xI, yI, xF, yF;
+//coordinates of points on clock face
+uint16_t xP, yP;
+//size scale of clock allowing for convenient size adjustment
+float clockScale = 1;
+//origin coordinates of clock
+int clockX = 110;
+int clockY = 105;
+//tip of sec, min, hr hand X-coordinates
+uint16_t osx = clockX, omx = clockX, ohx = clockX;
+//tip of sec, min, hr hand Y-coordinates
+uint16_t osy = clockY, omy = clockY, ohy = clockY;
+//current time: sec, min, hr
+int ss, mm, hh;
+//current time: sec, min, hr as strings
+String ssStr, mmStr, hhStr;
+//boolean used to draw clock body once
+boolean initial = true;
+
+//bolean used to turn off alarm
+boolean snooze = false;
+//used to turn on alarm setting mode and change which value is being set
+int alarmSetting = 0;
+//alarm time: sec, min, hr
+int mmA = 0, hhA = 0;
+//alarm time: sec min, hr as strings
+String mmAstr, hhAstr;
+
+// which analog pin to connect
+#define THERMISTORPIN A8         
+// resistance at 25 degrees C
+// the value of the 'other' resistor
+#define SERIESRESISTOR 10000  
+// how many samples to take and average, more takes longer
+// but is more 'smooth'
+#define NUMSAMPLES 10
+
+//The below information was collected from the datasheet for the FocuSens
+//MF52D-103f-3950 NTC thermistor, except the thermistor's resistance which 
+//was varied to bring the reported temperatures close to another temp. sensor
+//used as a reference.
+// nominal resistance of thermistor
+#define THERMISTORNOMINAL 9000 //had value 103 (what units??) on datasheet
+// temp. for nominal resistance 
+#define TEMPERATURENOMINAL 25   
+// The beta coefficient of the thermistor 
+#define BCOEFFICIENT 3950
+
+//array of sampled temperatures to be averaged
+int samples[NUMSAMPLES];
+
+//counter used to determine the rate at which the temperature updates
+int tempCount = 0;
+
+//counter used to determine rate of time flashing when setting alarm
+int alarmCount = 0;
+
+void setup() {
+  //initiliaze an instance of the TFT LCD libary object
+  tft.begin();
+  //select the corner of the LCD from which to start counting pixels, 
+  //in effect rotating the display
+  tft.setRotation(3); //a value from 0 to 3
+
+  tft.fillScreen(BACKGROUND_CLR); //Gray background on LCD
+  
+  drawBackground(); //Add background graphics
+  drawAlarm(false, false);
+  
+  //initialze an instance of the RTC library object
+  rtc.begin();
+
+  //set RTC time using computer connected via serial communication
+  DateTime now = DateTime(F(__DATE__), F(__TIME__)); 
+  rtc.adjust(now);
+  
+  now = rtc.now(); //check time
+
+  //setting GPIO pins and button pins
+  pinMode(WIO_KEY_A, INPUT_PULLUP);
+  pinMode(WIO_KEY_B, INPUT_PULLUP);
+  pinMode(WIO_KEY_C, INPUT_PULLUP);
+  pinMode(THERMISTORPIN, INPUT);
+  
+  if (analog){
+    drawClock();
+  }
+  
+}
+
+void loop() {
+  DateTime now = rtc.now(); //recheck time 
+  
+  ss = now.second();
+  mm = now.minute();
+  hh = now.hour();
+
+  if (tempCount%50 == 0){ //condition met every 30 cycles of the loop
+    drawTemp(); //checks the current temperature and displays it on LCD
+  }
+  tempCount++;
+  
+  if (digitalRead(WIO_KEY_A) == LOW && !alarmSetting) {
+    tft.fillScreen(BACKGROUND_CLR); //clear screen
+    drawBackground();
+    drawAlarm(false, false);
+    drawTemp();
+    initial = true;
+    analog = !analog; //flip display from analog to digital or vice versa
+    delay(200); // delay to avoid multiple button presses from being registered
+   }
+   
+  if (digitalRead(WIO_KEY_C) == LOW) {
+    alarmSetting++;
+    delay(200); // delay to avoid multiple button presses from being registered
+   }
+   
+  if (alarmSetting > 0){
+    if (alarmSetting == 1){
+        drawAlarm(true, true);
+      if (digitalRead(WIO_KEY_B) == LOW && hhA < 23) {
+        hhA++;
+      }
+      else if (digitalRead(WIO_KEY_A) == LOW && hhA > 0) {
+        hhA--;
+      }
+    }
+    else if (alarmSetting == 2){
+      drawAlarm(true, false);
+      if (digitalRead(WIO_KEY_B) == LOW && mmA < 59) {
+        mmA++;
+      }
+      else if (digitalRead(WIO_KEY_A) == LOW && mmA > 0) {
+        mmA--;
+      }
+    }
+    else if (alarmSetting == 3){
+      alarmSetting = 0;
+      alarm();
+    }
+      
+  }
+  
+  if (analog) {
+    // Pre-compute hand degrees, x & y coords for a fast screen update
+    sdeg = ss * 6;                // 0-59 -> 0-354
+    mdeg = mm * 6 + sdeg * 0.01666667; // 0-59 -> 0-360 - includes seconds
+    hdeg = hh * 30 + mdeg * 0.0833333; // 0-11 -> 0-360 - includes minutes and seconds
+    sx = cos((sdeg - 90) * 0.0174532925);
+    sy = sin((sdeg - 90) * 0.0174532925);
+    mx = cos((mdeg - 90) * 0.0174532925);
+    my = sin((mdeg - 90) * 0.0174532925);
+    hx = cos((hdeg - 90) * 0.0174532925);
+    hy = sin((hdeg - 90) * 0.0174532925);
+  
+    // Redraw new hand positions
+    tft.drawLine(osx, osy, clockX, clockY, TFT_WHITE);
+    osx = sx * 89*clockScale + clockX;
+    osy = sy * 89*clockScale + clockY;
+    tft.drawLine(osx, osy, clockX, clockY, TFT_RED);
+  
+    tft.drawLine(omx, omy, clockX, clockY, TFT_WHITE);
+    omx = mx * 80*clockScale + clockX;
+    omy = my * 80*clockScale + clockY;
+    tft.drawLine(omx, omy, clockX, clockY, TFT_BLACK);
+    
+    tft.drawLine(ohx, ohy, clockX, clockY, TFT_WHITE);
+    ohx = hx * 56*clockScale + clockX;
+    ohy = hy * 56*clockScale + clockY;
+    tft.drawLine(ohx, ohy, clockX, clockY, TFT_BLACK);
+  
+    drawClock(); //redraw dots and dashes on clock, otherwise they will
+                 //slowly be erased as the hands are erased and replaced
+    
+    delay(100); //small delay reduces flickering by preventing shapes from
+                //being drawn and erased in quick succession
+  }
+  //digital display
+  else {
+    ssStr = String(ss);
+    mmStr = String(mm);
+    hhStr = String(hh);
+    
+    //add leading zero to second, minute, hour to prevent
+    //numbers from lingering on display at end of cycle
+    if (ssStr.length() == 1){
+      ssStr = "0" + ssStr;
+    }
+    if (mmStr.length() == 1){
+      mmStr = "0" + mmStr;
+    }
+    if (hhStr.length() == 1){
+      hhStr = "0" + hhStr;
+    }
+  tft.setTextSize(3);
+  tft.setTextColor(TFT_RED, BACKGROUND_CLR);
+  tft.drawString(hhStr + ":" + mmStr + ":" + ssStr, 38, 110);
+  }
+}
+
+void drawBackground(){
+  tft.setTextColor(TFT_BLACK);
+  tft.setTextSize(2);
+  tft.drawString("Current Time", 42, 212);
+  tft.drawString("Alarm", 230, 20);
+  tft.drawString("Temp.", 230, 120);
+  tft.setTextColor(TFT_RED);
+}
+
+void drawClock(){
+  if (initial) {
+    initial = false;
+    // Draw clock face
+    tft.fillCircle(clockX, clockY, 98*clockScale, TFT_BLUE);
+    tft.fillCircle(clockX, clockY, 90*clockScale, TFT_WHITE);
+  }
+
+  // Draw 12 lines
+    for (int i = 0; i < 360; i += 30) {
+        sx = cos((i - 90) * 0.0174532925);
+        sy = sin((i - 90) * 0.0174532925);
+        xI = sx * 90*clockScale + clockX;
+        yI = sy * 90*clockScale + clockY;
+        xF = sx * 80*clockScale + clockX;
+        yF = sy * 80*clockScale + clockY;
+
+        tft.drawLine(xI, yI, xF, yF, TFT_BLACK);
+    }
+
+  // Draw 60 dots
+    for (int i = 0; i < 360; i += 6) {
+        sx = cos((i - 90) * 0.0174532925);
+        sy = sin((i - 90) * 0.0174532925);
+        xP = sx * 82*clockScale + clockX;
+        yP = sy * 82*clockScale + clockY;
+        // Draw minute markers
+        tft.fillCircle(xP, yP, 1, TFT_BLACK);
+
+        // Draw main quadrant dots
+        if (i%90 == 0) {
+            tft.fillCircle(xP, yP, 2, TFT_BLACK);
+        }
+    }
+
+   tft.fillCircle(clockX, clockY, 3, TFT_BLACK); //draw center circle
+}
+
+void drawAlarm(boolean setting, boolean setHour){
+  tft.setTextSize(2);
+  tft.setTextColor(TFT_RED, BACKGROUND_CLR);
+  hhAstr = String(hhA);
+  mmAstr = String(mmA);
+  //add leading zero if time is single digit
+  if (hhAstr.length() == 1){
+      hhAstr = "0" + hhAstr;
+    }
+  if (mmAstr.length() == 1){
+      mmAstr = "0" + mmAstr;
+    }
+  if (setting && setHour && alarmCount%6 == 0){
+    tft.drawString("  ", 230, 70);
+  }
+  else if (setting && !setHour && alarmCount%6 == 0){
+    tft.drawString(hhAstr + ":" + "  ", 230, 70);
+  }
+  else{
+    tft.drawString(hhAstr + ":" + mmAstr, 230, 70);
+  }
+  alarmCount++;
+}
+
+void alarm(){
+  DateTime now = rtc.now(); //recheck time 
+  DateTime alarm = DateTime(now.year(), now.month(), now.day(), hhA, mmA, 0);
+  rtc.setAlarm(0,alarm); // match at alarm set time that day
+  rtc.enableAlarm(0, rtc.MATCH_HHMMSS); // match Every Day
+  rtc.attachInterrupt(alarmMatch); // callback whlie alarm is match
+}
+
+//code to sound alarm when alarm is set off
+void alarmMatch(uint32_t flag){
+  int duration1 = 300;
+  int tone1 = 600;
+  int duration2 = 300;
+  int tone2 = 3200;
+  while (!snooze){
+    if (digitalRead(WIO_KEY_C) == LOW) {
+      snooze = true;
+      delay(200);
+    }
+    for (long i = 0; i < duration1 * 1000L; i += tone1 * 2) {
+          digitalWrite(WIO_BUZZER, HIGH);
+          delayMicroseconds(tone1);
+          digitalWrite(WIO_BUZZER, LOW);
+          delayMicroseconds(tone1);
+      }
+    delay(200);
+    for (long i = 0; i < duration1 * 1000L; i += tone2 * 2) {
+          digitalWrite(WIO_BUZZER, HIGH);
+          delayMicroseconds(tone2);
+          digitalWrite(WIO_BUZZER, LOW);
+          delayMicroseconds(tone2);
+      }
+    delay(100);
+  }
+}
+
+String checkTemp(){
+  uint8_t i;
+  float average;
+ 
+  // take N samples in a row, with a slight delay
+  for (i=0; i< NUMSAMPLES; i++) {
+   samples[i] = analogRead(THERMISTORPIN);
+   delay(10);
+  }
+  
+  // average all the samples out
+  average = 0;
+  for (i=0; i< NUMSAMPLES; i++) {
+     average += samples[i];
+  }
+  average /= NUMSAMPLES;
+  
+  // convert the value to resistance
+  average = 1023 / average - 1;
+  average = SERIESRESISTOR / average;
+  
+  float steinhart;
+  steinhart = average / THERMISTORNOMINAL;     // (R/Ro)
+  steinhart = log(steinhart);                  // ln(R/Ro)
+  steinhart /= BCOEFFICIENT;                   // 1/B * ln(R/Ro)
+  steinhart += 1.0 / (TEMPERATURENOMINAL + 273.15); // + (1/To)
+  steinhart = 1.0 / steinhart;                 // Invert
+  steinhart -= 273.15;                         // convert absolute temp to C
+  steinhart = (steinhart*9.0)/5.0 + 32.0;     // convert celsius to fahrenheit
+  
+  String tempF = String(steinhart).substring(0,4); //rounds temp to tenths place
+  return tempF;
+}
+void drawTemp(){
+  String currentTemp = checkTemp();
+  tft.setTextSize(2);
+  tft.setTextColor(TFT_RED, BACKGROUND_CLR);
+  tft.drawString(currentTemp + " *F", 220, 160);
+}
+			</pre></code>
 		</section>
 	</article>
 </main>
