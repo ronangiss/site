@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="3D Printed Goalie Robot">
+<title>WIO Alarm Clock</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+<header role='banner'>
+	<h1>WIO Alarm Clock</h1>
+	<a href="../index.html" title="Home" class="home">Home</a>
+</header>
+<main role='main'>
+	<article role='article'>
+		<hr>
+		<section>
+			<h3>Introduction</h3>
+			<p>&emsp;&emsp;This project was completed as part of my robotics class during the spring semester of my junior year at Tufts. The goal for this project was to design something that demonstrated the capabilities of a new microcontroller released in 2020, the WIO Terminal.</p>
+			<p>&emsp;&emsp;The WIO is compatible with both Arduino and MicroPython software languages, but I opted to use Arduino given my familiarity with coding in that language. Through a set of GPIO pins, a variety of devices can be interfaced with the WIO for all matter of projects. An Arduino compatible processor and GPIO pins are commonplace among microcontrollers though and the WIO terminal has so much more to offer. The most distinctive feature is the large liquid crystal display (LCD) screen taking up an entire face of the WIO's slim box shape. Beyond that, the WIO also contains an inertial measurement unit (IMU), micrphone, buzzer, real time clock (RTC) module, configurable buttons, bluetooth connectivity, WiFi connectivity, light sensor, and IR emitter. All these details are documented on the <a href="https://wiki.seeedstudio.com/Wio-Terminal-Getting-Started/">Seeed Wiki</a>.</p>
+		</section>
+		<hr>
+		<section>
+			<h3>Alarm Clock</h3>
+			<p>&emsp;&emsp;To simultaneously demonstrate many of the WIO's unique features through one project I decided to transform the WIO into a small alarm clock. Using the RTC module, the WIO keeps track of the time. The WIO then displays the time in either an analog or digital format on the LCD screen. By pressing the configurable buttons, one can switch between analog or digital time displays, and also set alarms to go off later. When the alarm time is reached, the buzzer alternates between low and high frequencies in an annoying way, only turning off after any of the buttons have been pressed. A thermistor in a voltage divider circuit with a resistor on the GPIO pins also keeps track of the room temperature to be displayed on the LCD.</p>
+			<video controls="controls" name="Alarm Clock Demonstration" src="../images/electronics/alarmClock/alarmClock.mp4" class="center"></video>
+			<p class="label">Alarm Clock Demonstration</p>
+		</section>
+		<hr>
+		<section>
+			<h3>Arduino Code</h3>
+			<p>&emsp;&emsp;Working on figuring out how to include this...</p>
+		</section>
+	</article>
+</main>
+<footer role='contentinfo'>
+	<a href="projects.html" title="Teardowns" class="footerLink">
+		<h2>Other Projects</h2>
+	</a><br><br>
+	<a href="../index.html" title="Home" class="footerLink">
+		<h2>Home</h2>
+	</a><br><br>
+	<a href="../contactMe.html" title="Contact Me" class="footerLink">
+	<h2>Contact Me</h2>
+	</a>
+</footer>
+<body>
+
+</html>
