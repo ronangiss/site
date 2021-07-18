@@ -1,0 +1,45 @@
+/* Credit for this code styling method goes to Maytham:  
+https://stackoverflow.com/questions/4000792/how-can-i-style-code-listings-using-css/48694906*/
+
+pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 5px solid #0066cc;
+    color: #666;
+    page-break-inside: avoid;
+    font: normal normal 14px/16px "Courier New",Courier,Monospace;
+    line-height: 1.0;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    padding: .5em 1em;
+    display: block;
+    word-wrap: break-word;
+
+    margin-left: 30px;
+    overflow: auto;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    counter-reset: line;
+}
+
+pre:hover,
+pre:focus {
+    border-left: 5px solid #cc0000;
+}
+
+pre .line-number {
+    float: left;
+    margin: 0 1em 0 -1em;
+    border-right: 1px solid;
+    text-align: right;
+}
+
+pre .line-number span {
+    display: block;
+    padding: 0 .5em 0 1em;
+}
+
+pre .cl {
+    display: block;
+    clear: both;
+}
