@@ -18,7 +18,9 @@
 		<hr>
 		<section>
 			<h3>Introduction</h3>
-			<p>&emsp;&emsp;</p>
+			<p>&emsp;&emsp;In electronics, rectifiers are used to convert alternating current (AC) to direct current (DC). DC is easier to understand as it is the way, current flow is traditionally explained. Electrons flow from one terminal to the other, in the process powering whatever load the circuit may demand. Conventionally this flow of electrons is from the positive terminal to the negative terminal, but in actuality electrons are attracted to the positive terminal and repelled by the negative terminal. To my knowledge, all control electronics rely on direct current for operation. DC can be supplied by batteries, but if you're planning to power your circuit from a wall outlet you're going to need to rectify that AC before allowing current to flow through your circuit. Typically, DC is visualized as a flat line of positive voltage. In reality, this is not always the case. Noise in the circuit can produce little oscillations about this flat voltage line generating ripple in the supply current. This is a common concern when using switching power supply circuits such as DC-DC voltage converters.</p> 
+			<p>&emsp;&emsp;On the other hand, AC is not so intuitive. Instead of flowing in one direction, electrons are pulled back and forth through the circuit at a fast rate. This is accomplished by reversing the voltage&mdash;the force pushing or pulling the electrons&mdash;from positive to negative. In the home, wall outlets are commonly understood to have a voltage of 120V and alternate at a frequency of 60 Hz. 120V is the root-mean-square (RMS) voltage of the AC source, while the voltage is actually oscillating back and forth between -170V and +170V. RMS voltage is basically a convenient metric for measuring the magnitude of alternating current in a way that is comparable with direct current. As the name would suggest, one could calculate the RMS voltage by recording at high resolution one period of oscillation of the AC signal, squaring each value, averaging them, and taking the square root. DC at the RMS voltage level would effectively have the same impact on the circuit as the AC voltage in terms of power dissipation. AC is used to transport energy over long distances such as over power lines since it is more efficient than DC. Additionally, wireless chargers rely on AC to induce currents in wires separated in space. Typically, AC is visualized as a sinusoidal wave centered about zero voltage. This a valid representation of the current flowing from the wall outlet, but again may be suscepitble to noise.</p>
+			<p>&emsp;&emsp;The most typical method for rectifying AC to DC is to use what is called a full bridge rectifier. Behind an intimidatingly long name lies a relatively simple concept relying just on some diodes to restrict voltage flow in one direction. </p>
 			<img src="../images/electronics/rectifier/iphoneFrameRate.png" alt="Screenshot of iPhone Camera Settings" class="center">
 			<p class="label">iPhone Camera Settings</p>
 			<img src="../images/electronics/rectifier/supplies.jpg" alt="Electronic Supplies Laid on Table" class="center">
@@ -86,6 +88,8 @@
 			<h3>Full Bridge Rectifier</h3>
 			<p>&emsp;&emsp;</p>
 			<h4>No Smoothing Capacitors</h4>
+			<img src="../images/electronics/rectifier/full_none_circuit.png" alt="Circuit Schematic on KiCAD" class="center">
+			<p class="label">Circuit Schematic: Full Bridge Rectifier</p>
 			<img src="../images/electronics/rectifier/full_none.jpg" alt="Circuits Components Arranged on Breadboard" class="center">
 			<p class="label">Breadboard Circuit: Full Bridge Rectifier</p>
 			<video controls="controls" name="Full Bridge Rectifier - Real Time" src="../images/electronics/rectifier/full_none_norm.mp4" class="center"></video>
@@ -98,6 +102,8 @@
 
 			<h4>One Smoothing Capacitor</h4>
 			<p>&emsp;&emsp;</p>
+			<img src="../images/electronics/rectifier/full_cap_circuit.png" alt="Circuit Schematic on KiCAD" class="center">
+			<p class="label">Circuit Schematic: Full Bridge Rectifier with One Capacitor</p>
 			<img src="../images/electronics/rectifier/full_cap.jpg" alt="Circuits Components Arranged on Breadboard" class="center">
 			<p class="label">Breadboard Circuit: Full Bridge Rectifier with One Capacitor</p>
 			<video controls="controls" name="Full Bridge Rectifier with One Smoothing Capacitor - Real Time" src="../images/electronics/rectifier/full_cap_norm.mp4" class="center"></video>
@@ -109,6 +115,8 @@
 
 			<h4>Many Smoothing Capacitors</h4>
 			<p>&emsp;&emsp;</p>
+			<img src="../images/electronics/rectifier/full_allCaps_circuit.png" alt="Circuit Schematic on KiCAD" class="center">
+			<p class="label">Circuit Schematic: Full Bridge Rectifier with Many Capacitors</p>
 			<img src="../images/electronics/rectifier/full_allCaps.jpg" alt="Circuits Components Arranged on Breadboard" class="center">
 			<p class="label">Breadboard Circuit: Full Bridge Rectifier with Many Capacitors</p>
 			<video controls="controls" name="Full Bridge Rectifier with Many Smoothing Capacitors - Real Time" src="../images/electronics/rectifier/full_allCaps_norm.mp4" class="center"></video>
