@@ -34,7 +34,7 @@
 		<section>
 			<h3>The Project</h3>
 			<p>&emsp;&emsp;In this project, I use both single diode rectifier and full bridge rectifier circuits with varying numbers of smoothing capacitors to rectify AC voltage coming from my wall outlet. Using the slow motion camera on my iPhone which records at 240 fps in conjunction with an LED load in the circuit, the different rectifier circuits can be analyzed and compared. I decided to analyze the rectifier circuit with an iPhone camera instead of a more powerful tool like an oscilloscope for two reasons. First, I don't have one. Second, other people aren't likely to have them either as they are expensive specialized tools. Any modern smart phone should be capable of recording at high enough frame rates to conduct the basic analysis of a rectifier that I will describe here.</p>
-			<p>&emsp;&emsp;I have an iPhone SE which can record at 30, 60, 120, and 240 fps at varying resolutions. To check which settings you're currently using on your iPhone simple navigate to Settings -> Camera as I've shown in the image below.</p>
+			<p>&emsp;&emsp;I have an iPhone SE which can record at 30, 60, 120, and 240 fps with varying resolutions. To check which settings you're currently using on your iPhone simple navigate to Settings -> Camera as I've shown in the image below.</p>
 			<img src="../images/electronics/rectifier/iphoneFrameRate.png" alt="Screenshot of iPhone Camera Settings" class="center">
 			<p class="label">iPhone Camera Settings</p>
 			<p>&emsp;&emsp;For this project, you will need the following components:</p>
@@ -58,22 +58,24 @@
 		<hr>
 		<section>
 			<h3>Single Diode Rectifier</h3>
-			<p>&emsp;&emsp;</p>
+			<br>
 			<h4>No Smoothing Capacitors</h4>
 			<img src="../images/electronics/rectifier/single_none_circuit.png" alt="Circuit Schematic on KiCAD" class="center">
 			<p class="label">Circuit Schematic: Single Diode Rectifier</p>
 			<img src="../images/electronics/rectifier/single_none.jpg" alt="Circuits Components Arranged on Breadboard" class="center">
 			<p class="label">Breadboard Circuit: Single Diode Rectifier</p>
+			<p>&emsp;&emsp;According to this <a href="https://www.ccohs.ca/oshanswers/ergonomics/lighting_flicker.html">article</a> on light flickering, humans are most sensitive to flickering between 10 to 25 Hz. The real time video with my iPhone at 30 fps is therefore representative of the upper end of what humans are likely to be capable of visualizing. With one diode in place, only the positive portion of the AC sine wave is permitted to pass resulting in a flicker at 60 Hz. This flicker is well beyond what most humans can perceive so I didn't observe it as I looked at the LED. The 30 fps video also did not pick up on the flicker as it is sampling a frequency smaller than the frequency of the flicker we are interested in perceving. Nonetheless, this flicker is still relatively low frequency and can be detected by other systems in the body. If this were the light source in my room, it's quite possible I would become aggravated over time and more prone to headaches.</p>
 			<video controls="controls" name="Single Diode Rectifier - Real Time" src="../images/electronics/rectifier/single_none_norm.mp4" class="center"></video>
 			<p class="label">Single Diode Rectifier - Real Time</p>
+			<p>&emsp;&emsp;Recording the same circuit setup at 240 fps and playing back at 1/8 speed, the flicker of the LED becomes quite apparent. To verify that the LED is indeed flashing at 60 Hz as one would expect from this circuit, we can slow the video down even further to count the flashes.</p>
 			<video controls="controls" name="Single Diode Rectifier - Slow Motion" src="../images/electronics/rectifier/single_none_slow.mp4" class="center"></video>
-			<p class="label">Single Diode Rectifier - Slow Motion (1/4 speed)</p>
-			<p>&emsp;&emsp;In the below video, I took one second of video from the slow motion clip and slowed it down 5 times further in iMovie. Looking at the clip, one can count 7 flashes of the LED. Since the slow motion video from the iPhone is played back at 1/4 speed, this means that the true duration of the clip below is only a quarter second. If the LED flashed 7 times in a quarter second, it would flash approximately 28 times in one second. This checks out as we expect the half-wave signal coming through the single diode rectifier from the 60 Hz wall outlet AC source to have a frequency of 30 Hz. There's some error given the small period of time I chose to examine. If I examine a longer interval, the error should decrease. Repeating the same process, but this time for a 2 second clip from the slow motion video, I counted 15 flashes of the LED. 15 flashes over half a second would result in exactly 30 Hz. </p>
+			<p class="label">Single Diode Rectifier - Slow Motion (1/8 speed)</p>
+			<p>&emsp;&emsp;In the video below, I took one second of video from the slow motion clip (1/8 speed) and slowed it down 5 times further in iMovie. The blank periods where the negative half of the AC sine wave is blocked and no current flows through the LED are clearly observable. Looking at the clip, one can count 7 flashes of the LED. Since the slow motion video from the iPhone is played back at 1/8 speed, this means that the true duration of the clip below is only an eighth of a second. If the LED flashed 7 times in an eighth of a second, it would flash approximately 56 times in one second. This is not quite 60 Hz, but that's a result of the small sampling period. I repeated the same process for a 2 second clip from the slow motion video counting 15 flashes of the LED. 15 flashes over a quarter second would result in exactly 60 Hz.</p>
 			<video controls="controls" name="Single Diode Rectifier - Super Slow Motion" src="../images/electronics/rectifier/single_none_superSlow.mp4" class="center"></video>
-			<p class="label">Single Diode Rectifier - Super Slow Motion (1/20 speed)</p>
+			<p class="label">Single Diode Rectifier - Super Slow Motion (1/40 speed)</p>
 
 			<h4>One Smoothing Capacitor</h4>
-			<p>&emsp;&emsp;</p>
+			<br>
 			<img src="../images/electronics/rectifier/single_cap_circuit.png" alt="Circuit Schematic on KiCAD" class="center">
 			<p class="label">Circuit Schematic: Single Diode Rectifier with One Capacitor</p>
 			<img src="../images/electronics/rectifier/single_cap.jpg" alt="Circuits Components Arranged on Breadboard" class="center">
@@ -81,12 +83,12 @@
 			<video controls="controls" name="Single Diode Rectifier with One Smoothing Capacitor - Real Time" src="../images/electronics/rectifier/single_cap_norm.mp4" class="center"></video>
 			<p class="label">Single Diode Rectifier with One Smoothing Capacitor - Real Time</p>
 			<video controls="controls" name="Single Diode Rectifier with One Smoothing Capacitor - Slow Motion" src="../images/electronics/rectifier/single_cap_slow.mp4" class="center"></video>
-			<p class="label">Single Diode Rectifier with One Smoothing Capacitor - Slow Motion (1/4 speed)</p>
+			<p class="label">Single Diode Rectifier with One Smoothing Capacitor - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Single Diode Rectifier with One Smoothing Capacitor - Super Slow Motion" src="../images/electronics/rectifier/single_cap_superSlow.mp4" class="center"></video>
-			<p class="label">Single Diode Rectifier with One Smoothing Capacitor - Super Slow Motion (1/20 speed)</p>
+			<p class="label">Single Diode Rectifier with One Smoothing Capacitor - Super Slow Motion (1/40 speed)</p>
 			
 			<h4>Many Smoothing Capacitors</h4>
-			<p>&emsp;&emsp;</p>
+			<br>
 			<img src="../images/electronics/rectifier/single_allCaps_circuit.png" alt="Circuit Schematic on KiCAD" class="center">
 			<p class="label">Circuit Schematic: Single Diode Rectifier with Many Capacitors</p>
 			<img src="../images/electronics/rectifier/single_allCaps.jpg" alt="Circuits Components Arranged on Breadboard" class="center">
@@ -94,22 +96,22 @@
 			<video controls="controls" name="Single Diode Rectifier with Many Smoothing Capacitors - Real Time" src="../images/electronics/rectifier/single_allCaps_norm.mp4" class="center"></video>
 			<p class="label">Single Diode Rectifier with Many Smoothing Capacitors - Real Time</p>
 			<video controls="controls" name="Single Diode Rectifier with Many Smoothing Capacitors - Slow Motion" src="../images/electronics/rectifier/single_allCaps_slow.mp4" class="center"></video>
-			<p class="label">Single Diode Rectifier with Many Smoothing Capacitors - Slow Motion (1/4 speed)</p>
+			<p class="label">Single Diode Rectifier with Many Smoothing Capacitors - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Single Diode Rectifier with Many Smoothing Capacitors - Super Slow Motion" src="../images/electronics/rectifier/single_allCaps_superSlow.mp4" class="center"></video>
-			<p class="label">Single Diode Rectifier with Many Smoothing Capacitors - Super Slow Motion (1/20 speed)</p>
+			<p class="label">Single Diode Rectifier with Many Smoothing Capacitors - Super Slow Motion (1/40 speed)</p>
 		</section>
 		<section>
 			<h3>Environmental Light</h3>
 			<p>&emsp;&emsp;</p>
 			<video controls="controls" name="All Environmental Light - Slow Motion" src="../images/electronics/rectifier/hand_allLights_slow.mp4" class="center"></video>
-			<p class="label">All Environmental Light - Slow Motion (1/4 speed)</p>
+			<p class="label">All Environmental Light - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Computer Monitors Light - Slow Motion" src="../images/electronics/rectifier/hand_computers_slow.mp4" class="center"></video>
-			<p class="label">Computer Monitors Light - Slow Motion (1/4 speed)</p>
+			<p class="label">Computer Monitors Light - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Room Light - Slow Motion" src="../images/electronics/rectifier/hand_roomLight_slow.mp4" class="center"></video>
-			<p class="label">Room Light - Slow Motion (1/4 speed)</p>
+			<p class="label">Room Light - Slow Motion (1/8 speed)</p>
 			<p>&emsp;&emsp;If you counted flicker frequency as the frequency of the edges, then it would be two times the signal frequency.</p>
 			<video controls="controls" name="Room Light - Super Slow Motion" src="../images/electronics/rectifier/hand_roomLight_superSlow.mp4" class="center"></video>
-			<p class="label">Room Light - Super Slow Motion (1/40 speed)</p>
+			<p class="label">Room Light - Super Slow Motion (1/80 speed)</p>
 		</section>
 		<section>
 			<h3>Full Bridge Rectifier</h3>
@@ -122,10 +124,10 @@
 			<video controls="controls" name="Full Bridge Rectifier - Real Time" src="../images/electronics/rectifier/full_none_norm.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier - Real Time</p>
 			<video controls="controls" name="Full Bridge Rectifier - Slow Motion" src="../images/electronics/rectifier/full_none_slow.mp4" class="center"></video>
-			<p class="label">Full Bridge Rectifier - Slow Motion (1/4 speed)</p>
+			<p class="label">Full Bridge Rectifier - Slow Motion (1/8 speed)</p>
 			<p>&emsp;&emsp;In the below video, I took one second of video from the slow motion clip and slowed it down 10 times further in iMovie. Looking at the clip, one can count 15 flashes of the LED. Since the slow motion video from the iPhone is played back at 1/4 speed, this means that the true duration of the clip below is only a quarter second. If the LED flashed 15 times in a quarter second, it would flash approximately 60 times in one second. This checks out as we expect the full-wave signal coming through the full bridge rectifier from the 60 Hz wall outlet AC source to also have a frequency of 60 Hz.</p>
 			<video controls="controls" name="Full Bridge Rectifier - Super Slow Motion" src="../images/electronics/rectifier/full_none_superSlow.mp4" class="center"></video>
-			<p class="label">Full Bridge Rectifier - Super Slow Motion (1/40 speed)</p>
+			<p class="label">Full Bridge Rectifier - Super Slow Motion (1/80 speed)</p>
 
 			<h4>One Smoothing Capacitor</h4>
 			<p>&emsp;&emsp;</p>
@@ -136,9 +138,9 @@
 			<video controls="controls" name="Full Bridge Rectifier with One Smoothing Capacitor - Real Time" src="../images/electronics/rectifier/full_cap_norm.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier with One Smoothing Capacitor - Real Time</p>
 			<video controls="controls" name="Full Bridge Rectifier with One Smoothing Capacitor - Slow Motion" src="../images/electronics/rectifier/full_cap_slow.mp4" class="center"></video>
-			<p class="label">Full Bridge Rectifier with One Smoothing Capacitor - Slow Motion (1/4 speed)</p>
+			<p class="label">Full Bridge Rectifier with One Smoothing Capacitor - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Full Bridge Rectifier with One Smoothing Capacitor - Super Slow Motion" src="../images/electronics/rectifier/full_cap_superSlow.mp4" class="center"></video>
-			<p class="label">Full Bridge Rectifier with One Smoothing Capacitor - Super Slow Motion (1/40 speed)</p>
+			<p class="label">Full Bridge Rectifier with One Smoothing Capacitor - Super Slow Motion (1/80 speed)</p>
 
 			<h4>Many Smoothing Capacitors</h4>
 			<p>&emsp;&emsp;</p>
@@ -149,9 +151,9 @@
 			<video controls="controls" name="Full Bridge Rectifier with Many Smoothing Capacitors - Real Time" src="../images/electronics/rectifier/full_allCaps_norm.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier with Many Smoothing Capacitors - Real Time</p>
 			<video controls="controls" name="Full Bridge Rectifier with Many Smoothing Capacitors - Slow Motion" src="../images/electronics/rectifier/full_allCaps_slow.mp4" class="center"></video>
-			<p class="label">Full Bridge Rectifier with Many Smoothing Capacitors - Slow Motion (1/4 speed)</p>
+			<p class="label">Full Bridge Rectifier with Many Smoothing Capacitors - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Full Bridge Rectifier with Many Smoothing Capacitors - Super Slow Motion" src="../images/electronics/rectifier/full_allCaps_superSlow.mp4" class="center"></video>
-			<p class="label">Full Bridge Rectifier with Many Smoothing Capacitors - Super Slow Motion (1/40 speed)</p>
+			<p class="label">Full Bridge Rectifier with Many Smoothing Capacitors - Super Slow Motion (1/80 speed)</p>
 		</section>
 	</article>
 </main>
