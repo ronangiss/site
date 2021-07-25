@@ -64,7 +64,7 @@
 			<p class="label">Circuit Schematic: Single Diode Rectifier</p>
 			<img src="../images/electronics/rectifier/single_none.jpg" alt="Circuits Components Arranged on Breadboard" class="center">
 			<p class="label">Breadboard Circuit: Single Diode Rectifier</p>
-			<p>&emsp;&emsp;According to this <a href="https://www.ccohs.ca/oshanswers/ergonomics/lighting_flicker.html">article</a> on light flickering, humans are most sensitive to flickering between 10 to 25 Hz. The real time video with my iPhone at 30 fps is therefore representative of the upper end of what humans are likely to be capable of visualizing. With one diode in place, only the positive portion of the AC sine wave is permitted to pass resulting in a flicker at 60 Hz. This flicker is well beyond what most humans can perceive so I didn't observe it as I looked at the LED. The 30 fps video also did not pick up on the flicker as it is sampling a frequency smaller than the frequency of the flicker we are interested in perceving. Nonetheless, this flicker is still relatively low frequency and can be detected by other systems in the body. If this were the light source in my room, it's quite possible I would become aggravated over time and more prone to headaches.</p>
+			<p>&emsp;&emsp;According to this <a href="https://www.ccohs.ca/oshanswers/ergonomics/lighting_flicker.html">article</a> on light flickering, humans are most sensitive to flickering between 10 to 25 Hz. The real time video with my iPhone at 30 fps is therefore representative of the upper end of what humans are likely to be capable of visualizing. With one diode in place, only the positive portion of the AC sine wave is permitted to pass resulting in a flicker at 60 Hz. This flicker is well beyond what most humans can perceive so I didn't observe it as I looked at the LED. The 30 fps video also did not pick up on the flicker as it is sampling a frequency smaller than the frequency of the flicker we are interested in perceving. Nonetheless, this flicker is still relatively low frequency and can be detected by other systems in the body. If this were the light source in my room, it's quite possible I would become aggravated over time and more prone to headaches. Since the flicker in this circuit was imperceptible to the naked eye, it follows that this will also be the case for all the coming circuits which improve upon the rectifier design.</p>
 			<video controls="controls" name="Single Diode Rectifier - Real Time" src="../images/electronics/rectifier/single_none_norm.mp4" class="center"></video>
 			<p class="label">Single Diode Rectifier - Real Time</p>
 			<p>&emsp;&emsp;Recording the same circuit setup at 240 fps and playing back at 1/8 speed, the flicker of the LED becomes quite apparent. To verify that the LED is indeed flashing at 60 Hz as one would expect from this circuit, we can slow the video down even further to count the flashes.</p>
@@ -82,6 +82,7 @@
 			<p class="label">Breadboard Circuit: Single Diode Rectifier with One Capacitor</p>
 			<video controls="controls" name="Single Diode Rectifier with One Smoothing Capacitor - Real Time" src="../images/electronics/rectifier/single_cap_norm.mp4" class="center"></video>
 			<p class="label">Single Diode Rectifier with One Smoothing Capacitor - Real Time</p>
+			<p>&emsp;&emsp;Observing in slow motion the single diode rectifer circuit with the capacitor added in parallel, the results are much improved. Instead of dropping to zero at a frequency of 60 Hz, the current through the LED drops only slightly at that same frequency of 60 Hz.</p>
 			<video controls="controls" name="Single Diode Rectifier with One Smoothing Capacitor - Slow Motion" src="../images/electronics/rectifier/single_cap_slow.mp4" class="center"></video>
 			<p class="label">Single Diode Rectifier with One Smoothing Capacitor - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Single Diode Rectifier with One Smoothing Capacitor - Super Slow Motion" src="../images/electronics/rectifier/single_cap_superSlow.mp4" class="center"></video>
@@ -95,6 +96,7 @@
 			<p class="label">Breadboard Circuit: Single Diode Rectifier with Many Capacitors</p>
 			<video controls="controls" name="Single Diode Rectifier with Many Smoothing Capacitors - Real Time" src="../images/electronics/rectifier/single_allCaps_norm.mp4" class="center"></video>
 			<p class="label">Single Diode Rectifier with Many Smoothing Capacitors - Real Time</p>
+			<p>&emsp;&emsp;Adding three more smoothing capacitors in parallel with the LED smooths the current through the LED even further, making the 60 Hz flicker nearly unnoticeable even at super slow motion. For all intensive purposes, rectification complete!</p>
 			<video controls="controls" name="Single Diode Rectifier with Many Smoothing Capacitors - Slow Motion" src="../images/electronics/rectifier/single_allCaps_slow.mp4" class="center"></video>
 			<p class="label">Single Diode Rectifier with Many Smoothing Capacitors - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Single Diode Rectifier with Many Smoothing Capacitors - Super Slow Motion" src="../images/electronics/rectifier/single_allCaps_superSlow.mp4" class="center"></video>
@@ -102,14 +104,14 @@
 		</section>
 		<section>
 			<h3>Environmental Light</h3>
-			<p>&emsp;&emsp;</p>
+			<p>&emsp;&emsp;It's worthwhile to note at this point that when trying to examine the slightest flickers in the LED to qualify the degree of smoothing, flickering in the environment should also be considered. Taking a slow motion video of just my hand on the desk at 240 fps and 1/8 speed it's clear that there is already some flickering in the environment. Although there are a number of light sources in my room, the two brightest ones were my computer monitor and the room light. Taking slow motion videos under those isolated lighting conditions, it's clear the source of the flicker is my room light.</p>
 			<video controls="controls" name="All Environmental Light - Slow Motion" src="../images/electronics/rectifier/hand_allLights_slow.mp4" class="center"></video>
 			<p class="label">All Environmental Light - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Computer Monitors Light - Slow Motion" src="../images/electronics/rectifier/hand_computers_slow.mp4" class="center"></video>
 			<p class="label">Computer Monitors Light - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Room Light - Slow Motion" src="../images/electronics/rectifier/hand_roomLight_slow.mp4" class="center"></video>
 			<p class="label">Room Light - Slow Motion (1/8 speed)</p>
-			<p>&emsp;&emsp;If you counted flicker frequency as the frequency of the edges, then it would be two times the signal frequency.</p>
+			<p>&emsp;&emsp;Repeating the early process of taking 1 second of video from the slow motion video at 1/8 speed but this time slowing it down further by 10 times, 15 flashes can be counted. Over the eighth of a second this video represents, that results in a flicker frequency of 120Hz. The lightbulb in my room is also powered from the AC supplied to the house, but why then is its flicker frequency double that of the AC frequency? The lightbulb in my room is not unidirectional, it will produce light as the current moves back and forth through the filament. Therefore, for one cycle of AC, the lightbulb will flicker twice; once for the positive half wave and again for the negative half wave. Two times the AC frequency of 60 Hz results in the 120 Hz frequency lightbulb flicker observable in super slow motion.</p>
 			<video controls="controls" name="Room Light - Super Slow Motion" src="../images/electronics/rectifier/hand_roomLight_superSlow.mp4" class="center"></video>
 			<p class="label">Room Light - Super Slow Motion (1/80 speed)</p>
 		</section>
