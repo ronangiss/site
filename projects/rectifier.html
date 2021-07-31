@@ -111,13 +111,12 @@
 			<p class="label">Computer Monitors Light - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Room Light - Slow Motion" src="../images/electronics/rectifier/hand_roomLight_slow.mp4" class="center"></video>
 			<p class="label">Room Light - Slow Motion (1/8 speed)</p>
-			<p>&emsp;&emsp;Repeating the early process of taking 1 second of video from the slow motion video at 1/8 speed but this time slowing it down further by 10 times, 15 flashes can be counted. Over the eighth of a second this video represents, that results in a flicker frequency of 120Hz. The lightbulb in my room is also powered from the AC supplied to the house, but why then is its flicker frequency double that of the AC frequency? The lightbulb in my room is not unidirectional, it will produce light as the current moves back and forth through the filament. Therefore, for one cycle of AC, the lightbulb will flicker twice; once for the positive half wave and again for the negative half wave. Two times the AC frequency of 60 Hz results in the 120 Hz frequency lightbulb flicker observable in super slow motion.</p>
+			<p>&emsp;&emsp;Repeating the early process of taking 1 second of video from the slow motion video at 1/8 speed but this time slowing it down further by 10 times, 15 flashes can be counted. Over the eighth of a second this video represents, that results in a flicker frequency of 120Hz. The lightbulb in my room is also powered from the AC supplied to the house, but why then is its flicker frequency double that of the AC frequency? The modern LED lightbulb in my room includes a host of electronics beyond just LEDs, including a full bridge rectifier. As we will see with the full bridge rectifier tests, when both the positive half wave and negative half wave are output by a full bridge rectifier, the light flashes at double the frequency than when only using the positive half wave.</p>
 			<video controls="controls" name="Room Light - Super Slow Motion" src="../images/electronics/rectifier/hand_roomLight_superSlow.mp4" class="center"></video>
 			<p class="label">Room Light - Super Slow Motion (1/80 speed)</p>
 		</section>
 		<section>
 			<h3>Full Bridge Rectifier</h3>
-			<p>&emsp;&emsp;</p>
 			<h4>No Smoothing Capacitors</h4>
 			<img src="../images/electronics/rectifier/full_none_circuit.png" alt="Circuit Schematic on KiCAD" class="center">
 			<p class="label">Circuit Schematic: Full Bridge Rectifier</p>
@@ -125,9 +124,10 @@
 			<p class="label">Breadboard Circuit: Full Bridge Rectifier</p>
 			<video controls="controls" name="Full Bridge Rectifier - Real Time" src="../images/electronics/rectifier/full_none_norm.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier - Real Time</p>
+			<p>&emsp;&emsp;In slow motion, it's clear the LED is flickering, but to determine the exact frequency of the flickering, we'll need to rerun the video in super slow motion and count the flashes.</p>
 			<video controls="controls" name="Full Bridge Rectifier - Slow Motion" src="../images/electronics/rectifier/full_none_slow.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier - Slow Motion (1/8 speed)</p>
-			<p>&emsp;&emsp;In the below video, I took one second of video from the slow motion clip and slowed it down 10 times further in iMovie. Looking at the clip, one can count 15 flashes of the LED. Since the slow motion video from the iPhone is played back at 1/4 speed, this means that the true duration of the clip below is only a quarter second. If the LED flashed 15 times in a quarter second, it would flash approximately 60 times in one second. This checks out as we expect the full-wave signal coming through the full bridge rectifier from the 60 Hz wall outlet AC source to also have a frequency of 60 Hz.</p>
+			<p>&emsp;&emsp;Using the same process as before, I took one second of video from the slow motion clip and slowed it down 10 times further in iMovie. Looking at the clip, one can count 15 flashes of the LED. 15 flashes of the LED in an eighth of a second corresponds to 120 Hz. This result is expected since the full bridge rectifier in effect acts as taking the absolute value of the AC signal. Including the negative half wave portion of the AC signal in supplying the LED, allows the LED to be turned on and off twice in the period when it was originally only turned on once. The period of the signal, the time it takes for the signal to repeat itself, halves resulting in doubling of the frequency. Also take note in the video how the LED never is off since the rectified AC signal doesn't stay at zero for any considerable period of time.</p>
 			<video controls="controls" name="Full Bridge Rectifier - Super Slow Motion" src="../images/electronics/rectifier/full_none_superSlow.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier - Super Slow Motion (1/80 speed)</p>
 
@@ -139,6 +139,7 @@
 			<p class="label">Breadboard Circuit: Full Bridge Rectifier with One Capacitor</p>
 			<video controls="controls" name="Full Bridge Rectifier with One Smoothing Capacitor - Real Time" src="../images/electronics/rectifier/full_cap_norm.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier with One Smoothing Capacitor - Real Time</p>
+			<p>&emsp;&emsp;With one smoothing capacitor added, the smoothness of the LED light is comparable with the the single diode rectifier with all four capacitors.</p>
 			<video controls="controls" name="Full Bridge Rectifier with One Smoothing Capacitor - Slow Motion" src="../images/electronics/rectifier/full_cap_slow.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier with One Smoothing Capacitor - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Full Bridge Rectifier with One Smoothing Capacitor - Super Slow Motion" src="../images/electronics/rectifier/full_cap_superSlow.mp4" class="center"></video>
@@ -152,6 +153,7 @@
 			<p class="label">Breadboard Circuit: Full Bridge Rectifier with Many Capacitors</p>
 			<video controls="controls" name="Full Bridge Rectifier with Many Smoothing Capacitors - Real Time" src="../images/electronics/rectifier/full_allCaps_norm.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier with Many Smoothing Capacitors - Real Time</p>
+			<p>&emsp;&emsp;The addition of three more capacitors doesn't seem to have any noticeably large effect on smoothing the current through the LED anymore. It's difficult to tell if the observable flickering in the slow motion video is due to the LED or the light in my room.</p>
 			<video controls="controls" name="Full Bridge Rectifier with Many Smoothing Capacitors - Slow Motion" src="../images/electronics/rectifier/full_allCaps_slow.mp4" class="center"></video>
 			<p class="label">Full Bridge Rectifier with Many Smoothing Capacitors - Slow Motion (1/8 speed)</p>
 			<video controls="controls" name="Full Bridge Rectifier with Many Smoothing Capacitors - Super Slow Motion" src="../images/electronics/rectifier/full_allCaps_superSlow.mp4" class="center"></video>
