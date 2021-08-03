@@ -6,6 +6,7 @@
 <meta name="description" content="3D Printed Goalie Robot">
 <title>Conduction Demo</title>
 <link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../codeStyler.css">
 </head>
 
 <body>
@@ -25,17 +26,162 @@
 		<hr>
 		<section>
 			<h3>Final Prototype</h3>
-			<p>&emsp;&emsp;After assembling the 3D printed robot parts with the servo motors, I wired together the circuit components on a breadboard and had a working prototype!</p>
-			<video controls="controls" name="Construction of Experiment Setup" src="../images/electronics/conduction/conductionBuild_1.mp4" class="center"></video>
+			<p>&emsp;&emsp;In reality there were many more trials than just the pictured first and second trials. The other trials I failed to document due to technical difficulties. If I left the computer unattended the screen recordings would fail when the computer went into sleep mode.</p>
+			<video controls="controls" name="Construction of Experiment Setup - Part 1" src="../images/electronics/conduction/conductionBuild_1.mp4" class="center"></video>
 			<p class="label">Construction of Experiment Setup - Part 1</p>
-			<video controls="controls" name="Construction of Experiment Setup" src="../images/electronics/conduction/conductionBuild_2.mp4" class="center"></video>
+			<video controls="controls" name="Construction of Experiment Setup - Part 2" src="../images/electronics/conduction/conductionBuild_2.mp4" class="center"></video>
 			<p class="label">Construction of Experiment Setup - Part 2</p>
-			<video controls="controls" name="Construction of Experiment Setup" src="../images/electronics/conduction/conductionTimelapse_wrong.mp4" class="center"></video>
+			<video controls="controls" name="Timelapse - First Trial" src="../images/electronics/conduction/conductionTimelapse_wrong.mp4" class="center"></video>
 			<p class="label">Timelapsed Temperature Distribution of Rod During First Trial</p>
 			<img src="../images/electronics/conduction/tempDist_wrong.png" alt="MATLAB Plot of Temperature Distribution" class="center">
 			<p class="label">Temperature Distribution of Rod During First Trial</p>
 			<video controls="controls" name="Adjustments of Experiment Setup" src="../images/electronics/conduction/conductionBuildFixes.mp4" class="center"></video>
 			<p class="label">Adjustments of Experiment Setup</p>
+			<video controls="controls" name="Timelapse - Second Trial" src="../images/electronics/conduction/conductionTimelapse.mp4" class="center"></video>
+			<p class="label">Timelapsed Temperature Distribution of Rod During Second Trial</p>
+		</section>
+		<hr>
+		<section>
+			<h3>Arduino Code</h3>
+			<br>
+			<pre><code><span>/*
+ This code was adapted from the last minute engineers tutorial on reading data from
+ multiple DS18B20 temperature sensors linked here:
+ https://lastminuteengineers.com/multiple-ds18b20-arduino-tutorial/
+ */
+
+#include &#60;OneWire.h&#62;
+#include &#60;DallasTemperature.h&#62;
+
+// Data wire is plugged into digital pin 6 on the Arduino
+#define ONE_WIRE_BUS 6
+
+// Setup a oneWire instance to communicate with any OneWire device
+OneWire oneWire(ONE_WIRE_BUS);  
+
+// Pass oneWire reference to DallasTemperature library
+DallasTemperature sensors(&oneWire);
+
+int deviceCount = 0;
+float tempC;
+int count = 0;
+//int initTime, finTime; // used to measure the duration of the loop() function
+
+// variable to hold device addresses
+DeviceAddress addr;
+
+void setup(void)
+{
+  sensors.begin();  // Start up the library
+  Serial.begin(9600);
+ 
+  // locate devices on the bus
+//  Serial.print("Locating devices...");
+//  Serial.print("Found ");
+  deviceCount = sensors.getDeviceCount();
+//  Serial.print(deviceCount, DEC);
+//  Serial.println(" devices.");
+//  Serial.println("");
+}
+
+void loop()
+{
+  //initTime = millis();
+  // Send command to all the sensors for temperature conversion
+  sensors.requestTemperatures();
+
+  // Print the loop counter as a measure of time for the MATLAB plot
+  Serial.print(count);
+  Serial.print(" ");
+ 
+  // Display temperature from each sensor
+  for (int i = 0;  i < deviceCount;  i++)
+  {
+//    Serial.print("Sensor ");
+//    Serial.print(i+1);
+//    Serial.print(" : ");
+    tempC = sensors.getTempCByIndex(i);
+    Serial.print(tempC);
+    Serial.print(" ");
+   
+//    sensors.getAddress(addr, i);
+//    printAddress(addr);
+   
+//    Serial.print((char)176); //shows degrees character
+//    Serial.print("C  |  ");
+//    Serial.print(DallasTemperature::toFahrenheit(tempC));
+//    Serial.print((char)176); //shows degrees character
+//    Serial.println("F");
+  }
+  count = count + 1;
+
+  // End of temperature reading batch is communicated to MATLAB by a newline character
+  Serial.println();
+  delay(1000);
+ 
+  //finTime = millis();
+  //Serial.println(finTime - initTime); // print duration of loop()
+}
+
+void printAddress(DeviceAddress deviceAddress)
+{
+  for (uint8_t i = 0; i < 8; i++)
+  {
+    if (i == 0){
+      Serial.print("0x");
+    }
+    if (deviceAddress[i] < 0x10){
+      Serial.print("0");
+    }
+    Serial.print(deviceAddress[i], HEX);
+  }
+  Serial.println("");
+}
+			</span></code></pre>
+		</section>
+		<hr>
+		<section>
+			<h3>MATLAB Code</h3>
+			<br>
+			<pre><code><span>clear all
+% initialize serial object at port where Arduino USB connects to PC
+serPort = serialport('com3', 9600); % 9600 is the baud rate
+% setup function call to read data when available on serial port
+configureCallback(serPort, "terminator", @readSerialData);
+
+figure(1)
+xlabel('Time (seconds)')
+ylabel(['Temperature (' char(176) 'C)'])
+legend('1.5 inches','3 inches','4.5 inches','6 inches','7.5 inches','9 inches',...
+'AutoUpdate','off','Location','northwest')  
+hold all
+
+
+% hit run twice to ensure legend shows up properly
+function countNew = readSerialData(src,evt)
+    % read in value from serial port
+    data = readline(src);
+    % drop new line character from data
+    data = (splitlines(data));
+    % split into array based on spaces
+    data = split(data(1));
+    % drop last element
+    data = data(1:end-1);
+    % convert temperature values from strings to doubles
+    data = str2double(data);
+   
+    % each iteration of the Arduino loop() lasts 2.112 seconds
+    time = 2.112*data(1);
+    plot(time, data(3), 'm.', 'MarkerSize', 15);
+    plot(time, data(6), 'g.', 'MarkerSize', 15);
+    plot(time, data(2), 'r.', 'MarkerSize', 15);
+    plot(time, data(4), 'k.', 'MarkerSize', 15);
+    plot(time, data(5), 'b.', 'MarkerSize', 15);
+    plot(time, data(7), 'c.', 'MarkerSize', 15);
+   
+    disp(data) % write data to command window
+end
+			</span></code></pre>
 		</section>
 	</article>
 </main>
@@ -51,5 +197,5 @@
 	</a>
 </footer>
 <body>
-
+<script src="../codeStyler.js"></script>
 </html>
