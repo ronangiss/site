@@ -25,6 +25,16 @@
 		</section>
 		<hr>
 		<section>
+			<h3>Simulation</h3>
+			<p>&emsp;&emsp;To begin thinking about how best to demonstrate conduction, I put together a simulation of the temperature response using the tools taught in class. I was imagining a rod with fixed heat flux interface on one end from an electric heater and then insulation around the remainder of the rod excluding the end opposite the heater where heat would be released by convection into the air. Since I was planning to conduct the experiment in a room with still air, I decided to ignore the heat transfer contribution from convection.</p>
+			<p>&emsp;&emsp;I modeled the initial transient temperature distribution when the heater is turned on by treating the rod as a semi-infinite solid, likely a fair assumption when only considering the temperature distribution for the start up process. To determine this transient temperature distribution mathematically, I used the solution to the differential heat equation for a semi-infinite solid with a fixed heat flux boundary condition.</p>
+			<img src="../images/electronics/conduction/sim2.png" alt="Transient Temperature Plot (T vs. pos)" class="center">
+			<img src="../images/electronics/conduction/sim3.png" alt="Transient Temperature Plot (T vs. time)" class="center">
+			<p>&emsp;&emsp;I modeled the final linear, steady-state temperature distribution using Fourier's Law of conduction. Ultimately, I was trying to use the simulation to identify and avoid problems that might arise once actually setting up the experiment. One of these problems was predicting how long it would take to reach steady state. The faster it could reach steady state, the better. That way the demonstration could be observed over the course of a class period. Since I didn't include any heat loss in my modeling of the transient temperature distribution, it was unclear how long it would actually take to reach steady state. Nonetheless, one could use the transient temperature distribution model to guess at when transient effects became negligible. </p>
+			<img src="../images/electronics/conduction/sim1.png" alt="Steady State Temperature Distribution" class="center">
+		</section>
+		<hr>
+		<section>
 			<h3>Experimental Setup</h3>
 			<video controls="controls" name="Construction of Experiment Setup - Part 1" src="../images/electronics/conduction/conductionBuild_1.mp4" class="center"></video>
 			<p class="label">Construction of Experiment Setup - Part 1</p>
@@ -50,11 +60,140 @@
 		<hr>
 		<section>
 			<h3>Conclusion</h3>
-			<p>&emsp;&emsp;Unfortunately, I ran out of time to compare experimental data with simulated temperature distribution data. Nonetheless, I learned a lot through this project both in the realm of heat transfer and electronics. Hopefully, another Thermal Fluid Systems TA will take on this experiment later down the line.</p>
+			<p>&emsp;&emsp;Unfortunately, I ran out of time to compare the experimental data with the simulated temperature distribution data. Nonetheless, I learned a lot through this project both in the realm of heat transfer and electronics. Hopefully, another Thermal Fluid Systems TA will take on this project later down the line.</p>
 		</section>
 		<hr>
 		<section>
-			<h3>Arduino Code</h3>
+			<h3>Modeling - Matlab Code</h3>
+			<br>
+			<pre><code><span>clear all
+close all
+% Author: Ronan Gissler
+% The purpose of this code is to detail the design parameters for a heat
+% conduction experiment using a long rod with a heater on one end. The goal
+% of this experiment is to both demonstrate the transient temperature
+% distribution as the rod is initially heated and then the steady state
+% temperature distribution that is reached later on.
+
+% Initial Design Parameters
+
+% ---------Rod----------
+rodLength = 12 * 0.0254; % 12 inches converted to m, from Amazon link
+rodDiameter = 0.5 * 0.0254; % 0.5 inches converted to m, from Amazon
+link
+rodArea = pi*((rodDiameter / 2)^2);
+
+% --------Brass---------
+density = 8400; % kg/m^3, from research paper, also matches Matweb
+specHeat = 380; % J/kg*K from research paper, also matches other sites
+thermCond = 120; % W/m*K fro research paper, also matches Matweb
+thermDiff = thermCond / (density * specHeat); % m^2/s, diffusivity
+
+% --------Heater----------
+Qdot = 1; % Between 1 to 30 W for the flexible polyamide adhesive heater
+% plates I was looking at on Amazon
+
+
+% -----------------Steady State Temperature Distribution----------------
+% Assuming the rod is insulated along it's length, then Fourier's Law of
+% Conduction can be used to model the temperature distribution in the rod.
+% Qdot = k*A*(deltaT / deltaX) ->
+% Qdot = thermCond*rodArea*( (deltaT) / (rodLength) )
+
+deltaT = (Qdot*rodLength) / (thermCond*rodArea)
+pos = 0:0.001:rodLength;
+linTemp = (deltaT/rodLength)*flip(pos) + 293; % assuming rod end is at room temp
+% pos is flipped since heat source assumed to be at pos = 0
+
+% plot steady state temperature distribution across rod length
+figure(1)
+plot(pos, linTemp)
+xlabel('Rod Length (m)')
+ylabel('Temperature (K)')
+title('Steady State Temperature Distribution')
+
+
+% ------------------Transient Temperature Distribution-----------------
+% The transient temperature distribution can be modeled using a
+% semi-infinite solid with fixed heat flux into the interface.
+% Unlike the steady state temperature distribution which is only a function
+% of position, the transient temperature distribution is also a function of
+% time.
+
+Ti = 293; % K, rod is initially at room temp across its length
+heatFlux = Qdot/rodArea;
+
+% make a array of temp. gradients at each point along
+% the rod for the steady state case
+tempGradSS = -(deltaT/rodLength) .* ones(length(pos) - 1, 1);
+tempGradSS = tempGradSS'; % transpose vector
+
+% Predict how long it will take temperature distribution to reach steady
+% state using L^2 / alpha
+timeToSS = (rodLength^2) / thermDiff
+
+jj = 0;
+delT = 10; % 10 second increments for each time step
+% inner for loop moves through time steps
+while (true)
+    t(jj+1) = jj*delT; %2.25
+    const = 4*thermDiff*t(jj+1); % 4*alpha*t
+    % Make boolean for initial run of for loop
+    initial = true;
+    for ii=1:length(pos)
+        transTemp(ii,jj+1) = Ti + (heatFlux/thermCond)*( sqrt(const/pi)*...
+		exp((-pos(ii)^2)/const) - pos(ii)*erfc(pos(ii)/sqrt(const)));
+		if (initial)
+    		initial = false;
+		else
+    		tempGradT(ii - 1) = (transTemp(ii,jj+1) -...
+    		transTemp(ii - 1,jj+1)) / (pos(ii) - pos(ii-1));
+		end 
+	end
+    % End time stepping when temperature gradient is approximately equal to
+    % the steady state temperature gradient (i.e. linear) (20% error)
+    	if (mean(abs((tempGradSS - tempGradT) ./ tempGradSS)) < 0.2)
+        	break
+		end
+		jj = jj + 1;
+end
+
+% plot transient temperature distribution across rod for different
+% amounts of time elapsed
+figure(2)
+hold on
+plot(pos, transTemp(:,end-400), 'DisplayName', ...
+string(delT*(length(transTemp(1,:)) - 400)) + ' sec')
+plot(pos, transTemp(:,end-200), 'DisplayName', ...
+string(delT*(length(transTemp(1,:)) - 200)) + ' sec')
+plot(pos, transTemp(:,end), 'DisplayName', ...
+string(delT*(length(transTemp(1,:)))) + ' sec')
+xlabel('Rod Length (m)')
+ylabel('Temperature (K)')
+title('Transient Temperature Response')
+legend()
+
+% plot transient temperature response across rod at different
+% rod positions
+figure(3)
+hold on
+plot(t, transTemp(round(size(pos,2)*(1/4)),:), 'DisplayName', ...
+string(pos(round(size(pos,2)*(1/4)))) + ' meter')
+plot(t, transTemp(round(size(pos,2)*(2/4)),:), 'DisplayName', ...
+string(pos(round(size(pos,2)*(2/4)))) + ' meter')
+plot(t, transTemp(round(size(pos,2)*(3/4)),:), 'DisplayName', ...
+string(pos(round(size(pos,2)*(3/4)))) + ' meter')
+plot(t, transTemp(round(size(pos,2)*(4/4)),:), 'DisplayName', ...
+string(pos(round(size(pos,2)*(4/4)))) + ' meter')
+xlabel('Time (s)')
+ylabel('Temperature (K)')
+title('Transient Temperature Response')
+legend()
+			</span></code></pre>
+		</section>
+		<hr>
+		<section>
+			<h3>Data Collection - Arduino Code</h3>
 			<br>
 			<pre><code><span>/*
 Modified by: Ronan Gissler
@@ -156,7 +295,7 @@ void printAddress(DeviceAddress deviceAddress)
 		</section>
 		<hr>
 		<section>
-			<h3>MATLAB Code</h3>
+			<h3>Data Collection - MATLAB Code</h3>
 			<br>
 			<pre><code><span>clear all
 % initialize serial object at port where Arduino USB connects to PC
