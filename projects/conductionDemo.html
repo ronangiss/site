@@ -45,17 +45,22 @@
 		<section>
 			<h3>Data Collection Trials</h3>
 			<p>&emsp;&emsp;Turning on the heater produced a wretched stench of plastic fumes, likely the result of the insulation melting slightly. To stay safe, I turned on two fans in my room to improve air circulation and evacuated my room. I initially encountered a number of different technical challenges in trying to record temperature data. One of these failed trials is included below, but I failed to document many of the other trials since screen recordings would fail if I left my computer unattended for too long and it fell asleep.</p>
-			<video controls="controls" name="Timelapse - First Trial" src="../images/electronics/conduction/conductionTimelapse_wrong.mp4" class="center"></video>
-			<p class="label">Timelapsed Temperature Distribution of Rod During First Trial</p>
+			<video controls="controls" name="Timelapse - Initial Test" src="../images/electronics/conduction/conductionTimelapse_wrong.mp4" class="center"></video>
+			<p class="label">Timelapsed Temperature Distribution of Rod During Initial Test</p>
 			<img src="../images/electronics/conduction/tempDist_wrong.png" alt="MATLAB Plot of Temperature Distribution" class="center">
-			<p class="label">Temperature Distribution of Rod During First Trial</p>
+			<p class="label">Temperature Distribution of Rod During Initial Trial</p>
 			<p>&emsp;&emsp;Looking at the plot above, the logarithmic looking graph with each curve approaching an asymptotic end is as expected. During the transient phase, the temperature of each sensor reading increases as heat is transferred through the rod. As the rod heats, it eventually reaches a point where the heat added by the heater equals the heat lost from the rod&mdash;likely predominantly at the uninsulated rod end.</p>
 			<p>&emsp;&emsp;The key issue with these first set of experiments was the unexpected transient temperature distribution where points in the middle of the rod were taking longer than points further down the rod to heat up despite being closer to the heat source. After verifying that each sensor was located along the rod in the expected position, I inferred that the problem could be explained by loosely mounted temperature sensors. In particular, I thought the temperature sensors located at 4.5 and 6 inches (the red and black lines) weren't secured as well as the other temperature sensors to the brass rod. If they were pushed away from the rod and towards the insulation they might read cooler temperatures. This hypothesis seemed likely given that those temperature sensors were located adjacent to where the clamp holds onto the rod and could thus be displaced by the clamp. To address this issue, I resecured all the temperature sensors.</p>
 			<video controls="controls" name="Adjustments of Experiment Setup" src="../images/electronics/conduction/conductionBuildFixes.mp4" class="center"></video>
 			<p class="label">Adjustments of Experiment Setup</p>
-			<p>&emsp;&emsp;Resecuring the temperature sensors improved the transient temperature distribution for the middle temperature readings, but the sensor 9 inches away from the heat source was still reading hotter than the sensor 7.5 inches away from the heat source.</p>
-			<video controls="controls" name="Timelapse - Second Trial" src="../images/electronics/conduction/conductionTimelapse.mp4" class="center"></video>
-			<p class="label">Timelapsed Temperature Distribution of Rod During Second Trial</p>
+			<p>&emsp;&emsp;Resecuring the temperature sensors improved the transient temperature distribution for the middle temperature readings, but the sensor 9 inches away from the heat source was still reading hotter than the sensor 7.5 inches away from the heat source. Furthermore, the time to reach steady state was still over four hours! That's far too long to be observed live during a class period.</p>
+			<video controls="controls" name="Timelapse - Sensor Adjustment Test" src="../images/electronics/conduction/conductionTimelapse.mp4" class="center"></video>
+			<p class="label">Timelapsed Temperature Distribution of Rod During Sensor Adjustment Test</p>
+			<p>&emsp;&emsp;In an effort to accelerate the time to steady state, I placed a fan in front of the exposed rod end. The fan's airflow was directed tangent to the surface of the exposed end at full blast. The addition of the fan did accelerate the time to steady state&mdash;maybe by about an hour&mdash;but not enough for this conduction experiment to be a feasible class demonstration. Additionally, the steady state temperature distribution was significantly lower with the addition of the fan. This result is expected as heat is lost from the rod at a faster rate with the addition of the fan.</p>
+			<video controls="controls" name="Fan in Experimental Setup" src="../images/electronics/conduction/fanSetup.mp4" class="center"></video>
+			<p class="label">Fan in Experimental Setup</p>
+			<video controls="controls" name="Timelapse - Fan Test" src="../images/electronics/conduction/conductionTimelapse_fan.mp4" class="center"></video>
+			<p class="label">Timelapsed Temperature Distribution of Rod During Fan Test</p>
 		</section>
 		<hr>
 		<section>
