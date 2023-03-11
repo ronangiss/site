@@ -11,7 +11,7 @@
 
 <body>
 <header role='banner'>
-	<h1>Heat Conduction Demonstration</h1>
+	<h1>Heat Conduction Demonstration - 2021</h1>
 	<a href="../index.html" title="Home" class="home">Home</a>
 </header>
 <main role='main'>
@@ -19,15 +19,32 @@
 		<hr>
 		<section>
 			<h3>Introduction</h3>
-			<p>&emsp;&emsp;My role as a course assistant for Thermal Fluid Systems 1 was mostly to grade assignments, but I also had the opportunity to work on a couple conceptual demonstrations for the class. Through this demonstration I was seeking to display heat transfer through conduction to students by monitoring the temperature distribution across a rod as heat was applied to one end of the rod.</p>
+			<p>&emsp;&emsp;My role as a course assistant for Thermal Fluid Systems
+            1 was mostly to grade assignments, but I also had the opportunity to work
+            on a couple conceptual demonstrations for the class. Through this demonstration
+            I was seeking to display heat transfer through conduction to students by monitoring
+            the temperature distribution across a rod as heat was applied to one end of the rod.</p>
 			<img src="../images/electronics/conduction/rodSetup.jpg" alt="Experimental Setup with Conduction Rod" class="center">
 			<p class="label">Conduction Experiment</p>
 		</section>
 		<hr>
 		<section>
 			<h3>Simulation</h3>
-			<p>&emsp;&emsp;To begin thinking about how best to demonstrate conduction, I put together a simulation of the temperature response using the tools taught in class. I was imagining a rod with fixed heat flux interface on one end from an electric heater and then insulation around the remainder of the rod excluding the end opposite the heater where heat would be released by convection into the air. Since I was planning to conduct the experiment in a room with still air, I decided to ignore the heat transfer contribution from convection.</p>
-			<p>&emsp;&emsp;I modeled the initial transient temperature distribution when the heater is turned on by treating the rod as a semi-infinite solid, likely a fair assumption when only considering the temperature distribution for the start up process. To determine this transient temperature distribution mathematically, I used the solution to the differential heat equation for a semi-infinite solid with a fixed heat flux boundary condition.</p>
+			<p>&emsp;&emsp;To begin thinking about how best to demonstrate conduction,
+            I put together a simulation of the temperature response using the tools
+            taught in class. I was imagining a rod with a fixed heat flux interface
+            on one end from an electric heater and then insulation around the
+            remainder of the rod excluding the end opposite the heater where heat
+            would be released by convection into the air. Since I was planning
+            to conduct the experiment in a room with still air, I decided to
+            ignore the heat transfer contribution from convection.</p>
+			<p>&emsp;&emsp;I modeled the initial transient temperature distribution
+            when the heater is turned on by treating the rod as a semi-infinite
+            solid, likely a fair assumption when only considering the
+            temperature distribution for the start up process. To determine
+            this transient temperature distribution mathematically, I used the
+            solution to the differential heat equation for a semi-infinite
+            solid with a fixed heat flux boundary condition.</p>
 			<img src="../images/electronics/conduction/sim2.png" alt="Transient Temperature Plot (T vs. pos)" class="center">
 			<img src="../images/electronics/conduction/sim3.png" alt="Transient Temperature Plot (T vs. time)" class="center">
 			<p>&emsp;&emsp;I modeled the final linear, steady-state temperature distribution using Fourier's Law of conduction. Ultimately, I was trying to use the simulation to identify and avoid problems that might arise once actually setting up the experiment. One of these problems was predicting how long it would take to reach steady state. The faster it could reach steady state, the better. That way the demonstration could be observed over the course of a class period. Since I didn't include any heat loss in my modeling of the transient temperature distribution, it was unclear how long it would actually take to reach steady state. Nonetheless, one could use the transient temperature distribution model to guess at when transient effects became negligible. </p>
